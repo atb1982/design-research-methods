@@ -44,6 +44,7 @@ header.site{background:var(--black);position:sticky;top:0;z-index:300;box-shadow
 .srch{flex:1;max-width:340px;position:relative;margin-left:4px}
 .srch input{width:100%;padding:9px 32px 9px 35px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
  border-radius:3px;color:#fff;font-size:13.5px;transition:background .15s,border-color .15s}
+.srch input::-webkit-search-cancel-button,.srch input::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
 .srch input::placeholder{color:rgba(255,255,255,.68)}
 .srch input:focus{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.7)}
 .srch input:focus-visible{outline:3px solid #fff;outline-offset:2px}
@@ -127,6 +128,10 @@ mark{background:#ffe9a8;color:inherit;border-radius:2px;padding:0 1px}
 .phase{padding:64px 0}
 .phase+.phase{border-top:1px solid var(--g200)}
 .phase.hide,.phase.nomatch{display:none}
+/* while searching, results sit directly under the header: no hero, no framework section */
+.searching .hero,.searching .dd{display:none}
+.searching .phase{padding:30px 0}
+.searching .phead{margin-bottom:18px}
 .phead{display:flex;align-items:flex-start;justify-content:space-between;gap:26px;margin-bottom:30px;flex-wrap:wrap}
 .pleft{display:flex;align-items:center;gap:15px}
 .badge{font-family:'Roboto Condensed',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.3px;
@@ -467,6 +472,10 @@ function search(v){
   ensureVocab();
   query = v.trim().toLowerCase();
   ALTS = query ? Search.alternatives(Search.tokenize(query)) : [];
+  var home = q('p-home'), wasSearching = home.classList.contains('searching');
+  home.classList.toggle('searching', !!query);
+  if (query !== '' && !wasSearching) jumpTo(0);
+  if (query === '' && wasSearching) jumpTo(0);
   q('clr').style.display = query ? 'block' : 'none';
   if (query){
     PHASES.forEach(function(p){ q('sec-'+p).classList.remove('hide'); });
@@ -477,6 +486,7 @@ function search(v){
 }
 function clearSearch(){
   q('search').value = ''; query = ''; ALTS = [];
+  if (q('p-home').classList.contains('searching')){ q('p-home').classList.remove('searching'); jumpTo(0); }
   q('clr').style.display = 'none';
   render(); banner();
 }
