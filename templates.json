@@ -1,0 +1,387 @@
+{
+ "artifact-analysis": [
+  {
+   "title": "Artifact Analysis Worksheet",
+   "publisher": "U.S. National Archives",
+   "url": "https://www.archives.gov/files/education/lessons/worksheets/artifact.html",
+   "format": "Web page, printable",
+   "access": "Free, no sign-in"
+  }
+ ],
+ "interviews": [
+  {
+   "title": "Example interview guide",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/interview-guide/",
+   "format": "PDF",
+   "access": "Free download"
+  },
+  {
+   "title": "Example informed consent form",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/informed-consent/",
+   "format": "PDF",
+   "access": "Free download"
+  }
+ ],
+ "focus-groups": [
+  {
+   "title": "Focus group design template",
+   "publisher": "Miro",
+   "url": "https://miro.com/templates/focus-group-design/",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "literature-reviews": [
+  {
+   "title": "Literature review synthesis matrix (Word and Excel)",
+   "publisher": "Central Michigan University Libraries",
+   "url": "https://libguides.cmich.edu/lit_review/LR_synthesize",
+   "format": "Word and Excel files",
+   "access": "Free download"
+  }
+ ],
+ "content-inventory-audit": [
+  {
+   "title": "Content inventory and audit template",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/content-audits/",
+   "format": "Excel spreadsheet",
+   "access": "Free download"
+  }
+ ],
+ "contextual-inquiry": [
+  {
+   "title": "Contextual inquiry template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/contextual-inquiry",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "fly-on-the-wall-observation": [
+  {
+   "title": "Fly on the wall template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/fly-on-the-wall",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "observation": [
+  {
+   "title": "AEIOU method template",
+   "publisher": "Lucid",
+   "url": "https://lucid.co/templates/aeiou-method",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed.",
+   "note": "An AEIOU worksheet for notes on Activities, Environments, Interactions, Objects and Users."
+  }
+ ],
+ "aeiou": [
+  {
+   "title": "AEIOU method template",
+   "publisher": "Lucid",
+   "url": "https://lucid.co/templates/aeiou-method",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "affinity-diagramming": [
+  {
+   "title": "Affinity diagram template",
+   "publisher": "Interaction Design Foundation",
+   "url": "https://ixdf.org/templates/affinity-diagrams",
+   "format": "Template download",
+   "access": "Free. Name and email are optional."
+  },
+  {
+   "title": "Affinity clustering template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/affinity-clustering",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "kj-technique": [
+  {
+   "title": "Affinity clustering template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/affinity-clustering",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed.",
+   "note": "Closest match. The KJ technique groups notes the same way."
+  }
+ ],
+ "bulls-eye-diagramming": [
+  {
+   "title": "Bullseye diagram template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/bulls-eye-diagram",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "card-sorting": [
+  {
+   "title": "Card sorting script template",
+   "publisher": "NN/g",
+   "url": "https://media.nngroup.com/media/articles/attachments/Card-Sorting-Script-Template.pdf",
+   "format": "PDF",
+   "access": "Free download"
+  },
+  {
+   "title": "Card sorting templates",
+   "publisher": "Miro",
+   "url": "https://miro.com/templates/card-sorting/",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "mind-mapping": [
+  {
+   "title": "Mind map template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/mind-map",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "create-insight-statements": [
+  {
+   "title": "Insights Checklist worksheet",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/create-insight-statements.html",
+   "format": "PDF",
+   "access": "Free download"
+  }
+ ],
+ "experience-diagramming": [
+  {
+   "title": "Customer journey mapping template",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/journey-map-digital-template/",
+   "format": "Excel spreadsheet and Numbers file",
+   "access": "Free download"
+  },
+  {
+   "title": "Journey map template and poster",
+   "publisher": "Service Design Tools",
+   "url": "https://servicedesigntools.org/tools/journey-map",
+   "format": "PDF",
+   "access": "Free download"
+  }
+ ],
+ "importancedifficulty-matrix": [
+  {
+   "title": "Importance and difficulty matrix template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/importance-difficulty-matrix",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "kano-analysis": [
+  {
+   "title": "Kano model template",
+   "publisher": "Miro",
+   "url": "https://miro.com/templates/kano-model/",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "personas": [
+  {
+   "title": "Persona template",
+   "publisher": "Interaction Design Foundation",
+   "url": "https://ixdf.org/templates/persona-template",
+   "format": "Fillable PDF",
+   "access": "Free. Name and email are optional."
+  }
+ ],
+ "problem-tree-analysis": [
+  {
+   "title": "Problem tree template",
+   "publisher": "Miro",
+   "url": "https://miro.com/templates/problem-tree/",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "rose-thorn-bud": [
+  {
+   "title": "Rose, thorn, bud template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/rose-thorn-bud-affinity-clusters",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "stakeholder-maps": [
+  {
+   "title": "Stakeholder mapping template",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/stakeholder-analysis/",
+   "format": "Excel spreadsheet",
+   "access": "Free download"
+  },
+  {
+   "title": "Map project stakeholders template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/map-project-stakeholders",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "task-analysis": [
+  {
+   "title": "Task analysis diagram template",
+   "publisher": "Miro",
+   "url": "https://miro.com/templates/task-analysis-diagram/",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "round-robin": [
+  {
+   "title": "Brainwriting template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/brainwriting",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed.",
+   "note": "Closest match. Brainwriting passes ideas around in writing, like a round robin."
+  }
+ ],
+ "thumbnail-sketching": [
+  {
+   "title": "Thumbnail sketching template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/thumbnail-sketching",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "image-boards": [
+  {
+   "title": "Mood board template",
+   "publisher": "Mural",
+   "url": "https://www.mural.co/templates/mood-board",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed.",
+   "note": "Closest match."
+  }
+ ],
+ "design-workshops": [
+  {
+   "title": "7 Foundational Workshop Activities",
+   "publisher": "NN/g",
+   "url": "https://media.nngroup.com/media/articles/attachments/NNg_Foundational_Workshop_Activities.pdf",
+   "format": "PDF",
+   "access": "Free download"
+  }
+ ],
+ "business-model-canvas": [
+  {
+   "title": "The Business Model Canvas",
+   "publisher": "Strategyzer",
+   "url": "https://www.strategyzer.com/library/the-business-model-canvas",
+   "format": "PDF",
+   "access": "Free. The page does not mention a sign-in."
+  }
+ ],
+ "cognitive-walkthrough": [
+  {
+   "title": "Cognitive walkthrough template",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/cognitive-walkthrough-workshop/",
+   "format": "PDF",
+   "access": "Free download"
+  }
+ ],
+ "heuristic-evaluation": [
+  {
+   "title": "Heuristic evaluation workbook",
+   "publisher": "NN/g",
+   "url": "https://media.nngroup.com/media/articles/attachments/Heuristic_Evaluations_Workbook.pdf",
+   "format": "PDF",
+   "access": "Free download"
+  }
+ ],
+ "paper-prototyping": [
+  {
+   "title": "Paper prototyping cutout kit",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/paper-prototyping-cutout-kit/",
+   "format": "PDF, A4 and Letter",
+   "access": "Free download"
+  }
+ ],
+ "storyboarding": [
+  {
+   "title": "Storyboard template",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/storyboards-visualize-ideas/",
+   "format": "PDF",
+   "access": "Free download"
+  },
+  {
+   "title": "Storyboard template",
+   "publisher": "Interaction Design Foundation",
+   "url": "https://ixdf.org/templates/storyboard",
+   "format": "Template download",
+   "access": "Free. Name and email are optional."
+  }
+ ],
+ "usability-testing": [
+  {
+   "title": "Example facilitator guide",
+   "publisher": "NN/g",
+   "url": "https://media.nngroup.com/media/articles/attachments/nng-example-facilitator-guide.pdf",
+   "format": "PDF",
+   "access": "Free download"
+  },
+  {
+   "title": "Example usability test script",
+   "publisher": "18F Methods",
+   "url": "https://methods.18f.gov/usability-test-script/",
+   "format": "Web page",
+   "access": "Free, no sign-in"
+  },
+  {
+   "title": "Usability testing templates",
+   "publisher": "Miro",
+   "url": "https://miro.com/templates/usability-testing/",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "role-playing": [
+  {
+   "title": "Role-playing template",
+   "publisher": "Miro",
+   "url": "https://miro.com/templates/role-playing/",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "ab-testing": [
+  {
+   "title": "A/B test planner templates",
+   "publisher": "Miro",
+   "url": "https://miro.com/templates/ab-test-planner/",
+   "format": "Online whiteboard",
+   "access": "Opens in an online whiteboard. A free account is likely needed."
+  }
+ ],
+ "scenario-description-swimlanes": [
+  {
+   "title": "Service blueprint template",
+   "publisher": "NN/g",
+   "url": "https://www.nngroup.com/articles/service-blueprinting-template/",
+   "format": "Excel spreadsheet and Numbers file",
+   "access": "Free download",
+   "note": "Closest match. A service blueprint also lays out steps in lanes."
+  }
+ ]
+}

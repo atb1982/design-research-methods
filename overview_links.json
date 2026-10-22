@@ -1,0 +1,429 @@
+{
+ "automated-remote-research": [
+  {
+   "title": "Unmoderated User Tests: How and Why to Do Them",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/unmoderated-usability-testing/"
+  }
+ ],
+ "competitive-testing": [
+  {
+   "title": "Competitive Usability Evaluations: Definition",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/competitive-usability-evaluations/"
+  }
+ ],
+ "content-inventory-audit": [
+  {
+   "title": "Content Inventory and Auditing 101",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/content-audits/"
+  },
+  {
+   "title": "Content audit",
+   "publisher": "18F Methods",
+   "url": "https://methods.18f.gov/decide/content-audit/"
+  }
+ ],
+ "contextual-inquiry": [
+  {
+   "title": "Contextual Inquiry: Inspire Design by Observing and Interviewing Users in Their Context",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/contextual-inquiry/"
+  },
+  {
+   "title": "Contextual inquiry",
+   "publisher": "18F Methods",
+   "url": "https://methods.18f.gov/discover/contextual-inquiry"
+  }
+ ],
+ "critical-incident-technique": [
+  {
+   "title": "The Critical Incident Technique in UX",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/critical-incident-technique/"
+  }
+ ],
+ "design-ethnography": [
+  {
+   "title": "Field Studies",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/field-studies/"
+  }
+ ],
+ "ergonomic-analysis": [
+  {
+   "title": "Ergonomics: Identify Problems",
+   "publisher": "U.S. Occupational Safety and Health Administration",
+   "url": "https://www.osha.gov/ergonomics/identify-problems"
+  },
+  {
+   "title": "Ergonomics: Overview",
+   "publisher": "U.S. Occupational Safety and Health Administration",
+   "url": "https://www.osha.gov/ergonomics"
+  }
+ ],
+ "evidence-based-design": [
+  {
+   "title": "About EBD",
+   "publisher": "The Center for Health Design",
+   "url": "https://www.healthdesign.org/certification-outreach/edac/about-ebd"
+  }
+ ],
+ "experience-sampling-method": [
+  {
+   "title": "What are Experience Sampling Methods?",
+   "publisher": "Interaction Design Foundation",
+   "url": "https://ixdf.org/literature/topics/experience-sampling-methods"
+  },
+  {
+   "title": "The benefits of experience sampling for longitudinal research",
+   "publisher": "American Psychological Association",
+   "url": "https://www.apa.org/research-practice/conduct-research/sampling-longitudinal-research"
+  }
+ ],
+ "experiments": [
+  {
+   "title": "A/B Testing 101",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/ab-testing/",
+   "note": "Covers the A/B test, the most common controlled experiment in digital design."
+  }
+ ],
+ "extremes-and-mainstreams": [
+  {
+   "title": "Extremes and Mainstreams",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/extremes-and-mainstreams.html"
+  }
+ ],
+ "fly-on-the-wall-observation": [
+  {
+   "title": "Observation",
+   "publisher": "Digital.gov",
+   "url": "https://digital.gov/guides/hcd/discovery-operations/observation",
+   "note": "Covers fly-on-the-wall and participatory observation."
+  }
+ ],
+ "focus-groups": [
+  {
+   "title": "Focus Groups 101",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/focus-groups-definition/"
+  }
+ ],
+ "guerilla-user-research": [
+  {
+   "title": "Guerilla Testing",
+   "publisher": "Open Practice Library",
+   "url": "https://openpracticelibrary.com/practice/guerilla-testing/"
+  }
+ ],
+ "observation": [
+  {
+   "title": "Observation",
+   "publisher": "Digital.gov",
+   "url": "https://digital.gov/guides/hcd/discovery-operations/observation"
+  },
+  {
+   "title": "Field Studies",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/field-studies/"
+  }
+ ],
+ "participatory-action-research": [
+  {
+   "title": "Participatory Action Research",
+   "publisher": "Participatory Methods",
+   "url": "https://www.participatorymethods.org/methodology/participatory-action-research/"
+  }
+ ],
+ "photo-studies": [
+  {
+   "title": "Photojournal",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/photojournal.html"
+  }
+ ],
+ "picture-cards": [
+  {
+   "title": "Generative Design Method Cards (see Image collaging and What if? cards)",
+   "publisher": "Elizabeth Sanders, MakeTools via Design Research Methods",
+   "url": "https://designresearchmethods.com/wp-content/uploads/2019/02/Sanders_MethodCards.pdf",
+   "note": "Closest free match. The cards describe image-based tools that participants select and arrange."
+  }
+ ],
+ "remote-moderated-research": [
+  {
+   "title": "Remote Moderated Usability Tests: Why to Do Them",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/moderated-remote-usability-test-why/"
+  }
+ ],
+ "secondary-research": [
+  {
+   "title": "Secondary Research in UX",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/secondary-research-in-ux/"
+  },
+  {
+   "title": "Secondary Research",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/secondary-research.html"
+  }
+ ],
+ "semantic-differential": [
+  {
+   "title": "Rating Scales in UX Research: Likert or Semantic Differential?",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/rating-scales/"
+  }
+ ],
+ "site-search-analytics": [
+  {
+   "title": "Search-Log Analysis: The Most Overlooked Opportunity in Web UX Research",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/search-log-analysis/"
+  }
+ ],
+ "the-love-letter-the-breakup-letter": [
+  {
+   "title": "Break up/Love letter",
+   "publisher": "SessionLab",
+   "url": "https://www.sessionlab.com/methods/break-up-love-letter"
+  }
+ ],
+ "touchstone-tours": [
+  {
+   "title": "Guided Tour",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/guided-tour.html",
+   "note": "Same idea under a different name: participants guide the researcher through their own spaces."
+  }
+ ],
+ "triading": [
+  {
+   "title": "What are 3-Way Comparisons?",
+   "publisher": "Interaction Design Foundation",
+   "url": "https://ixdf.org/literature/topics/3-way-comparisons",
+   "note": "Closest free match. It describes comparing three items to draw out differences."
+  }
+ ],
+ "abstraction-laddering": [
+  {
+   "title": "Abstraction Laddering",
+   "publisher": "Open Practice Library",
+   "url": "https://openpracticelibrary.com/practice/abstraction-ladder/"
+  }
+ ],
+ "affinity-diagramming": [
+  {
+   "title": "Affinity Diagramming for Sorting UX Findings and Ideas",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/affinity-diagram/"
+  }
+ ],
+ "create-insight-statements": [
+  {
+   "title": "Create Insight Statements",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/create-insight-statements.html"
+  }
+ ],
+ "find-themes": [
+  {
+   "title": "Find Themes",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/find-themes.html"
+  }
+ ],
+ "importancedifficulty-matrix": [
+  {
+   "title": "Impact & Effort Prioritization (Matrix)",
+   "publisher": "Open Practice Library",
+   "url": "https://openpracticelibrary.com/practice/impact-effort-prioritization-matrix/",
+   "note": "Uses the labels impact and effort in place of importance and difficulty."
+  },
+  {
+   "title": "Using Prioritization Matrices to Inform UX Decisions",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/prioritization-matrices/"
+  }
+ ],
+ "kano-analysis": [
+  {
+   "title": "Kano Model",
+   "publisher": "Open Practice Library",
+   "url": "https://openpracticelibrary.com/practice/kano-model/"
+  }
+ ],
+ "kj-technique": [
+  {
+   "title": "What is an Affinity Diagram? K-J Method",
+   "publisher": "American Society for Quality",
+   "url": "https://asq.org/quality-resources/affinity"
+  },
+  {
+   "title": "Affinity Diagramming for Sorting UX Findings and Ideas",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/affinity-diagram/"
+  }
+ ],
+ "mind-mapping": [
+  {
+   "title": "Cognitive Maps, Mind Maps, and Concept Maps: Definitions",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/cognitive-mind-concept/"
+  },
+  {
+   "title": "Mindmap",
+   "publisher": "Service Design Tools",
+   "url": "https://servicedesigntools.org/tools/mindmap"
+  }
+ ],
+ "problem-tree-analysis": [
+  {
+   "title": "Planning tools: Problem Tree Analysis",
+   "publisher": "ODI Global",
+   "url": "https://odi.org/en/publications/planning-tools-problem-tree-analysis/"
+  }
+ ],
+ "stakeholder-maps": [
+  {
+   "title": "Stakeholders Map",
+   "publisher": "Service Design Tools",
+   "url": "https://servicedesigntools.org/tools/stakeholders-map"
+  },
+  {
+   "title": "Stakeholder Analysis for UX Projects",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/stakeholder-analysis/"
+  }
+ ],
+ "task-analysis": [
+  {
+   "title": "Task Analysis: Support Users in Achieving Their Goals",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/task-analysis/"
+  }
+ ],
+ "top-five": [
+  {
+   "title": "Top Five",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/top-five.html"
+  }
+ ],
+ "analogous-inspiration": [
+  {
+   "title": "Analogous Inspiration",
+   "publisher": "IDEO.org Design Kit",
+   "url": "https://www.designkit.org/methods/analogous-inspiration.html"
+  }
+ ],
+ "concept-generating-matrix": [
+  {
+   "title": "Morphological Chart (from the Delft Design Guide)",
+   "publisher": "University of Arkansas Pressbooks",
+   "url": "https://uark.pressbooks.pub/mechanicaldesign/chapter/morphological-chart/",
+   "note": "Closest free match. The morphological chart is the same idea under another name."
+  }
+ ],
+ "design-charette": [
+  {
+   "title": "Design Charrettes & Team Sketching: ½ Inspiration, ½ Buy-In",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/design-charrettes/"
+  }
+ ],
+ "paper-prototyping": [
+  {
+   "title": "Paper Prototyping 101 (Video)",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/videos/paper-prototyping-101/",
+   "note": "A three-minute video introduction."
+  }
+ ],
+ "directed-storytelling": [
+  {
+   "title": "The Critical Incident Technique in UX",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/critical-incident-technique/",
+   "note": "Closest free match. A related technique in which participants recount specific past experiences."
+  }
+ ],
+ "eraf-systems-diagram": [
+  {
+   "title": "ERAF Systems Diagram",
+   "publisher": "Innovation Wiki, verrocchio Institute",
+   "url": "https://www.innovation.wiki/en/method/eraf-systems-diagram/",
+   "note": "The overview is free to read. Step-by-step instructions need a free registration."
+  }
+ ],
+ "graffiti-walls": [
+  {
+   "title": "Evaluation Tool: Graffiti Wall",
+   "publisher": "Europlanet Evaluation Toolkit",
+   "url": "https://www.europlanet.org/outreach/europlanet-evaluation-toolkit/evaluation-tool-graffiti-wall/"
+  },
+  {
+   "title": "Before I Die: Participate",
+   "publisher": "Candy Chang",
+   "url": "https://www.candychang.com/before-i-die-participate/",
+   "note": "A well-known public wall that invites written responses."
+  }
+ ],
+ "innovation-sourcebook": [
+  {
+   "title": "Innovation Sourcebook",
+   "publisher": "Innovation Wiki, verrocchio Institute",
+   "url": "https://www.innovation.wiki/en/method/innovation-sourcebook/",
+   "note": "The overview is free to read. Step-by-step instructions need a free registration."
+  }
+ ],
+ "laddering": [
+  {
+   "title": "Laddering Questions: Drilling Down Deep and Moving Sideways in UX Research",
+   "publisher": "Interaction Design Foundation",
+   "url": "https://ixdf.org/literature/article/laddering-questions-drilling-down-deep-and-moving-sideways-in-ux-research"
+  }
+ ],
+ "popular-media-scan": [
+  {
+   "title": "Popular Media Scan",
+   "publisher": "Innovation Wiki, verrocchio Institute",
+   "url": "https://www.innovation.wiki/en/method/popular-media-scan/",
+   "note": "The overview is free to read. Step-by-step instructions need a free registration."
+  },
+  {
+   "title": "The Futures Toolkit (see Horizon Scanning)",
+   "publisher": "UK Government Office for Science",
+   "url": "https://www.gov.uk/government/publications/futures-toolkit-for-policy-makers-and-analysts/the-futures-toolkit-html",
+   "note": "Closest free match for the scanning step. A long document."
+  }
+ ],
+ "symmetric-clustering-matrix": [
+  {
+   "title": "Asymmetric Clustering Matrix",
+   "publisher": "Innovation Wiki, verrocchio Institute",
+   "url": "https://www.innovation.wiki/en/method/asymmetric-clustering-matrix/",
+   "note": "Closest free match. The companion method, which relates two different sets of items. The overview is free to read. Step-by-step instructions need a free registration."
+  }
+ ],
+ "ten-types-of-innovation-diagnostics": [
+  {
+   "title": "Ten Types of Innovation",
+   "publisher": "Innovation Wiki, verrocchio Institute",
+   "url": "https://www.innovation.wiki/en/method/ten-types-of-innovation/",
+   "note": "The overview is free to read. Step-by-step instructions need a free registration."
+  }
+ ],
+ "thematic-networks": [
+  {
+   "title": "Analyze Qualitative Data: Thematic Analysis",
+   "publisher": "Nielsen Norman Group",
+   "url": "https://www.nngroup.com/articles/thematic-analysis/",
+   "note": "Closest free match. It covers coding data and building themes, the work that thematic networks organize."
+  }
+ ]
+}
