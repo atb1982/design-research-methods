@@ -374,7 +374,7 @@ JS = r"""
 var APP = JSON.parse(document.getElementById('app-data').textContent);
 var M = APP.methods, PC = APP.phaseConfig, PCOL = APP.phaseColor;
 var BY = {}; M.forEach(function(m){ BY[m.id] = m; });
-var phase = 'all', query = '', tokens = [], cur = 'research';
+var phase = 'all', query = '', ALTS = [], cur = 'research';
 var PHASES = ['research','insights','ideation','proto'];
 var SITE_TITLE = document.title;
 var shownKey = null, savedY = 0, savedId = '', annTimer = null;
@@ -387,12 +387,11 @@ function el(tag, cls, txt){
   return e;
 }
 function esc(s){ var d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; }
-function mark(text, toks){
-  toks = toks || tokens;
-  if (!toks || !toks.length) return esc(text);
-  var safe = toks.slice().sort(function(a,b){ return b.length - a.length; })
-    .map(function(t){ return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }).join('|');
-  return esc(text).replace(new RegExp('(' + safe + ')', 'gi'), '<mark>$1<\/mark>');
+function mark(text, alt){
+  if (!alt) return esc(text);
+  return String(text).split(/([A-Za-z0-9]+)/).map(function(part, i){
+    return (i % 2 === 1 && Search.wordHit(part, alt)) ? '<mark>' + esc(part) + '<\/mark>' : esc(part);
+  }).join('');
 }
 function announce(msg, delay){
   clearTimeout(annTimer);
@@ -458,9 +457,16 @@ function copyLink(){
 }
 
 /* ---------- search & filter ---------- */
+var vocabReady = false;
+function ensureVocab(){
+  if (vocabReady) return;
+  Search.setVocab(M.map(function(m){ return idx(m).all; }));
+  vocabReady = true;
+}
 function search(v){
+  ensureVocab();
   query = v.trim().toLowerCase();
-  tokens = query ? query.split(/\s+/) : [];
+  ALTS = query ? Search.alternatives(Search.tokenize(query)) : [];
   q('clr').style.display = query ? 'block' : 'none';
   if (query){
     PHASES.forEach(function(p){ q('sec-'+p).classList.remove('hide'); });
@@ -470,7 +476,7 @@ function search(v){
   render(); banner();
 }
 function clearSearch(){
-  q('search').value = ''; query = ''; tokens = [];
+  q('search').value = ''; query = ''; ALTS = [];
   q('clr').style.display = 'none';
   render(); banner();
 }
@@ -489,7 +495,7 @@ function setPhase(p){
   if (p !== 'all') setTimeout(function(){ go('sec-'+p); }, 70);
 }
 
-/* full-text index: every field of a card is searchable */
+/* full-text index: every field of a card is searchable, with word forms and related terms */
 function idx(m){
   if (m._ix) return m._ix;
   var join = function(a){ return (a || []).join(' '); };
@@ -503,43 +509,54 @@ function idx(m){
     ['Example', m.example || ''],
     ['Sources', join(m.sources)]
   ];
-  var head = (m.name + ' ' + join(m.altNames)).toLowerCase();
-  var who = (m.student || '').toLowerCase();
-  var all = head + ' | ' + who + ' | ' + fields.map(function(f){ return f[1].toLowerCase(); }).join(' | ');
-  m._ix = {head: head, who: who, fields: fields, all: all};
+  var head = Search.block(m.name + ' ' + join(m.altNames));
+  var who = Search.block(m.student || '');
+  var fb = fields.map(function(f){ return Search.block(f[1]); });
+  m._ix = {fields: fields, head: head, fb: fb,
+           hw: Search.merge([head, who]), hwd: Search.merge([head, who, fb[0]]),
+           all: Search.merge([head, who].concat(fb))};
   return m._ix;
 }
-function hasAll(text, toks){ return toks.every(function(t){ return text.indexOf(t) !== -1; }); }
-function hit(m){ return !query || hasAll(idx(m).all, tokens); }
-function rank(m){
-  var x = idx(m);
-  if (hasAll(x.head, tokens)) return 0;
-  if (hasAll(x.head + ' ' + x.who, tokens)) return 1;
-  if (hasAll(x.head + ' ' + x.who + ' ' + x.fields[0][1].toLowerCase(), tokens)) return 2;
-  return 3;
+/* best way this card matches the search (typed words first, related terms second), or null */
+function evalCard(m){
+  if (!query) return {rank: 0, alt: null};
+  var x = idx(m), best = null;
+  ALTS.forEach(function(a){
+    if (!Search.hasAll(x.all, a)) return;
+    var r = Search.hasAll(x.head, a) ? 0 : Search.hasAll(x.hw, a) ? 1 : Search.hasAll(x.hwd, a) ? 2 : 3;
+    r += a.pen;
+    if (best === null || r < best.rank) best = {rank: r, alt: a};
+  });
+  return best;
 }
-function excerpt(m){
-  /* where in the card does the match sit? returns {label, text} or null when the card snippet already shows it */
+function hit(m){ return !query || evalCard(m) !== null; }
+function excerpt(m, alt){
+  /* shows where in the card a body match sits; null when the card snippet already shows it */
   var x = idx(m);
   for (var i = 0; i < x.fields.length; i++){
-    var low = x.fields[i][1].toLowerCase(), at = -1;
-    for (var j = 0; j < tokens.length; j++){ var k = low.indexOf(tokens[j]); if (k !== -1 && (at === -1 || k < at)) at = k; }
+    var text = x.fields[i][1], at = Search.findPos(text.toLowerCase(), alt);
     if (at === -1) continue;
     if (i === 0 && at < 100) return null;
-    var from = Math.max(0, at - 55), to = Math.min(x.fields[i][1].length, at + 90);
-    var t = x.fields[i][1].slice(from, to).trim();
-    return {label: x.fields[i][0], text: (from > 0 ? '… ' : '') + t + (to < x.fields[i][1].length ? ' …' : '')};
+    var from = Math.max(0, at - 55), to = Math.min(text.length, at + 90);
+    return {label: x.fields[i][0], text: (from > 0 ? '… ' : '') + text.slice(from, to).trim() + (to < text.length ? ' …' : '')};
   }
   return null;
 }
 function banner(){
   var b = q('sbanner');
   if (!query){ b.classList.remove('on'); count(); return; }
-  var n = M.filter(hit).length;
+  var n = 0, labels = [];
+  M.forEach(function(m){
+    var ev = evalCard(m);
+    if (!ev) return;
+    n++;
+    if (!Search.hasAll(idx(m).all, ALTS[0]) && ev.alt.label && labels.indexOf(ev.alt.label) === -1) labels.push(ev.alt.label);
+  });
   b.classList.add('on');
   var msg = n === 0
     ? 'No methods match "' + query + '". Try fewer or different words.'
-    : n + (n===1 ? ' method matches ' : ' methods match ') + '"' + query + '"';
+    : n + (n===1 ? ' method matches ' : ' methods match ') + '"' + query + '"' +
+      (labels.length ? '. Related terms also searched: ' + labels.slice(0,3).join(', ') + '.' : '');
   q('btext').textContent = msg;
   q('fcount').textContent = n + (n===1?' method':' methods');
   announce(msg);
@@ -556,20 +573,18 @@ function render(){
     var list = M.filter(function(m){
       if (m.phase !== p) return false;
       if (!query && phase!=='all' && phase!==p) return false;
-      return hit(m);
-    });
-    if (query){
-      list = list.map(function(m, i){ return {m:m, r:rank(m), i:i}; })
-        .sort(function(a,b){ return a.r - b.r || a.i - b.i; })
-        .map(function(o){ return o.m; });
-    }
+      return true;
+    }).map(function(m, i){ return {m:m, ev:evalCard(m), i:i}; })
+      .filter(function(o){ return o.ev !== null; });
+    if (query){ list.sort(function(a,b){ return a.ev.rank - b.ev.rank || a.i - b.i; }); }
     q('sec-'+p).classList.toggle('nomatch', !!query && !list.length);
     g.innerHTML = '';
     if (!list.length){
       if (!query) g.appendChild(el('div','empty','No methods.'));
       return;
     }
-    list.forEach(function(m){
+    list.forEach(function(o){
+      var m = o.m, ev = o.ev, alt = ev.alt;
       var c = el('article', 'card' + (m.kind==='brief' ? ' brief' : ''));
       c.dataset.id = m.id;
       c.appendChild(el('div','bar '+m.phase));
@@ -585,14 +600,14 @@ function render(){
       var ha = document.createElement('a');
       ha.href = '#' + m.id;
       ha.addEventListener('click', function(){ savedY = window.scrollY || 0; savedId = m.id; });
-      if (query) ha.innerHTML = mark(m.name); else ha.textContent = m.name;
+      if (query) ha.innerHTML = mark(m.name, alt); else ha.textContent = m.name;
       h.appendChild(ha);
       b.appendChild(h);
       var snip = m.whatItIs.length > 112 ? m.whatItIs.slice(0,112) + '…' : m.whatItIs;
       var pp = el('p');
-      var ex = query ? excerpt(m) : null;
-      if (ex) pp.innerHTML = '<b>' + esc(ex.label) + ':<\/b> ' + mark(ex.text);
-      else if (query) pp.innerHTML = mark(snip);
+      var ex = (query && Math.floor(ev.rank) >= 2) ? excerpt(m, alt) : null;
+      if (ex) pp.innerHTML = '<b>' + esc(ex.label) + ':<\/b> ' + mark(ex.text, alt);
+      else if (query) pp.innerHTML = mark(snip, alt);
       else pp.textContent = snip;
       b.appendChild(pp);
       c.appendChild(b);
@@ -856,12 +871,17 @@ PHASES.forEach(function(p){
   q('ddn-'+p).textContent = APP.counts[p] + ' methods';
   q('chipn-'+p).textContent = String(APP.counts[p]);
 });
+Search.init(JSON.parse(document.getElementById('syn-data').textContent));
 contributors();
 render();
 window.addEventListener('hashchange', function(){ route(); });
 window.addEventListener('popstate', function(){ route(); });
 route();
 """
+
+JS = open('search.js', encoding='utf-8').read() + '\n' + JS
+SYN = open('synonyms.json', encoding='utf-8').read()
+assert '</script' not in SYN.lower()
 
 LOGO = ('<img src="https://cdn.ncsu.edu/brand-assets/logos/ncstate-brick-2x1-red.png" '
         'alt="NC State University" onerror="this.style.display=\'none\';this.parentNode.classList.add(\'nologo\')">')
@@ -932,6 +952,7 @@ html = f'''<!DOCTYPE html>
 <noscript><p style="padding:24px;font:16px/1.5 Roboto,Arial,sans-serif">This site needs JavaScript to show the method cards. Please turn JavaScript on and reload the page.</p></noscript>
 <div class="sr" id="status" role="status" aria-live="polite" aria-atomic="true"></div>
 <script type="application/json" id="app-data">{data_json}</script>
+<script type="application/json" id="syn-data">{SYN}</script>
 
 <div id="p-home" class="page on">
 {header(True)}
