@@ -199,6 +199,7 @@ mark{background:#ffe9a8;color:inherit;border-radius:2px;padding:0 1px}
 /* CONTRIBUTORS */
 .contrib{background:var(--black);color:#fff;padding:78px 0}
 .contrib h2{font-family:'Roboto Slab',Georgia,serif;font-size:clamp(22px,2.7vw,32px);font-weight:700;margin-bottom:14px}
+.contrib p.sub.lead{color:rgba(255,255,255,.82);margin-top:-18px}
 .contrib p.sub{font-size:15px;color:rgba(255,255,255,.55);max-width:68ch;line-height:1.72;margin-bottom:40px}
 .clist{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1px;background:rgba(255,255,255,.1);
  border-radius:5px;overflow:hidden}
@@ -284,14 +285,6 @@ footer .meta{font-size:12px;color:rgba(255,255,255,.7);text-align:right;line-hei
 .cite{padding:11px 0;border-bottom:1px solid var(--g100);font-size:13.5px;line-height:1.6;color:var(--g700)}
 .cite a{color:var(--red);word-break:break-word}
 .cite a:hover{text-decoration:underline}
-.pairbox{background:#111;color:#fff;border-radius:6px;padding:26px;margin-top:40px}
-.pairbox .lab{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.8px;
- text-transform:uppercase;color:var(--red-lt);margin-bottom:8px}
-.pairbox h3{font-family:'Roboto Slab',Georgia,serif;font-size:17px;font-weight:700;margin-bottom:14px}
-.pairbox p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.62)}
-.pairbox button{margin-top:15px;background:rgba(255,255,255,.1);padding:7px 14px;border-radius:3px;
- font-size:12.5px;color:rgba(255,255,255,.72)}
-.pairbox button:hover{background:rgba(255,255,255,.18);color:#fff}
 
 /* SIDEBAR */
 .sb{margin-bottom:26px}
@@ -350,16 +343,23 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .ddind{background:#111;border-radius:5px;padding:17px}
 .ddind .lab{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.4px;
  text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:13px}
-.ddbars{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:9px}
-.ddbars i{height:9px;border-radius:2px;background:rgba(255,255,255,.12);display:block}
-.ddbars i.on.research{background:var(--research)}
-.ddbars i.on.insights{background:var(--insights)}
-.ddbars i.on.ideation{background:var(--ideation)}
-.ddbars i.on.proto{background:var(--proto)}
-.ddlabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
-.ddlabs span{font-family:'Roboto Condensed',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.2px;
- text-transform:uppercase;color:rgba(255,255,255,.66);text-align:center}
-.ddlabs span.on{color:#fff}
+.ddbars{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:2px}
+.ddseg{display:block;background:none;border:0;padding:6px 0 7px;cursor:pointer;border-radius:3px;font:inherit;color:inherit}
+.ddseg i{height:9px;border-radius:2px;background:rgba(255,255,255,.12);display:block;margin-bottom:8px;transition:background .15s}
+.ddseg i.research{background:rgba(253,201,7,.38)}
+.ddseg i.insights{background:rgba(235,91,84,.38)}
+.ddseg i.ideation{background:rgba(131,188,44,.38)}
+.ddseg i.proto{background:rgba(74,142,203,.38)}
+.ddseg i.on.research{background:var(--research)}
+.ddseg i.on.insights{background:var(--insights)}
+.ddseg i.on.ideation{background:var(--ideation)}
+.ddseg i.on.proto{background:var(--proto)}
+.ddseg span{display:block;font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2px;
+ color:rgba(255,255,255,.78);text-align:center;text-decoration:underline;text-decoration-color:rgba(255,255,255,.28);text-underline-offset:3px}
+.ddseg.on span{color:#fff}
+.ddseg:hover span{color:#fff;text-decoration-color:#fff}
+.ddseg:hover i{filter:brightness(1.35)}
+.ddseg:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .ddnote{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6;margin-top:12px;padding-top:12px;
  border-top:1px solid rgba(255,255,255,.09)}
 .nlist li{padding:7px 0;border-bottom:1px solid var(--g100);font-size:13px;line-height:1.5;
@@ -406,7 +406,7 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 }
 @media(max-width:420px){.grid{grid-template-columns:1fr}}
 @media print{
- header.site,.filters,.sbanner,footer.site,.bc,.skip,.actions,.more,.seeall,.pairbox button,#p-home,dialog.lb,.zoomhint{display:none!important}
+ header.site,.filters,.sbanner,footer.site,.bc,.skip,.actions,.more,.seeall,#p-home,dialog.lb,.zoomhint{display:none!important}
  #p-detail{display:block!important}
  body{color:#000;background:#fff}
  .dhero{background:none!important;padding:0 0 14px;border-bottom:2px solid #000}
@@ -416,8 +416,6 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
  .sb,.blk,.cite,.tipbox,.exbox{break-inside:avoid}
  .sb img{max-width:70%}
  .cite a,.sb figcaption a{color:#000}
- .pairbox{background:none;color:#000;border:1px solid #000}
- .pairbox *{color:#000!important}
  .ddind{background:none;border:1px solid #999}
  .ddind *{color:#000!important}
 }
@@ -858,22 +856,6 @@ function detail(m){
     section(main, 'Where this method appears in the course books', lu);
   }
 
-  /* paired method */
-  if (m.pairedWith && BY[m.pairedWith]){
-    var p2 = BY[m.pairedWith];
-    var box = el('div','pairbox');
-    box.appendChild(el('div','lab','Paired in the same submission'));
-    box.appendChild(el('h3', null, m.name + ' and ' + p2.name));
-    box.appendChild(el('p', null,
-      m.student + ' documented both methods together, one from the ' + PC[m.phase].name +
-      ' phase and one from the ' + PC[p2.phase].name +
-      ' phase, and described how the two work in sequence on a single project.'));
-    var btn = el('button', null, 'Open the ' + p2.name + ' card');
-    btn.addEventListener('click', function(){ open(p2.id); });
-    box.appendChild(btn);
-    main.appendChild(box);
-  }
-
   /* sidebar */
   var sbv = q('d-visual'); sbv.innerHTML = '';
   var sb = q('d-side'); sb.innerHTML = '';
@@ -921,16 +903,20 @@ function detail(m){
 
   var dd = el('div','sb'); dd.appendChild(el('h2', null, 'Where it sits'));
   var ind = el('div','ddind');
-  ind.appendChild(el('div','lab','Double Diamond position'));
-  var bars = el('div','ddbars'), labs = el('div','ddlabs');
+  ind.appendChild(el('div','lab','Double Diamond position. Select a phase to see its methods.'));
+  var bars = el('div','ddbars');
   PHASES.forEach(function(p){
+    var b = el('button','ddseg' + (p===m.phase ? ' on' : ''));
+    b.type = 'button';
+    b.setAttribute('aria-label', 'See all ' + PC[p].name + ' methods' + (p===m.phase ? ' (this card is in this phase)' : ''));
     var i = document.createElement('i');
-    i.className = (p===m.phase ? 'on ' + p : '');
-    bars.appendChild(i);
-    var s = el('span', p===m.phase ? 'on' : null, PC[p].ddPhase);
-    labs.appendChild(s);
+    i.className = (p===m.phase ? 'on ' + p : p);
+    b.appendChild(i);
+    b.appendChild(el('span', null, PC[p].name));
+    b.addEventListener('click', function(){ setPhase(p); });
+    bars.appendChild(b);
   });
-  ind.appendChild(bars); ind.appendChild(labs);
+  ind.appendChild(bars);
   ind.appendChild(el('div','ddnote', pc.ddNote));
   dd.appendChild(ind); sb.appendChild(dd);
 
@@ -1090,8 +1076,9 @@ FOOT = '''<footer class="site"><div class="in">
  <div class="brand"><div class="rule"></div>
   <div class="t">NC STATE UNIVERSITY<span>College of Design</span></div>
  </div>
- <div class="meta">Method cards written by students<br>
-  Published for students, faculty, and design practitioners.</div>
+ <div class="meta">Method cards written by Design Studies students at NC State's College of Design.<br>
+  Published for students, faculty, and design practitioners.<br>
+  Site created and maintained by Andr&eacute;s T&eacute;llez, Assistant Professor of Design Studies.</div>
 </div></footer>'''
 
 html = f'''<!DOCTYPE html>
@@ -1132,7 +1119,7 @@ html = f'''<!DOCTYPE html>
   <button class="chip research" onclick="setPhase('research')">Research <span id="chipn-research"></span></button>
   <button class="chip insights" onclick="setPhase('insights')">Insights <span id="chipn-insights"></span></button>
   <button class="chip ideation" onclick="setPhase('ideation')">Ideation <span id="chipn-ideation"></span></button>
-  <button class="chip proto" onclick="setPhase('proto')">Prototyping &amp; Testing <span id="chipn-proto"></span></button>
+  <button class="chip proto" onclick="setPhase('proto')">Prototyping <span id="chipn-proto"></span></button>
  </div>
  <div class="stats">
   <div class="stat"><b id="stat-methods"></b><span>Methods</span></div>
@@ -1146,7 +1133,7 @@ html = f'''<!DOCTYPE html>
  <button class="fb research" data-phase="research" aria-pressed="false" onclick="setPhase('research')">Research</button>
  <button class="fb insights" data-phase="insights" aria-pressed="false" onclick="setPhase('insights')">Insights</button>
  <button class="fb ideation" data-phase="ideation" aria-pressed="false" onclick="setPhase('ideation')">Ideation</button>
- <button class="fb proto" data-phase="proto" aria-pressed="false" onclick="setPhase('proto')">Prototyping &amp; Testing</button>
+ <button class="fb proto" data-phase="proto" aria-pressed="false" onclick="setPhase('proto')">Prototyping</button>
  <span class="fcount" id="fcount"></span>
 </div></div>
 <div class="sbanner" id="sbanner"><div class="in">
@@ -1173,7 +1160,7 @@ html = f'''<!DOCTYPE html>
   <div class="ddc ideation"><div class="step">Second diamond, opening up</div><div class="ph">Ideation</div>
    <h3>Develop</h3><p>Generate a wide field of possible responses before committing to any one.</p>
    <div class="n" id="ddn-ideation"></div></div>
-  <div class="ddc proto"><div class="step">Second diamond, narrowing down</div><div class="ph">Prototyping &amp; Testing</div>
+  <div class="ddc proto"><div class="step">Second diamond, narrowing down</div><div class="ph">Prototyping</div>
    <h3>Deliver</h3><p>Make ideas tangible and find out what survives contact with real use.</p>
    <div class="n" id="ddn-proto"></div></div>
  </div>
@@ -1195,7 +1182,7 @@ html = f'''<!DOCTYPE html>
 </div><div class="grid" id="grid-ideation"></div></div></section>
 
 <section class="phase" id="sec-proto"><div class="wrap"><div class="phead">
- <div class="pleft"><span class="badge proto">Prototyping &amp; Testing</span><h2>Prototyping and testing methods</h2></div>
+ <div class="pleft"><span class="badge proto">Prototyping</span><h2>Prototyping methods</h2></div>
  <p>Making ideas tangible and evaluating them through simulation, expert review, and user feedback.</p>
 </div><div class="grid" id="grid-proto"></div></div></section>
 
@@ -1243,6 +1230,7 @@ html = f'''<!DOCTYPE html>
   process, researched them against published sources, and wrote the card you see here. Each
   student also chose the image shown with their cards, and the credit under every image names the
   student and the original source. Select a method to read their work.</p>
+ <p class="sub lead">Project lead and editor: Andr&eacute;s T&eacute;llez, Assistant Professor of Design Studies, NC State College of Design. He designed and built this site, edited the cards, and selected the reference entries, further reading, and templates.</p>
  <div class="clist" id="clist"></div>
 </div></section>
 </main>

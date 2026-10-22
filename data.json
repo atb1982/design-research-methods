@@ -5741,7 +5741,7 @@
    "ddNote": "Used in the Develop phase, where teams diverge again to generate and explore many possible design solutions."
   },
   "proto": {
-   "name": "Prototyping & Testing",
+   "name": "Prototyping",
    "ddPhase": "Deliver",
    "ddNote": "Used in the Deliver phase, where teams make ideas tangible, test them with users, and converge on solutions."
   }
