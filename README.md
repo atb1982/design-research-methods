@@ -76,6 +76,13 @@ that method in `data.json`:
 Other optional fields on student cards: `expandedNote` (states that the card was expanded
 from a named book), `editorNote`, and `library` (page references in the course books).
 
+## Links, search, and accessibility
+
+- Every method has its own address, for example `index.html#draw-it`. The method id in `data.json` is the address, so the Back button and shared links work.
+- Search covers every field on a card (steps, tips, examples, sources) and matches all the words typed, in any order. Matches in the name rank first.
+- Text on the phase colors is dark (`#1a1a1a`) so it meets WCAG AA contrast. The brand colors themselves are unchanged.
+- The page has a skip link, visible keyboard focus, a polite status message for search and filter results, and a print layout for single cards.
+
 ## Phase colors
 
 | Phase | Double Diamond | Hex |
