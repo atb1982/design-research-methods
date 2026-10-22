@@ -16,6 +16,7 @@ Live site: _add the GitHub Pages URL here once Pages is enabled_
 | `build.py` | Regenerates `index.html` from `data.json`. |
 | `search.js` | Search code: word-form matching and related terms. Built into `index.html`. |
 | `synonyms.json` | Word forms, spellings and related terms used by search. Editable. |
+| `overview_links.json` | Free online overview pages for the reference entries, shown under "Free overviews online". Editable. |
 
 ## Publishing with GitHub Pages
 
@@ -83,6 +84,7 @@ from a named book), `editorNote`, and `library` (page references in the course b
 - Every method has its own address, for example `index.html#draw-it`. The method id in `data.json` is the address, so the Back button and shared links work.
 - Search covers every field on a card (steps, tips, examples, sources) and matches all the words typed, in any order. Matches in the name rank first.
 - Search understands word forms (interview, interviews, interviewing), American and British spellings (analyze, analyse), and related terms (searching questionnaire also finds survey cards, ranked lower). The page says which related terms were included.
+- To add or change a free overview link, edit `overview_links.json` (method id, then a list of title, publisher, url and an optional note) and run `python3 build.py`. The build stops if an id is not a reference entry or a link is not https.
 - To change related terms, edit `synonyms.json` and run `python3 build.py`. It has three lists: `forms` (spellings and word forms), `apart` (words a simple stemmer would wrongly merge, such as experience and experiment) and `related` (different terms for the same idea). The matching code is in `search.js`.
 - Text on the phase colors is dark (`#1a1a1a`) so it meets WCAG AA contrast. The brand colors themselves are unchanged.
 - The page has a skip link, visible keyboard focus, a polite status message for search and filter results, and a print layout for single cards.

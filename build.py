@@ -1,5 +1,13 @@
 import json
-data_json = open('data.json', encoding='utf-8').read()
+_d = json.load(open('data.json', encoding='utf-8'))
+_ov = json.load(open('overview_links.json', encoding='utf-8'))
+_ids = {m['id']: m for m in _d['methods']}
+for _k, _v in _ov.items():
+    assert _k in _ids and _ids[_k]['kind'] == 'brief', _k
+    for _l in _v:
+        assert _l['url'].startswith('https://') and _l['title'] and _l['publisher'], _l
+    _ids[_k]['overview'] = _v
+data_json = json.dumps(_d, ensure_ascii=False, indent=1)
 assert '</script' not in data_json.lower()
 
 CSS = """
@@ -314,6 +322,15 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .libbox{margin-top:6px}
 .libbox li{list-style:none;padding:9px 0;border-bottom:1px solid var(--g100);font-size:13.5px;line-height:1.55;color:var(--g700)}
 .libbox li b{font-weight:500;color:var(--g800)}
+.libbox li a{display:inline-block;padding:3px 0;color:var(--g800);text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
+.libbox li a:hover{text-decoration-color:var(--red);color:var(--red-dk)}
+.libbox li .gt{display:block;font-size:12.5px;color:var(--gtxt);margin-top:2px}
+.ovlist li{list-style:none;padding:11px 0;border-bottom:1px solid var(--g100);font-size:14px;line-height:1.55;color:var(--g700)}
+.ovlist li a{display:inline-block;padding:3px 0;font-weight:500;color:var(--g800);text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
+.ovlist li a:hover{text-decoration-color:var(--red);color:var(--red-dk)}
+.ovlist .pub{display:block;font-size:13px;color:var(--gtxt);margin-top:2px}
+.ovlist .on{display:block;font-size:13px;color:var(--g700);margin-top:2px}
+.ovnote{font-size:12.5px;color:var(--gtxt);margin-top:10px}
 .exbox p+p{margin-top:12px}
 .noimg{background:var(--g100);border:2px dashed var(--g300);border-radius:5px;padding:30px 22px;text-align:center}
 .noimg .t{font-family:'Roboto Condensed',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.3px;
@@ -693,6 +710,17 @@ function section(parent, title, node){
   w.appendChild(node);
   parent.appendChild(w);
 }
+var BOOKS = [
+  {k:'Universal Methods of Design', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458', gated:true},
+  {k:'101 Design Methods', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699', gated:true},
+  {k:'The Field Guide to Human-Centered Design', url:'https://www.designkit.org/resources/1.html', gated:false},
+  {k:'Innovating for People', url:'https://www.luma-institute.com', gated:false},
+  {k:'The User Experience Team of One', url:'https://rosenfeldmedia.com/books/the-user-experience-team-of-one/', gated:false}
+];
+function bookInfo(name){
+  for (var i = 0; i < BOOKS.length; i++){ if (String(name).indexOf(BOOKS[i].k) === 0) return BOOKS[i]; }
+  return null;
+}
 function detail(m){
   var pc = PC[m.phase];
   q('bc-phase').textContent = pc.name;
@@ -764,10 +792,38 @@ function detail(m){
     section(main, 'Where to learn more', sw);
   }
 
+  if (m.kind === 'brief' && m.overview && m.overview.length){
+    var ow = el('div'), ou = el('ul','ovlist');
+    m.overview.forEach(function(o){
+      var li = el('li'), a = document.createElement('a');
+      a.href = o.url; a.target = '_blank'; a.rel = 'noopener';
+      a.appendChild(document.createTextNode(o.title));
+      a.appendChild(el('span','sr',' (opens in a new tab)'));
+      li.appendChild(a);
+      li.appendChild(el('span','pub', o.publisher));
+      if (o.note) li.appendChild(el('span','on', o.note));
+      ou.appendChild(li);
+    });
+    ow.appendChild(ou);
+    ow.appendChild(el('p','ovnote','Free to read online. These pages are not part of the course books. Links checked October 2026.'));
+    section(main, 'Free overviews online', ow);
+  }
+
   if (m.library && m.library.length){
     var lu = el('ul','libbox');
     m.library.forEach(function(e){
-      var li = el('li'); li.appendChild(el('b', null, e.book)); li.appendChild(document.createTextNode(', ' + e.where));
+      var li = el('li'), bk = bookInfo(e.book);
+      if (bk){
+        var ba = document.createElement('a');
+        ba.href = bk.url; ba.target = '_blank'; ba.rel = 'noopener';
+        ba.appendChild(el('b', null, e.book));
+        ba.appendChild(el('span','sr',' (opens in a new tab)'));
+        li.appendChild(ba);
+      } else {
+        li.appendChild(el('b', null, e.book));
+      }
+      li.appendChild(document.createTextNode(', ' + e.where));
+      if (bk && bk.gated) li.appendChild(el('span','gt','Library link. Off campus, an NC State sign-in is required.'));
       lu.appendChild(li);
     });
     section(main, 'Where this method appears in the course books', lu);
@@ -1135,11 +1191,16 @@ html = f'''<!DOCTYPE html>
    <li><a href="http://designresearchmethods.com/tools" target="_blank" rel="noopener">PolyU, Design Research Methods</a></li>
    <li><a href="https://openpracticelibrary.com" target="_blank" rel="noopener">Red Hat, Open Practice Library</a></li>
    <li><a href="http://learndbir.org/tools/co-design-tools" target="_blank" rel="noopener">DBIR, Co-Design Tools</a></li>
+   <li><a href="https://digital.gov/guides/hcd/" target="_blank" rel="noopener">Digital.gov, Human-Centered Design Guide Series</a></li>
+   <li><a href="https://methods.18f.gov/" target="_blank" rel="noopener">18F, Methods</a></li>
   </ul></div>
   <div class="scard"><h3>Other resources</h3><ul>
    <li><a href="https://www.designcouncil.org.uk/our-resources/the-double-diamond/" target="_blank" rel="noopener">The Double Diamond, Design Council</a></li>
    <li><a href="https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed" target="_blank" rel="noopener">The Encyclopedia of Human-Computer Interaction</a></li>
+   <li><a href="https://www.nngroup.com/articles/which-ux-research-methods/" target="_blank" rel="noopener">Nielsen Norman Group, When to Use Which User-Experience Research Methods</a></li>
+   <li><a href="https://www.nngroup.com/articles/research-methods-glossary/" target="_blank" rel="noopener">Nielsen Norman Group, UX Research Methods Glossary</a></li>
    <li><a href="https://www.nngroup.com/articles/" target="_blank" rel="noopener">Nielsen Norman Group articles</a></li>
+   <li><a href="https://www.healthdesign.org/certification-outreach/edac/about-ebd" target="_blank" rel="noopener">Center for Health Design, About Evidence-Based Design</a></li>
    <li><a href="https://www.usability.gov" target="_blank" rel="noopener">Usability.gov</a></li>
   </ul></div>
  </div>
