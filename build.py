@@ -7,6 +7,12 @@ for _k, _v in _ov.items():
     for _l in _v:
         assert _l['url'].startswith('https://') and _l['title'] and _l['publisher'], _l
     _ids[_k]['overview'] = _v
+_tp = json.load(open('templates.json', encoding='utf-8'))
+for _k, _v in _tp.items():
+    assert _k in _ids, _k
+    for _l in _v:
+        assert _l['url'].startswith('https://') and _l['title'] and _l['publisher'] and _l['format'] and _l['access'], _l
+    _ids[_k]['templates'] = _v
 data_json = json.dumps(_d, ensure_ascii=False, indent=1)
 assert '</script' not in data_json.lower()
 
@@ -329,6 +335,11 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .ovlist li a{display:inline-block;padding:3px 0;font-weight:500;color:var(--g800);text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
 .ovlist li a:hover{text-decoration-color:var(--red);color:var(--red-dk)}
 .ovlist .pub{display:block;font-size:13px;color:var(--gtxt);margin-top:2px}
+.tplist li{list-style:none;padding:11px 0;border-bottom:1px solid var(--g100);font-size:14px;line-height:1.55;color:var(--g700)}
+.tplist li a{display:inline-block;padding:3px 0;font-weight:500;color:var(--g800);text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
+.tplist li a:hover{text-decoration-color:var(--red);color:var(--red-dk)}
+.tplist .pub,.tplist .acc,.tplist .on{display:block;font-size:13px;margin-top:2px;color:var(--gtxt)}
+.tplist .on{color:var(--g700)}
 .ovlist .on{display:block;font-size:13px;color:var(--g700);margin-top:2px}
 .ovnote{font-size:12.5px;color:var(--gtxt);margin-top:10px}
 .exbox p+p{margin-top:12px}
@@ -809,6 +820,24 @@ function detail(m){
     section(main, 'Where to learn more', ow);
   }
 
+  if (m.templates && m.templates.length){
+    var tw = el('div'), tu = el('ul','tplist');
+    m.templates.forEach(function(o){
+      var li = el('li'), a = document.createElement('a');
+      a.href = o.url; a.target = '_blank'; a.rel = 'noopener';
+      a.appendChild(document.createTextNode(o.title));
+      a.appendChild(el('span','sr',' (opens in a new tab)'));
+      li.appendChild(a);
+      li.appendChild(el('span','pub', o.publisher + '. ' + o.format + '.'));
+      li.appendChild(el('span','acc', o.access));
+      if (o.note) li.appendChild(el('span','on', o.note));
+      tu.appendChild(li);
+    });
+    tw.appendChild(tu);
+    tw.appendChild(el('p','ovnote','Links go to other websites. Templates are made by their publishers and are not part of the course books. Links checked October 2026.'));
+    section(main, 'Templates and worksheets', tw);
+  }
+
   if (m.library && m.library.length){
     var lu = el('ul','libbox');
     m.library.forEach(function(e){
@@ -1210,7 +1239,7 @@ html = f'''<!DOCTYPE html>
 <section class="contrib" id="sec-contributors"><div class="wrap">
  <p class="kicker">Credits</p>
  <h2>Who wrote these cards</h2>
- <p class="sub">Each student was assigned two methods from different phases of the design
+ <p class="sub">Each student in D 492 Intro to Design Research (Spring 2026) was assigned two methods from different phases of the design
   process, researched them against published sources, and wrote the card you see here. Each
   student also chose the image shown with their cards, and the credit under every image names the
   student and the original source. Select a method to read their work.</p>
