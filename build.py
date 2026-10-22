@@ -1193,6 +1193,7 @@ html = f'''<!DOCTYPE html>
    <li><a href="http://learndbir.org/tools/co-design-tools" target="_blank" rel="noopener">DBIR, Co-Design Tools</a></li>
    <li><a href="https://digital.gov/guides/hcd/" target="_blank" rel="noopener">Digital.gov, Human-Centered Design Guide Series</a></li>
    <li><a href="https://methods.18f.gov/" target="_blank" rel="noopener">18F, Methods</a></li>
+   <li><a href="https://www.innovation.wiki/en/" target="_blank" rel="noopener">verrocchio Institute, Innovation Wiki</a></li>
   </ul></div>
   <div class="scard"><h3>Other resources</h3><ul>
    <li><a href="https://www.designcouncil.org.uk/our-resources/the-double-diamond/" target="_blank" rel="noopener">The Double Diamond, Design Council</a></li>
