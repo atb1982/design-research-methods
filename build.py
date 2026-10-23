@@ -13,6 +13,20 @@ for _k, _v in _tp.items():
     for _l in _v:
         assert _l['url'].startswith('https://') and _l['title'] and _l['publisher'] and _l['format'] and _l['access'], _l
     _ids[_k]['templates'] = _v
+import os
+_own = json.load(open('templates_own.json', encoding='utf-8'))
+for _t in _own:
+    assert os.path.isfile(_t['file']), _t['file']
+    assert _t['title'] and _t['format'] and _t['desc'] and _t['step'] in ('Plan','Consent','Collect','Analyze'), _t
+    for _k in _t['methods']:
+        assert _k in _ids, _k
+for _k in _ids:
+    _mine = [{'title': _t['title'], 'publisher': 'Design Research Methods', 'url': _t['file'], 'format': _t['format'],
+              'access': 'Free download, no sign-in.', 'own': True}
+             for _t in _own if _k in _t['methods']]
+    if _mine:
+        _ids[_k]['templates'] = _mine + _ids[_k].get('templates', [])
+_d['ownTemplates'] = [{k: _t[k] for k in ('file','title','format','kind','desc','step','methods')} for _t in _own]
 _pr = json.load(open('pairs.json', encoding='utf-8'))
 assert set(_pr) == set(_ids), set(_ids) ^ set(_pr)
 for _k, _v in _pr.items():
@@ -20,6 +34,64 @@ for _k, _v in _pr.items():
     for _o, _why in _v:
         assert _o in _ids and _o != _k and _why, (_k, _o)
     _ids[_k]['pairs'] = [{'id': _o, 'why': _why} for _o, _why in _v]
+_fm = json.load(open('families.json', encoding='utf-8'))
+assert set(_fm) == set(_ids), set(_ids) ^ set(_fm)
+_FAMS = [
+ {'id':'read','name':'Read','evidence':'Artifacts, texts, images, and records','asks':'What exists, what was made, or how something came to be'},
+ {'id':'ask','name':'Ask','evidence':'People\u2019s own accounts','asks':'What people say, believe, remember, value, or prefer'},
+ {'id':'watch','name':'Watch','evidence':'Observed behavior','asks':'What people actually do, and in what setting'},
+ {'id':'test','name':'Test','evidence':'A controlled comparison or a measurement','asks':'Whether one version works better than another, and by how much'},
+ {'id':'make','name':'Make','evidence':'Something you or participants made, and the reactions to it','asks':'What is possible, or how people respond to something that does not exist yet'},
+ {'id':'analyze','name':'Analyze','evidence':'Data you already have, from any family','asks':'What patterns, structure, or priorities a body of data holds'},
+]
+_FAMLINES = {
+ 'read':   ('What already exists, patterns across texts, images, and artifacts, and how a design came to be.', 'How audiences receive something, what people do now, or what causes what.'),
+ 'ask':    ('Experiences, beliefs, attitudes, and stated reasons and preferences.', 'What people actually do, or the effect of a change.'),
+ 'watch':  ('How activity unfolds in a real setting, including practice that people cannot describe.', 'Intentions and reasons, unless you also ask, or anything about people you did not watch.'),
+ 'test':   ('Whether a change moves an outcome, and by how much.', 'Why the effect happens, or whether it holds outside your test.'),
+ 'make':   ('What is possible, how people respond to something new, and knowledge built into an artifact.', 'A general claim, or an evaluation that is independent of you as the maker.'),
+ 'analyze':('Patterns, structure, and priorities in data you already collected.', 'Anything the data does not contain. The findings are only as strong as the data.'),
+}
+for _f in _FAMS:
+    _f['show'], _f['limit'] = _FAMLINES[_f['id']]
+_MODES = [
+ {'id':'into','name':'Into design','gives':'An account of design itself: a history, a pattern across artifacts, or an interpretation.',
+  'handIn':'An argument supported by evidence about existing designs.','leans':'Read first, then ask and watch.',
+  'drift':'You end with guidelines or a toolkit for designers. That is research for design.',
+  'pairs':[
+   {'first':{'ids':['artifact-analysis','content-inventory-audit']},'second':{'ids':['interviews'],'note':'with practitioners or experts'},
+    'adds':'The artifacts show what was made. The interviews show why, and catch readings you projected onto the work.'},
+   {'first':{'ids':['literature-reviews','secondary-research']},'second':{'ids':['artifact-analysis'],'note':'of primary material'},
+    'adds':'Published accounts show the received story. The primary artifacts let you check it.'}]},
+ {'id':'through','name':'Through design','gives':'Knowledge produced by the act of making.',
+  'handIn':'A made artifact plus a documented account of what making it taught you.','leans':'Make, best paired with watch or ask.',
+  'drift':'Your research came first and the making only applies it. That is research for design. In research through design, the making is what produced the knowledge.',
+  'pairs':[
+   {'first':{'lead':'A prototype or probe, such as','ids':['cultural-probes']},'second':{'ids':['observation'],'note':'of people using it'},
+    'adds':'Your own account of making is one perspective. Watching use tests it against behavior.'},
+   {'first':{'lead':'A co-design or making session, such as','ids':['co-creation-session','design-workshops']},'second':{'ids':['interviews'],'note':'with participants afterward'},
+    'adds':'The session produces artifacts. The interviews explain the choices behind them.'}]},
+ {'id':'for','name':'For design','gives':'Research that informs a design solution you will produce. The knowledge serves the design.',
+  'handIn':'A design solution with the research behind it, or the guidelines, tools, and processes that support making it.','leans':'Read and ask, with testing of materials, tools, or existing solutions.',
+  'drift':'You never make anything, and the account of existing work is the end point. That is research into design.',
+  'pairs':[
+   {'first':{'ids':['interviews']},'second':{'ids':['observation','contextual-inquiry']},
+    'adds':'This pair catches the gap between what people say they do and what they do.'},
+   {'first':{'ids':['questionnaires-surveys']},'second':{'ids':['interviews','focus-groups']},
+    'adds':'The survey shows the spread. The interviews explain the pattern.'},
+   {'first':{'ids':['competitive-testing','experiments']},'second':{'ids':['interviews']},
+    'adds':'The test shows whether something works. The interviews suggest why.'}]},
+]
+for _m in _MODES:
+    for _p in _m['pairs']:
+        for _side in ('first','second'):
+            for _i in _p[_side]['ids']:
+                assert _i in _ids, _i
+_d['modes'] = _MODES
+for _k, _v in _fm.items():
+    assert _v['family'] in {f['id'] for f in _FAMS} and _v['show'] and _v['limit'], _k
+    _ids[_k].update(_v)
+_d['families'] = _FAMS
 data_json = json.dumps(_d, ensure_ascii=False, indent=1)
 assert '</script' not in data_json.lower()
 
@@ -109,6 +181,24 @@ nav.top .plain:hover{border-bottom-color:rgba(255,255,255,.3)}
 /* FILTER */
 .filters{background:#fff;border-bottom:1px solid var(--g200);position:sticky;top:70px;z-index:200}
 .filters .in{max-width:var(--maxw);margin:0 auto;padding:0 32px;height:52px;display:flex;align-items:center;gap:8px;overflow-x:auto}
+.filters .in.fr{height:46px;border-top:1px solid var(--g100);background:var(--g50);max-width:none;padding:0 max(32px,calc((100vw - var(--maxw))/2 + 32px))}
+.flab{font-size:12.5px;font-weight:500;color:var(--g700);white-space:nowrap;flex-shrink:0;margin-right:2px}
+.ff{font-size:13px;font-weight:500;padding:5px 13px;border:1px solid var(--g300);border-radius:40px;color:var(--g700);background:#fff;white-space:nowrap;flex-shrink:0;min-height:30px}
+.ff:hover{border-color:var(--g600);color:var(--text)}
+.ff.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.ff .n{font-size:11.5px;opacity:.8;margin-left:5px}
+.fhelp{margin-left:auto;font-size:12.5px;font-weight:500;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;flex-shrink:0;padding:4px 2px;min-height:28px}
+.fpanel{display:none;background:#fff;border-bottom:1px solid var(--g200)}
+.fpanel.on{display:block}
+.fpanel .in{max-width:var(--maxw);margin:0 auto;padding:18px 32px 22px}
+.fpanel p.lead{font-size:14px;color:var(--g700);max-width:78ch;line-height:1.65;margin-bottom:14px}
+.fdefs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 28px}
+.fdefs div{font-size:13px;line-height:1.55;color:var(--g700)}
+.fdefs b{display:block;font-size:14px;color:var(--text);font-weight:700}
+.fnote{background:#eef4fb;border-bottom:1px solid #c9dcf0;padding:10px 0;display:none}
+.fnote.on{display:block}
+.fnote .in{max-width:var(--maxw);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:13.5px;color:var(--g800)}
+.fnote button{min-height:28px;padding:0 4px;font-size:12.5px;font-weight:700;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .fb{font-family:'Roboto Condensed',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.6px;
  text-transform:uppercase;padding:6px 14px;border:1px solid var(--g200);border-radius:40px;color:var(--g600);
  white-space:nowrap;flex-shrink:0;transition:all .14s}
@@ -149,7 +239,7 @@ mark{background:#ffe9a8;color:inherit;border-radius:2px;padding:0 1px}
 .phase{padding:64px 0}
 .phase+.phase{border-top:1px solid var(--g200)}
 .phase.hide,.phase.nomatch{display:none}
-#sec-dd,#sec-research,#sec-insights,#sec-ideation,#sec-proto,#sec-sources,#sec-contributors{scroll-margin-top:122px}
+#sec-dd,#sec-research,#sec-insights,#sec-ideation,#sec-proto,#sec-sources,#sec-contributors{scroll-margin-top:172px}
 /* while searching, results sit directly under the header: no hero, no framework section */
 .searching .hero,.searching .dd{display:none}
 .searching .phase{padding:30px 0}
@@ -178,8 +268,11 @@ mark{background:#ffe9a8;color:inherit;border-radius:2px;padding:0 1px}
 .card .thumb{aspect-ratio:16/10;background:var(--g100);overflow:hidden}
 .card .thumb img{width:100%;height:100%;object-fit:cover}
 .card .body{padding:14px 16px;flex:1}
+.card .tags{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
 .card .ph{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.3px;
- text-transform:uppercase;display:block;margin-bottom:6px}
+ text-transform:uppercase;display:block}
+.fam{font-size:11.5px;line-height:1;font-weight:500;color:var(--g700);border:1px solid var(--g300);border-radius:10px;padding:3px 8px;background:#fff;white-space:nowrap}
+.card.brief .fam{background:var(--g50)}
 .card .ph.research{color:var(--rd)}
 .card .ph.insights{color:var(--id)}
 .card .ph.ideation{color:var(--idd)}
@@ -353,6 +446,24 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .cite em{font-style:italic}
 .ovnote{font-size:12.5px;color:var(--gtxt);margin-top:10px}
 .exbox p+p{margin-top:12px}
+.showbox{border:1px solid var(--g200);border-radius:5px;overflow:hidden}
+.showbox .fh{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 18px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:14px;color:var(--g700);line-height:1.5}
+.showbox .fh .fam{font-size:13px;padding:4px 11px;border-color:var(--g400)}
+.showbox .fh button{margin-left:auto;font-size:13px;font-weight:500;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;min-height:28px;padding:2px 0}
+.showbox .cols{display:grid;grid-template-columns:1fr 1fr}
+.showbox .col{padding:16px 18px;font-size:14.5px;line-height:1.62;color:var(--g800)}
+.showbox .col+.col{border-left:1px solid var(--g200)}
+.showbox .col .l{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.showbox .col.yes .l{color:var(--idd)}
+.showbox .col.no .l{color:var(--id)}
+.showbox .foot{padding:11px 18px;border-top:1px solid var(--g200);font-size:12.5px;color:var(--gtxt);line-height:1.55}
+.cite{display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
+.cite .ct{flex:1;min-width:0}
+.cpy{flex-shrink:0;font-size:12.5px;font-weight:500;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;min-height:28px;padding:2px 2px;white-space:nowrap}
+.cpy:hover{color:var(--red)}
+.cpyall{margin-top:12px;font-size:13px;font-weight:500;color:var(--g800);border:1.5px solid var(--g400);border-radius:3px;padding:0 14px;min-height:36px}
+.cpyall:hover{border-color:var(--g800)}
+.libbox .cp{display:flex;gap:16px;margin-top:3px;flex-wrap:wrap}
 .noimg{background:var(--g100);border:2px dashed var(--g300);border-radius:5px;padding:30px 22px;text-align:center}
 .noimg .t{font-family:'Roboto Condensed',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.3px;
  text-transform:uppercase;color:var(--g600);margin-bottom:8px}
@@ -400,7 +511,135 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .notice{background:#fffbe9;border:1px solid #f0dc92;border-radius:5px;padding:16px 19px;font-size:13.5px;
  line-height:1.65;color:var(--g700);margin-bottom:34px}
 
+
+/* PLAN PAGE */
+nav.top .plan{border-bottom-color:var(--red-lt);color:#fff}
+.shortcount{display:none;margin-left:7px;min-width:20px;padding:1px 6px;border-radius:10px;background:var(--red);color:#fff;font-size:11.5px;font-weight:700;line-height:1.5;text-align:center}
+.shortcount.on{display:inline-block}
+.planbtn{display:none;margin-left:auto;font-size:12.5px;font-weight:700;color:#fff;padding:9px 12px;border-bottom:3px solid var(--red-lt);flex-shrink:0}
+.phero{background:var(--black);color:#fff;padding:60px 0 44px}
+.phero .kicker{color:var(--red-lt)}
+.phero h1{font-family:'Roboto Slab',Georgia,serif;font-size:clamp(32px,4.6vw,52px);font-weight:700;line-height:1.08;letter-spacing:-.4px;margin-bottom:18px}
+.phero h1:focus{outline:none}
+.phero .lede{font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.72);max-width:60ch;margin-bottom:28px}
+.pjump{display:flex;gap:10px;flex-wrap:wrap}
+.pjump button{font-size:13.5px;font-weight:500;color:#fff;border:1.5px solid rgba(255,255,255,.5);border-radius:3px;padding:0 16px;min-height:40px}
+.pjump button:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.phero :focus-visible{outline-color:#fff}
+.psec{padding:64px 0;border-bottom:1px solid var(--g200);scroll-margin-top:80px}
+.psec.alt{background:#f4f4f4}
+#plan-q,#plan-pair,#plan-short{scroll-margin-top:80px}
+.psec h2{font-family:'Roboto Slab',Georgia,serif;font-size:clamp(22px,2.7vw,30px);font-weight:700;margin-bottom:12px;letter-spacing:-.2px}
+.psec p.sub{font-size:15.5px;line-height:1.72;color:var(--g700);max-width:72ch;margin-bottom:28px}
+.psec p.sub.s2{margin-bottom:18px}
+.btlist{list-style:none;margin:0 0 22px;padding:0;max-width:72ch}
+.btlist li{padding:11px 0 11px 18px;border-bottom:1px solid var(--g200);font-size:15px;line-height:1.65;color:var(--g800);position:relative}
+.btlist li:before{content:"";position:absolute;left:0;top:21px;width:7px;height:7px;background:var(--red)}
+.btlist li b{font-weight:700;color:var(--black)}
+.bttools{margin:6px 0 0;font-size:14px;line-height:1.6;color:var(--g700)}
+.bttools .lbl{font-weight:700;color:var(--black);margin-right:8px}
+.bttools a{display:inline-block;margin:0 14px 0 0;padding:5px 0;font-weight:500;color:var(--g800);text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
+.bttools a:hover{text-decoration-color:var(--red);color:var(--red-dk)}
+.btnext{margin-top:14px}
+.btnext button{font-size:14px;font-weight:700;color:var(--red-dk);border-bottom:2px solid var(--red);padding:6px 0}
+.btnext button:hover{color:var(--black)}
+table.bttab{border-collapse:collapse;width:100%;max-width:860px;margin:6px 0 20px;font-size:14.5px;line-height:1.55}
+table.bttab th{text-align:left;background:var(--black);color:#fff;font-weight:700;padding:9px 12px}
+table.bttab td{padding:10px 12px;border-bottom:1px solid var(--g200);vertical-align:top;color:var(--g800)}
+.btall{list-style:none;margin:0;padding:0;max-width:860px}
+.btall li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:14px 0;border-bottom:1px solid var(--g200)}
+.btall .tt a{font-size:16px;font-weight:700;color:var(--black);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.btall .tt a:hover{color:var(--red-dk)}
+.btall .tf{font-size:12.5px;color:var(--gtxt)}
+.btall .td{font-size:14.5px;line-height:1.6;color:var(--g700);max-width:68ch}
+.btnote{font-size:13.5px;line-height:1.6;color:var(--g700);max-width:72ch;margin-top:18px;padding:12px 14px;border-left:3px solid var(--red);background:var(--g50)}
+.ph3{font-family:'Roboto Slab',Georgia,serif;font-size:19px;font-weight:700;margin-bottom:8px}
+.ph3.gap{margin-top:52px;padding-top:36px;border-top:1px solid var(--g300)}
+.qopts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:6px}
+.qopts.modes{grid-template-columns:repeat(3,1fr)}
+.qopt{position:relative;display:block;background:#fff;border:1.5px solid var(--g300);border-radius:5px;padding:16px 18px 16px 46px;cursor:pointer;font-size:14.5px;line-height:1.55;color:var(--g800)}
+.qopt:hover{border-color:var(--g600)}
+.qopt input{position:absolute;left:17px;top:19px;width:18px;height:18px;accent-color:#CC0000;margin:0}
+.qopt b{display:block;font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px}
+.qopt .ev{display:block;font-size:13px;color:var(--gtxt);margin-top:5px}
+.qopt:has(input:checked){border-color:#1a1a1a;box-shadow:inset 0 0 0 1px #1a1a1a;background:#fff}
+.qopt:has(input:focus-visible){outline:3px solid var(--red);outline-offset:2px}
+.qres{margin-top:26px}
+.qres:empty{display:none}
+.rbox{background:#fff;border:1px solid var(--g300);border-radius:5px;padding:24px 26px}
+.rbox h3{font-family:'Roboto Slab',Georgia,serif;font-size:20px;font-weight:700;margin-bottom:8px}
+.rbox p{font-size:14.5px;line-height:1.65;color:var(--g800);max-width:80ch}
+.rbox p+p{margin-top:8px}
+.rbox .lab{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--red);margin:20px 0 8px}
+.warnbox{background:#fffbe9;border:1px solid #f0dc92;border-radius:4px;padding:13px 16px;font-size:14px;line-height:1.62;color:var(--g800);margin-top:14px;max-width:80ch}
+.warnbox b{font-weight:700}
+.okbox{background:#f1faea;border:1px solid #c5e3a5;border-radius:4px;padding:13px 16px;font-size:14px;line-height:1.62;color:var(--g800);margin-top:14px;max-width:80ch}
+.sbtn{font-size:12.5px;font-weight:500;color:var(--g800);border:1.5px solid var(--g400);border-radius:3px;padding:0 11px;min-height:30px;white-space:nowrap;flex-shrink:0;background:#fff}
+.sbtn:hover{border-color:var(--g800)}
+.sbtn.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.dhero .actions .sbtn{background:transparent;border:1.5px solid #1a1a1a;color:#1a1a1a;font-size:13px;min-height:36px;padding:0 14px;border-radius:3px}
+.dhero .actions .sbtn:hover{background:rgba(0,0,0,.12)}
+.dhero .actions .sbtn.on{background:#1a1a1a;color:#fff}
+.herocta{margin:-14px 0 34px}
+.navbefore{white-space:nowrap}
+@media(max-width:1180px){.navbefore{display:none!important}}
+.herocta{display:flex;gap:10px;flex-wrap:wrap}
+.herobtn{font-size:14px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.6);border-radius:3px;padding:0 20px;min-height:44px}
+.herobtn:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.mlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:start;padding:12px 0;border-bottom:1px solid var(--g100)}
+.mlist li:first-child{border-top:1px solid var(--g100)}
+.mlist .nm{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:500;color:var(--g800);text-align:left;padding:2px 0;min-height:28px}
+.mlist .nm span.t{text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
+.mlist .nm:hover{color:var(--red-dk)}
+.mlist .nm:hover span.t{text-decoration-color:var(--red)}
+.mlist .d{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.mlist .ph{font-size:12px;font-weight:400;color:var(--gtxt)}
+.mlist .sl{grid-column:1;font-size:13px;color:var(--g700);line-height:1.5}
+.mlist .sl b{font-weight:500;color:var(--text)}
+.mlist li .sbtn{grid-column:2;grid-row:1}
+.morebtn{margin-top:14px;font-size:13.5px;font-weight:500;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;min-height:32px}
+.prec{border-top:1px solid var(--g200);padding:16px 0}
+.prec:first-of-type{border-top:0;padding-top:4px}
+.prec .eq{display:flex;gap:10px 14px;flex-wrap:wrap;align-items:center;font-size:15px;color:var(--g800)}
+.prec .eq .plus{font-weight:700;color:var(--gtxt)}
+.prec .eq .mn{display:inline-flex;align-items:center;gap:7px;font-weight:500;padding:3px 0;min-height:28px;color:var(--g800)}
+.prec .eq .mn span.t{text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
+.prec .eq .mn:hover{color:var(--red-dk)}
+.prec .eq .d{width:8px;height:8px;border-radius:50%}
+.prec .eq .fam{margin-left:1px}
+.prec .add{margin-top:6px;font-size:13.5px;color:var(--g700);line-height:1.6;max-width:80ch}
+.prec .sbs{margin-top:10px}
+.mfacts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--g300);border:1px solid var(--g300);border-radius:5px;overflow:hidden;margin:14px 0 4px}
+.mfacts div{background:#fff;padding:12px 14px;font-size:13.5px;line-height:1.55;color:var(--g800)}
+.mfacts .l{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--gtxt);display:block;margin-bottom:4px}
+.chkform{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin-top:14px}
+.fld label{display:block;font-size:13.5px;font-weight:500;margin-bottom:6px;color:var(--g800)}
+.fld select{width:100%;min-height:44px;padding:8px 10px;font:inherit;font-size:14.5px;border:1.5px solid var(--g400);border-radius:4px;background:#fff;color:var(--text)}
+.fld select:focus-visible,.fld textarea:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.sentence{margin-top:16px;max-width:80ch}
+.sentence label{display:block;font-size:14px;font-weight:500;margin-bottom:6px}
+.sentence textarea{width:100%;min-height:78px;padding:10px 12px;font:inherit;font-size:14.5px;line-height:1.55;border:1.5px solid var(--g400);border-radius:4px;resize:vertical}
+.sentence .row{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+.btn2{font-size:13.5px;font-weight:500;color:var(--g800);border:1.5px solid var(--g400);border-radius:3px;padding:0 14px;min-height:38px;background:#fff}
+.btn2:hover{border-color:var(--g800)}
+.btn2.solid{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.sempty{background:#fff;border:2px dashed var(--g300);border-radius:5px;padding:30px 24px;text-align:center;font-size:14.5px;color:var(--g700);line-height:1.65}
+.stable{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--g300);font-size:13.5px;line-height:1.55}
+.stable th{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--gtxt);text-align:left;padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g300);vertical-align:bottom}
+.stable td{padding:13px 14px;border-bottom:1px solid var(--g200);vertical-align:top;color:var(--g800)}
+.stable td.mn button{font-size:14.5px;font-weight:700;text-align:left;text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px;padding:2px 0;min-height:28px;color:var(--text)}
+.stable td.mn button:hover{color:var(--red-dk)}
+.stable .ph{display:block;font-size:12px;color:var(--gtxt);margin-top:2px}
+.stable .rm{font-size:12.5px;font-weight:500;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;min-height:28px}
+.sact{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.scover{margin-top:18px;font-size:14.5px;line-height:1.65;max-width:80ch;color:var(--g800)}
+.sstore{font-size:12.5px;color:var(--gtxt);margin-top:14px}
+.tblwrap{overflow-x:auto}
+
 @media(max-width:980px){
+ .planbtn{display:block}
+ .qopts,.qopts.modes{grid-template-columns:1fr}
+ .mfacts{grid-template-columns:1fr 1fr}
  .dlayout{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-template-areas:"visual" "main" "side"}
  .sgrid,.ddgrid{grid-template-columns:1fr 1fr}
  nav.top{display:none}
@@ -408,6 +647,23 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
  .phead p{text-align:left}
 }
 @media(max-width:640px){
+ .chkform{grid-template-columns:1fr}
+ .mfacts{grid-template-columns:1fr}
+ .mlist li{grid-template-columns:1fr}
+ .mlist li .sbtn{grid-column:1;grid-row:auto;justify-self:start}
+ .stable,.stable tbody,.stable tr,.stable td{display:block}
+ .stable thead{display:none}
+ .stable tr{border-bottom:1px solid var(--g300);padding:10px 0}
+ .stable td{border:0;padding:5px 14px}
+ .stable td[data-l]::before{content:attr(data-l) ': ';font-weight:700;color:var(--text)}
+ .stable td.mn::before{content:none}
+ .rbox{padding:18px 16px}
+ .showbox .cols{grid-template-columns:1fr}
+ .showbox .col+.col{border-left:0;border-top:1px solid var(--g200)}
+ .fdefs{grid-template-columns:1fr}
+ .filters .in.fr{padding-left:18px;padding-right:18px}
+ .fpanel .in,.fnote .in{padding-left:18px;padding-right:18px}
+ .cite{flex-direction:column;gap:2px}
  .wrap,.hin,.filters .in,.bc .in,footer.site .in,.sbanner .in{padding-left:18px;padding-right:18px}
  .dbody{padding:30px 18px}
  .sgrid,.ddgrid,.clist{grid-template-columns:1fr}
@@ -421,14 +677,20 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 }
 @media(max-width:420px){.grid{grid-template-columns:1fr}}
 @media print{
- header.site,.filters,.sbanner,footer.site,.bc,.skip,.actions,.more,.seeall,#p-home,dialog.lb,.zoomhint{display:none!important}
+ header.site,.filters,.sbanner,.fnote,.fpanel,footer.site,.bc,.skip,.actions,.more,.seeall,#p-home,dialog.lb,.zoomhint,.cpy,.cpyall,.sbtn{display:none!important}
  #p-detail{display:block!important}
+ #p-detail:not(.on),#p-plan:not(.on),#p-before:not(.on){display:none!important}
+ #p-before.on{display:block!important}
+ #p-before .phero,#p-before .bttools,#p-before .btnext{display:none!important}
+ #p-plan.on{display:block!important}
+ #p-plan .phero,#p-plan #plan-q,#p-plan #plan-pair,#p-plan .sact{display:none!important}
+ #p-plan .psec{padding:0;border:0}
  body{color:#000;background:#fff}
  .dhero{background:none!important;padding:0 0 14px;border-bottom:2px solid #000}
  .dhero *{color:#000!important}
  .dbody{padding:18px 0;max-width:none}
  .dlayout{display:block}
- .sb,.blk,.cite,.tipbox,.exbox{break-inside:avoid}
+ .sb,.blk,.cite,.tipbox,.exbox,.showbox{break-inside:avoid}
  .sb img{max-width:70%}
  .cite a,.sb figcaption a{color:#000}
  .ddind{background:none;border:1px solid #999}
@@ -441,7 +703,8 @@ JS = r"""
 var APP = JSON.parse(document.getElementById('app-data').textContent);
 var M = APP.methods, PC = APP.phaseConfig, PCOL = APP.phaseColor;
 var BY = {}; M.forEach(function(m){ BY[m.id] = m; });
-var phase = 'all', query = '', ALTS = [], cur = 'research';
+var phase = 'all', fam = 'all', query = '', ALTS = [], cur = 'research';
+var FAMS = APP.families, FAM = {}; FAMS.forEach(function(f){ FAM[f.id] = f; });
 var PHASES = ['research','insights','ideation','proto'];
 var SITE_TITLE = document.title;
 var shownKey = null, savedY = 0, savedId = '', annTimer = null;
@@ -485,21 +748,79 @@ function methodFromHash(){
   return BY[h] || null;
 }
 function clearHash(){ if (location.hash) history.pushState(null, '', location.pathname + location.search); }
+function pageFromHash(){ return methodFromHash() ? '' : location.hash.replace(/^#\/?/, ''); }
+function planFromHash(){ return pageFromHash() === 'plan'; }
+function beforeFromHash(){ return pageFromHash() === 'before'; }
+function openBefore(){
+  if (!shownKey){ savedY = window.scrollY || 0; savedId = ''; }
+  if (beforeFromHash()) route({force:true}); else location.hash = 'before';
+}
+function openPlan(){
+  if (!shownKey){ savedY = window.scrollY || 0; savedId = ''; }
+  if (planFromHash()) route({force:true}); else location.hash = 'plan';
+}
+var BT_SECTIONS = {
+  'bt-plan': ['research-plan','planning-matrix'],
+  'bt-analysis': ['codebook'],
+  'bt-consent': ['consent-script'],
+  'bt-protocol': ['interview-guide','observation-notes','deviation-and-recruitment-log'],
+  'bt-numbers': ['deviation-and-recruitment-log','codebook'],
+  'bt-name': ['method-justification']
+};
+function btFile(t){ return t.file.replace(/^templates\//,'').replace(/\.[a-z]+$/,''); }
+var btDone = false;
+function renderBefore(){
+  if (btDone) return; btDone = true;
+  var T = APP.ownTemplates || [];
+  function dl(t){
+    var a = document.createElement('a'); a.href = t.file; a.setAttribute('download','');
+    a.appendChild(document.createTextNode(t.title));
+    a.appendChild(el('span','sr',' (downloads a ' + t.format.toLowerCase() + ')'));
+    return a;
+  }
+  Object.keys(BT_SECTIONS).forEach(function(sid){
+    var host = q(sid + '-tools'); if (!host) return;
+    host.appendChild(el('span','lbl','Templates:'));
+    BT_SECTIONS[sid].forEach(function(k){
+      T.forEach(function(t){ if (btFile(t) === k) host.appendChild(dl(t)); });
+    });
+  });
+  var ul = q('bt-all');
+  T.forEach(function(t){
+    var li = el('li'), tt = el('div','tt'); tt.appendChild(dl(t));
+    li.appendChild(tt);
+    li.appendChild(el('div','tf', t.format + '. Used at the ' + t.step.toLowerCase() + ' step.'));
+    li.appendChild(el('div','td', t.desc));
+    ul.appendChild(li);
+  });
+}
 function route(o){
   o = o || {};
-  var m = methodFromHash(), key = m ? m.id : '';
+  var m = methodFromHash(), isPlan = planFromHash(), isBefore = beforeFromHash(),
+      key = m ? m.id : (isPlan ? '~plan' : (isBefore ? '~before' : ''));
   if (key === shownKey && !o.force) return;
   closeLightbox();
   var wasDetail = !!shownKey;
   shownKey = key;
   if (m){
     cur = m.phase; detail(m);
-    q('p-home').classList.remove('on'); q('p-detail').classList.add('on');
+    q('p-home').classList.remove('on'); q('p-plan').classList.remove('on'); q('p-before').classList.remove('on'); q('p-detail').classList.add('on');
     document.title = m.name + ' | ' + SITE_TITLE;
     jumpTo(0);
     q('d-title').focus({preventScroll:true});
+  } else if (isPlan){
+    q('p-home').classList.remove('on'); q('p-detail').classList.remove('on'); q('p-before').classList.remove('on'); q('p-plan').classList.add('on');
+    document.title = 'Plan your research | ' + SITE_TITLE;
+    jumpTo(0);
+    q('plan-title').focus({preventScroll:true});
+  } else if (isBefore){
+    q('p-home').classList.remove('on'); q('p-detail').classList.remove('on'); q('p-plan').classList.remove('on'); q('p-before').classList.add('on');
+    document.title = 'Before you collect | ' + SITE_TITLE;
+    renderBefore();
+    jumpTo(0);
+    q('before-title').focus({preventScroll:true});
   } else {
-    q('p-detail').classList.remove('on'); q('p-home').classList.add('on');
+    q('p-detail').classList.remove('on'); q('p-plan').classList.remove('on'); q('p-before').classList.remove('on'); q('p-home').classList.add('on');
     document.title = SITE_TITLE;
     if (o.top){ jumpTo(0); }
     else if (wasDetail){
@@ -572,6 +893,7 @@ function search(v){
   query = v.trim().toLowerCase();
   ALTS = query ? Search.alternatives(Search.tokenize(query)) : [];
   var home = q('p-home'), wasSearching = home.classList.contains('searching');
+  if (query && fam !== 'all') setFam('all', true);
   home.classList.toggle('searching', !!query);
   if (query !== '' && !wasSearching) jumpTo(0);
   if (query === '' && wasSearching) jumpTo(0);
@@ -598,10 +920,37 @@ function setPhase(p){
   });
   PHASES.forEach(function(x){ q('sec-'+x).classList.toggle('hide', !(p==='all' || p===x)); });
   if (shownKey){ clearHash(); route(); }
+  if (fam !== 'all') setFam(fam, true);
   render();
-  var n = p==='all' ? M.length : M.filter(function(m){ return m.phase===p; }).length;
+  var n = p==='all' ? M.filter(function(m){ return fam==='all' || m.family===fam; }).length : M.filter(function(m){ return m.phase===p && (fam==='all' || m.family===fam); }).length;
   announce(p==='all' ? 'Showing all ' + n + ' methods' : 'Showing ' + n + ' ' + PC[p].name + ' methods');
   if (p !== 'all') setTimeout(function(){ go('sec-'+p); }, 70);
+}
+
+function famCount(f){ return M.filter(function(m){ return (f==='all' || m.family===f) && (phase==='all' || m.phase===phase); }).length; }
+function setFam(f, quiet){
+  if (!quiet && query) clearSearch();
+  fam = f;
+  document.querySelectorAll('.ff').forEach(function(b){
+    var on = b.dataset.fam === f; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  var note = q('fnote');
+  if (f === 'all'){ note.classList.remove('on'); }
+  else {
+    var n = famCount(f), F = FAM[f];
+    q('fnote-text').textContent = 'Showing ' + n + (n===1 ? ' method' : ' methods') + ' in the ' + F.name + ' family. Evidence: ' + F.evidence.toLowerCase() + '.' + (n === 0 ? ' No methods match this phase and family together.' : '');
+    note.classList.add('on');
+  }
+  if (!quiet){
+    if (shownKey){ clearHash(); route(); }
+    render();
+    announce(f==='all' ? 'Showing all families' : 'Showing ' + famCount(f) + ' ' + FAM[f].name + ' methods');
+    if (f !== 'all') setTimeout(function(){ var first = PHASES.filter(function(p){ return !q('sec-'+p).classList.contains('hide') && !q('sec-'+p).classList.contains('nomatch'); })[0]; if (first) go('sec-'+first); }, 70);
+  }
+}
+function toggleFamHelp(){
+  var pnl = q('fpanel'), b = q('fhelp'), on = !pnl.classList.contains('on');
+  pnl.classList.toggle('on', on); b.setAttribute('aria-expanded', on ? 'true' : 'false');
 }
 
 /* full-text index: every field of a card is searchable, with word forms and related terms */
@@ -671,7 +1020,7 @@ function banner(){
   announce(msg);
 }
 function count(){
-  var n = phase==='all' ? M.length : M.filter(function(m){ return m.phase===phase; }).length;
+  var n = M.filter(function(m){ return (phase==='all' || m.phase===phase) && (fam==='all' || m.family===fam); }).length;
   q('fcount').textContent = n + (n===1?' method':' methods');
 }
 
@@ -682,14 +1031,15 @@ function render(){
     var list = M.filter(function(m){
       if (m.phase !== p) return false;
       if (!query && phase!=='all' && phase!==p) return false;
+      if (fam !== 'all' && m.family !== fam) return false;
       return true;
     }).map(function(m, i){ return {m:m, ev:evalCard(m), i:i}; })
       .filter(function(o){ return o.ev !== null; });
     if (query){ list.sort(function(a,b){ return a.ev.rank - b.ev.rank || a.i - b.i; }); }
-    q('sec-'+p).classList.toggle('nomatch', !!query && !list.length);
+    q('sec-'+p).classList.toggle('nomatch', (!!query || fam !== 'all') && !list.length);
     g.innerHTML = '';
     if (!list.length){
-      if (!query) g.appendChild(el('div','empty','No methods.'));
+      if (!query && fam === 'all') g.appendChild(el('div','empty','No methods.'));
       return;
     }
     list.forEach(function(o){
@@ -704,7 +1054,10 @@ function render(){
         t.appendChild(im); c.appendChild(t);
       }
       var b = el('div','body');
-      b.appendChild(el('span','ph '+m.phase, PC[m.phase].name));
+      var tg = el('div','tags');
+      tg.appendChild(el('span','ph '+m.phase, PC[m.phase].name));
+      tg.appendChild(el('span','fam', FAM[m.family].name));
+      b.appendChild(tg);
       var h = el('h3');
       var ha = document.createElement('a');
       ha.href = '#' + m.id;
@@ -726,7 +1079,7 @@ function render(){
         by.appendChild(document.createTextNode('By '));
         by.appendChild(el('b', null, m.student));
       } else {
-        by.appendChild(el('span','ref-tag','Reference entry'));
+        by.appendChild(el('span','ref-tag', m.origin==='draft' ? 'Draft entry' : 'Reference entry'));
       }
       f.appendChild(by);
       var go = el('span','go','View'); go.setAttribute('aria-hidden','true');
@@ -746,12 +1099,53 @@ function section(parent, title, node){
   parent.appendChild(w);
 }
 var BOOKS = [
-  {k:'Universal Methods of Design', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458', gated:true},
-  {k:'101 Design Methods', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699', gated:true},
-  {k:'The Field Guide to Human-Centered Design', url:'https://www.designkit.org/resources/1.html', gated:false},
-  {k:'Innovating for People', url:'https://www.luma-institute.com', gated:false},
-  {k:'The User Experience Team of One', url:'https://rosenfeldmedia.com/books/the-user-experience-team-of-one/', gated:false}
+  {k:'Universal Methods of Design', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458', gated:true,
+   cite:'Martin & Hanington, 2012', ref:'Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.'},
+  {k:'101 Design Methods', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699', gated:true,
+   cite:'Kumar, 2013', ref:'Kumar, V. (2013). *101 design methods: A structured approach for driving innovation in your organization*. Wiley.'},
+  {k:'The Field Guide to Human-Centered Design', url:'https://www.designkit.org/resources/1.html', gated:false,
+   cite:'IDEO.org, 2015', ref:'IDEO.org. (2015). *The field guide to human-centered design*. IDEO.org.'},
+  {k:'Innovating for People', url:'https://www.luma-institute.com', gated:false,
+   cite:'LUMA Institute, 2012', ref:'LUMA Institute. (2012). *Innovating for people: Handbook of human-centered design methods*. LUMA Institute.'},
+  {k:'The User Experience Team of One', url:'https://rosenfeldmedia.com/books/the-user-experience-team-of-one/', gated:false,
+   cite:'Buley, 2013', ref:'Buley, L. (2013). *The user experience team of one: A research and design survival guide*. Rosenfeld Media.'}
 ];
+/* copy a citation as plain text and, where the browser allows, as formatted text with italics */
+function toHtml(t){ return esc(t).replace(/\*([^*]+)\*/g, '<i>$1<\/i>'); }
+function copyRich(text, html, done){
+  function fallback(){
+    try {
+      var t = document.createElement('textarea'); t.value = text; t.setAttribute('readonly',''); t.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(t); t.select();
+      var ok = document.execCommand('copy'); document.body.removeChild(t); done(ok);
+    } catch(e){ done(false); }
+  }
+  function plainOnly(){
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ done(true); }, fallback);
+    else fallback();
+  }
+  try {
+    if (navigator.clipboard && navigator.clipboard.write && window.ClipboardItem){
+      var item = new ClipboardItem({'text/plain': new Blob([text], {type:'text/plain'}), 'text/html': new Blob([html], {type:'text/html'})});
+      navigator.clipboard.write([item]).then(function(){ done(true); }, plainOnly);
+      return;
+    }
+  } catch(e){}
+  plainOnly();
+}
+function copyButton(label, aria, getPair){
+  var b = el('button','cpy', label); b.type = 'button';
+  b.setAttribute('aria-label', aria);
+  b.addEventListener('click', function(){
+    var pr = getPair();
+    copyRich(plain(pr[0]), pr[1], function(ok){
+      b.textContent = ok ? 'Copied' : 'Copy failed';
+      announce(ok ? 'Copied to the clipboard' : 'Could not copy. Select the text and copy it yourself.', 50);
+      setTimeout(function(){ b.textContent = label; }, 2000);
+    });
+  });
+  return b;
+}
 function bookInfo(name){
   for (var i = 0; i < BOOKS.length; i++){ if (String(name).indexOf(BOOKS[i].k) === 0) return BOOKS[i]; }
   return null;
@@ -762,6 +1156,9 @@ function detail(m){
   q('bc-name').textContent  = m.name;
 
   var hero = q('dhero'); hero.className = 'dhero ' + m.phase;
+  var acts = hero.querySelector('.actions'), oldSb = acts.querySelector('.sbtn');
+  if (oldSb) acts.removeChild(oldSb);
+  acts.appendChild(shortBtn(m.id));
   q('d-eyebrow').textContent = pc.name;
   q('d-title').textContent   = m.name;
   q('d-alts').textContent    = (m.altNames && m.altNames.length) ? 'Also known as ' + m.altNames.join(', ') : '';
@@ -772,16 +1169,39 @@ function detail(m){
     by.appendChild(sb);
     by.appendChild(document.createTextNode(', a student in D 492 Intro to Design Research, ' + (m.semester || 'Spring 2026')));
   } else {
-    by.appendChild(el('em', null, 'Reference entry, not yet documented by a student'));
+    by.appendChild(el('em', null, m.origin==='draft'
+      ? 'Draft entry, written for this site and not yet reviewed'
+      : 'Reference entry, not yet documented by a student'));
   }
 
   /* main column */
   var main = q('d-main'); main.innerHTML = '';
+  if (m.origin === 'draft' && m.draftNote){
+    main.appendChild(el('div','notice', m.draftNote));
+  }
   if (m.kind === 'brief'){
     main.appendChild(el('div','notice',
       'This method has a short reference entry. Full documentation is written by students, and this card is available for a future class to complete.'));
   }
   section(main, 'What it is', rich(el('p','prose'), m.whatItIs));
+
+  if (m.family && FAM[m.family]){
+    var F = FAM[m.family], sbx = el('div','showbox');
+    var fh = el('div','fh');
+    fh.appendChild(el('span','fam', F.name));
+    fh.appendChild(el('span', null, 'Evidence: ' + F.evidence.toLowerCase() + '.'));
+    var fb = el('button', null, 'See all ' + F.name + ' methods'); fb.type = 'button';
+    fb.addEventListener('click', function(){ setPhase('all'); setFam(m.family); });
+    fh.appendChild(fb);
+    sbx.appendChild(fh);
+    var cols = el('div','cols');
+    var c1 = el('div','col yes'); c1.appendChild(el('div','l','Can show')); c1.appendChild(el('p', null, m.show)); cols.appendChild(c1);
+    var c2 = el('div','col no'); c2.appendChild(el('div','l','Cannot show')); c2.appendChild(el('p', null, m.limit)); cols.appendChild(c2);
+    sbx.appendChild(cols);
+    if (m.family === 'analyze') sbx.appendChild(el('div','foot','Analysis methods work on data you collected with another family. Their findings are only as strong as that data.'));
+    else sbx.appendChild(el('div','foot','Pair this with a method from a different family so that each covers the other\u2019s blind spot.'));
+    section(main, 'What it can show', sbx);
+  }
 
   if (m.kind === 'full'){
     if (m.whenToUse && m.whenToUse.length){
@@ -811,19 +1231,30 @@ function detail(m){
   if (m.kind === 'full' && m.sources && m.sources.length){
     var sw = el('div');
     m.sources.forEach(function(s){
-      var d = el('div','cite');
+      var d = el('div','cite'), ct = el('span','ct');
       var parts = String(s).split(/(https?:\/\/\S+)/);
       parts.forEach(function(p){
         if (/^https?:\/\//.test(p)){
           var a = document.createElement('a');
           a.href = p; a.target = '_blank'; a.rel = 'noopener'; a.textContent = p;
-          d.appendChild(a);
+          ct.appendChild(a);
         } else if (p) {
-          rich(d, p);
+          rich(ct, p);
         }
       });
+      d.appendChild(ct);
+      d.appendChild(copyButton('Copy reference', 'Copy this reference: ' + plain(s).slice(0, 60), function(){ return [s, toHtml(s)]; }));
       sw.appendChild(d);
     });
+    var ca = el('button','cpyall','Copy all references'); ca.type = 'button';
+    ca.addEventListener('click', function(){
+      copyRich(m.sources.map(plain).join('\n\n'), m.sources.map(function(x){ return '<p>' + toHtml(x) + '<\/p>'; }).join(''), function(ok){
+        ca.textContent = ok ? 'Copied' : 'Copy failed';
+        announce(ok ? 'All references copied' : 'Could not copy.', 50);
+        setTimeout(function(){ ca.textContent = 'Copy all references'; }, 2000);
+      });
+    });
+    sw.appendChild(ca);
     section(main, 'Where to learn more', sw);
   }
 
@@ -848,17 +1279,22 @@ function detail(m){
     var tw = el('div'), tu = el('ul','tplist');
     m.templates.forEach(function(o){
       var li = el('li'), a = document.createElement('a');
-      a.href = o.url; a.target = '_blank'; a.rel = 'noopener';
+      a.href = o.url;
+      if (o.own){ a.setAttribute('download',''); }
+      else { a.target = '_blank'; a.rel = 'noopener'; }
       a.appendChild(document.createTextNode(o.title));
-      a.appendChild(el('span','sr',' (opens in a new tab)'));
+      a.appendChild(el('span','sr', o.own ? ' (downloads a file)' : ' (opens in a new tab)'));
       li.appendChild(a);
-      li.appendChild(el('span','pub', o.publisher + '. ' + o.format + '.'));
+      li.appendChild(el('span','pub', o.own ? 'Made for this site. ' + o.format + '.' : o.publisher + '. ' + o.format + '.'));
       li.appendChild(el('span','acc', o.access));
       if (o.note) li.appendChild(el('span','on', o.note));
       tu.appendChild(li);
     });
     tw.appendChild(tu);
-    tw.appendChild(el('p','ovnote','Links go to other websites. Templates are made by their publishers and are not part of the course books. Links checked October 2026.'));
+    var anyOwn = m.templates.some(function(o){ return o.own; }), anyExt = m.templates.some(function(o){ return !o.own; });
+    tw.appendChild(el('p','ovnote',
+      (anyOwn ? 'Templates marked "Made for this site" are drafted here, are not course materials, and are not official forms. ' : '') +
+      (anyExt ? 'Other links go to other websites and are made by their publishers. Links checked October 2026.' : '')));
     section(main, 'Templates and worksheets', tw);
   }
 
@@ -893,6 +1329,13 @@ function detail(m){
       }
       li.appendChild(document.createTextNode(', ' + e.where));
       if (bk && bk.gated) li.appendChild(el('span','gt','Library link. Off campus, an NC State sign-in is required.'));
+      if (bk && bk.ref){
+        var pg = /p\.\s*(\d+)/.exec(e.where), it = '(' + bk.cite + (pg ? ', p. ' + pg[1] : '') + ')';
+        var cp = el('span','cp');
+        cp.appendChild(copyButton('Copy in-text citation', 'Copy the in-text citation ' + it, function(){ return [it, esc(it)]; }));
+        cp.appendChild(copyButton('Copy reference', 'Copy the reference for ' + bk.k, function(){ return [bk.ref, toHtml(bk.ref)]; }));
+        li.appendChild(cp);
+      }
       lu.appendChild(li);
     });
     section(main, 'Where this method appears in the course books', lu);
@@ -1017,6 +1460,316 @@ function detail(m){
   sb.appendChild(mo);
 }
 
+
+/* ---------- shortlist ---------- */
+var LSKEY = 'drm-shortlist-v1', SHORT = [];
+try { var _sv = JSON.parse(localStorage.getItem(LSKEY) || '[]'); if (Array.isArray(_sv)) SHORT = _sv.filter(function(id){ return BY[id]; }); } catch(e){}
+function saveShort(){ try { localStorage.setItem(LSKEY, JSON.stringify(SHORT)); } catch(e){} }
+function inShort(id){ return SHORT.indexOf(id) !== -1; }
+function setShort(id, on, quiet){
+  var i = SHORT.indexOf(id);
+  if (on && i === -1) SHORT.push(id); else if (!on && i !== -1) SHORT.splice(i, 1); else return;
+  saveShort(); syncShort();
+  if (!quiet) announce(BY[id].name + (on ? ' added to' : ' removed from') + ' your shortlist. ' + SHORT.length + (SHORT.length === 1 ? ' method' : ' methods') + ' on the list.', 50);
+}
+function paintShort(b){
+  var on = inShort(b.dataset.short);
+  b.classList.toggle('on', on);
+  b.innerHTML = '';
+  b.appendChild(document.createTextNode(on ? 'On your shortlist' : 'Add to shortlist'));
+  b.appendChild(el('span','sr', ': ' + BY[b.dataset.short].name + (on ? '. Select to remove.' : '')));
+}
+function shortBtn(id){
+  var b = el('button','sbtn'); b.type = 'button'; b.dataset.short = id;
+  b.addEventListener('click', function(){ setShort(id, !inShort(id)); });
+  paintShort(b);
+  return b;
+}
+function syncShort(){
+  document.querySelectorAll('.shortcount').forEach(function(c){
+    c.classList.toggle('on', SHORT.length > 0);
+    c.innerHTML = '';
+    var a = el('span', null, String(SHORT.length)); a.setAttribute('aria-hidden','true');
+    c.appendChild(a); c.appendChild(el('span','sr', ' methods on your shortlist'));
+  });
+  document.querySelectorAll('.sbtn[data-short]').forEach(paintShort);
+  renderShort();
+}
+function srcLine(m){
+  var e = m.library && m.library[0];
+  return e ? e.book + ', ' + e.where : '';
+}
+function shortText(){
+  var base = location.origin + location.pathname;
+  var out = ['Shortlist from Design Research Methods (' + base + ')', ''];
+  SHORT.forEach(function(id, i){
+    var m = BY[id];
+    out.push((i + 1) + '. ' + m.name + ' (' + PC[m.phase].name + ' phase, ' + FAM[m.family].name + ' family)');
+    out.push('   Can show: ' + m.show);
+    out.push('   Cannot show: ' + m.limit);
+    var sl = srcLine(m); if (sl) out.push('   Where to read: ' + sl);
+    out.push('   Card: ' + base + '#' + m.id);
+    out.push('');
+  });
+  return out.join('\n');
+}
+function renderShort(){
+  var w = q('short'); if (!w) return;
+  w.innerHTML = '';
+  if (!SHORT.length){
+    w.appendChild(el('div','sempty','Your shortlist is empty. Add a method with the “Add to shortlist” button on any card, or from the lists above.'));
+    return;
+  }
+  var wrap = el('div','tblwrap'), t = document.createElement('table'); t.className = 'stable';
+  var cap = document.createElement('caption'); cap.className = 'sr'; cap.textContent = 'Methods on your shortlist'; t.appendChild(cap);
+  var th = document.createElement('thead'), hr = document.createElement('tr');
+  ['Method','Family','Can show','Cannot show','Where to read',''].forEach(function(h){
+    var c = document.createElement('th'); c.scope = 'col';
+    if (h) c.textContent = h; else c.appendChild(el('span','sr','Remove'));
+    hr.appendChild(c);
+  });
+  th.appendChild(hr); t.appendChild(th);
+  var tb = document.createElement('tbody');
+  SHORT.forEach(function(id){
+    var m = BY[id], r = document.createElement('tr');
+    var c1 = document.createElement('td'); c1.className = 'mn';
+    var b1 = el('button', null, m.name); b1.type = 'button'; b1.addEventListener('click', function(){ open(m.id); });
+    c1.appendChild(b1); c1.appendChild(el('span','ph', PC[m.phase].name + ' phase'));
+    r.appendChild(c1);
+    [['Family', FAM[m.family].name], ['Can show', m.show], ['Cannot show', m.limit], ['Where to read', srcLine(m) || 'See the card']].forEach(function(x){
+      var c = document.createElement('td'); c.dataset.l = x[0]; c.textContent = x[1]; r.appendChild(c);
+    });
+    var c6 = document.createElement('td');
+    var rb = el('button','rm','Remove'); rb.type = 'button';
+    rb.appendChild(el('span','sr',' ' + m.name + ' from your shortlist'));
+    rb.addEventListener('click', function(){ setShort(m.id, false); });
+    c6.appendChild(rb); r.appendChild(c6);
+    tb.appendChild(r);
+  });
+  t.appendChild(tb); wrap.appendChild(t); w.appendChild(wrap);
+  var fams = [];
+  SHORT.forEach(function(id){ var f = BY[id].family; if (f !== 'analyze' && fams.indexOf(f) === -1) fams.push(f); });
+  var msg;
+  if (fams.length === 0) msg = 'Your list holds analysis methods only. Analysis methods work on data that another method collected, so add at least two methods that collect evidence.';
+  else if (fams.length === 1) msg = 'Your collecting methods all come from the ' + FAM[fams[0]].name + ' family, so they share one blind spot. Add a method from a different family to check them.';
+  else msg = 'Your collecting methods cover ' + fams.length + ' families: ' + fams.map(function(f){ return FAM[f].name; }).join(', ') + '. For each pair, finish the sentence “My second method checks my first because ...”.';
+  w.appendChild(el('p','scover', msg));
+  var act = el('div','sact');
+  var cb = el('button','btn2 solid','Copy as text'); cb.type = 'button';
+  cb.addEventListener('click', function(){
+    var tx = shortText();
+    copyRich(tx, '<pre>' + esc(tx) + '<\/pre>', function(ok){
+      cb.textContent = ok ? 'Copied' : 'Copy failed';
+      announce(ok ? 'Shortlist copied to the clipboard' : 'Could not copy.', 50);
+      setTimeout(function(){ cb.textContent = 'Copy as text'; }, 2000);
+    });
+  });
+  var pb = el('button','btn2','Print'); pb.type = 'button'; pb.addEventListener('click', function(){ window.print(); });
+  var xb = el('button','btn2','Clear list'); xb.type = 'button';
+  var armed = false, tm = null;
+  xb.addEventListener('click', function(){
+    if (!armed){
+      armed = true; xb.textContent = 'Select again to clear the list';
+      tm = setTimeout(function(){ armed = false; xb.textContent = 'Clear list'; }, 3500);
+      return;
+    }
+    clearTimeout(tm); SHORT = []; saveShort(); syncShort(); announce('Shortlist cleared', 50);
+  });
+  act.appendChild(cb); act.appendChild(pb); act.appendChild(xb);
+  w.appendChild(act);
+  w.appendChild(el('p','sstore','Saved in this browser on this device only.'));
+}
+
+/* ---------- plan page ---------- */
+function methodRow(m){
+  var li = el('li');
+  var nb = el('button','nm'); nb.type = 'button';
+  var dot = el('span','d'); dot.style.background = PCOL[m.phase]; dot.setAttribute('aria-hidden','true');
+  nb.appendChild(dot); nb.appendChild(el('span','t', m.name)); nb.appendChild(el('span','ph', PC[m.phase].name));
+  nb.addEventListener('click', function(){ open(m.id); });
+  li.appendChild(nb);
+  var sl = el('div','sl'); sl.appendChild(el('b', null, 'Can show: ')); sl.appendChild(document.createTextNode(m.show));
+  li.appendChild(sl);
+  li.appendChild(shortBtn(m.id));
+  return li;
+}
+function showBox(F){
+  var sbx = el('div','showbox');
+  var cols = el('div','cols');
+  var c1 = el('div','col yes'); c1.appendChild(el('div','l','Can show')); c1.appendChild(el('p', null, F.show)); cols.appendChild(c1);
+  var c2 = el('div','col no'); c2.appendChild(el('div','l','Cannot show')); c2.appendChild(el('p', null, F.limit)); cols.appendChild(c2);
+  sbx.appendChild(cols);
+  return sbx;
+}
+function radioCard(group, value, title, extra, onPick){
+  var lb = el('label','qopt'), inp = document.createElement('input');
+  inp.type = 'radio'; inp.name = group; inp.value = value;
+  inp.addEventListener('change', function(){ onPick(value); });
+  lb.appendChild(inp);
+  lb.appendChild(el('b', null, title));
+  if (extra) lb.appendChild(el('span','ev', extra));
+  return lb;
+}
+var QTEXT = {read:'What exists, what was made, or how something came to be', ask:'What people say, believe, remember, value, or prefer',
+  watch:'What people actually do, and in what setting', test:'Whether one version works better than another, and by how much',
+  make:'What is possible, or how people respond to something that does not exist yet', analyze:'What the data I already have is telling me'};
+function showQuestion(f){
+  var F = FAM[f], out = q('qres'); out.innerHTML = '';
+  var box = el('div','rbox');
+  box.appendChild(el('h3', null, F.name + ' methods'));
+  box.appendChild(el('p', null, 'Evidence you need: ' + F.evidence.toLowerCase() + '.'));
+  box.appendChild(showBox(F));
+  if (f === 'watch'){
+    var w1 = el('div','warnbox'); w1.appendChild(el('b', null, 'The say and do gap. '));
+    w1.appendChild(document.createTextNode('If your question is about what people do, asking will not answer it. People report their behavior inaccurately, especially about frequency, time, and anything they feel judged about. Use a method that watches, or pair an asking method with one that watches.'));
+    box.appendChild(w1);
+  }
+  if (f === 'test'){
+    var w2 = el('div','warnbox'); w2.appendChild(el('b', null, 'Questions about effect and cause. '));
+    w2.appendChild(document.createTextNode('A question such as “what effect does X have on Y” or “does X cause Y” needs a comparison of at least two conditions that differ in one respect. If you cannot run that comparison well, narrow the question to what you can show, such as how people describe X. Or build a small controlled comparison and report it as suggestive rather than conclusive. Do not ask people about X and then write that X causes Y.'));
+    box.appendChild(w2);
+  }
+  var all = M.filter(function(m){ return m.family === f; });
+  var home = all.filter(function(m){ return f === 'analyze' ? m.phase === 'insights' : m.phase === 'research'; });
+  var rest = all.filter(function(m){ return home.indexOf(m) === -1; });
+  box.appendChild(el('div','lab', f === 'analyze' ? 'Methods for making sense of data' : 'Methods for gathering this evidence'));
+  var ul = el('ul','mlist'); home.forEach(function(m){ ul.appendChild(methodRow(m)); }); box.appendChild(ul);
+  if (rest.length){
+    var ul2 = el('ul','mlist'); ul2.hidden = true; ul2.id = 'qmore';
+    rest.forEach(function(m){ ul2.appendChild(methodRow(m)); });
+    var mb = el('button','morebtn','Show ' + rest.length + ' more ' + F.name + ' methods from other phases'); mb.type = 'button';
+    mb.setAttribute('aria-expanded','false'); mb.setAttribute('aria-controls','qmore');
+    mb.addEventListener('click', function(){
+      var on = ul2.hidden; ul2.hidden = !on; mb.setAttribute('aria-expanded', on ? 'true' : 'false');
+      mb.textContent = on ? 'Hide the other ' + F.name + ' methods' : 'Show ' + rest.length + ' more ' + F.name + ' methods from other phases';
+    });
+    box.appendChild(mb); box.appendChild(ul2);
+  }
+  var nx = el('p'); nx.style.marginTop = '20px';
+  nx.appendChild(document.createTextNode('Next, choose a second method from a different family. '));
+  var nb = el('button','morebtn','Go to the pair builder'); nb.type = 'button'; nb.style.marginTop = '0'; nb.addEventListener('click', function(){ go('plan-pair'); });
+  nx.appendChild(nb); box.appendChild(nx);
+  out.appendChild(box);
+}
+function methodLinks(ids, note, lead){
+  var f = document.createDocumentFragment();
+  if (lead) f.appendChild(document.createTextNode(lead + ' '));
+  ids.forEach(function(id, i){
+    if (i) f.appendChild(document.createTextNode(' or '));
+    var m = BY[id], b = el('button','mn'); b.type = 'button';
+    var d = el('span','d'); d.style.background = PCOL[m.phase]; d.setAttribute('aria-hidden','true');
+    b.appendChild(d); b.appendChild(el('span','t', m.name)); b.appendChild(el('span','fam', FAM[m.family].name));
+    b.addEventListener('click', function(){ open(id); });
+    f.appendChild(b);
+  });
+  if (note) f.appendChild(document.createTextNode(' ' + note));
+  return f;
+}
+function showMode(id){
+  var md = (APP.modes || []).filter(function(x){ return x.id === id; })[0], out = q('mres'); out.innerHTML = '';
+  if (!md) return;
+  var box = el('div','rbox');
+  box.appendChild(el('h3', null, 'Research ' + md.name.toLowerCase()));
+  [['What it contributes', md.gives], ['What you hand in', md.handIn], ['Families it leans on', md.leans], ['A sign you have drifted', md.drift]].forEach(function(x){
+    var p = el('p'); p.appendChild(el('b', null, x[0] + ': ')); p.appendChild(document.createTextNode(x[1])); box.appendChild(p);
+  });
+  box.appendChild(el('div','lab','Pairs that work for this mode'));
+  md.pairs.forEach(function(pr){
+    var r = el('div','prec'), eq = el('div','eq');
+    eq.appendChild(methodLinks(pr.first.ids, pr.first.note, pr.first.lead));
+    eq.appendChild(el('span','plus','plus'));
+    eq.appendChild(methodLinks(pr.second.ids, pr.second.note, pr.second.lead));
+    r.appendChild(eq);
+    r.appendChild(el('p','add', pr.adds));
+    var ids = pr.first.ids.concat(pr.second.ids);
+    var ab = el('button','btn2 sbs','Add these ' + ids.length + ' methods to your shortlist'); ab.type = 'button';
+    ab.addEventListener('click', function(){
+      ids.forEach(function(i){ setShort(i, true, true); });
+      announce(ids.length + ' methods added to your shortlist.', 50);
+    });
+    r.appendChild(ab);
+    box.appendChild(r);
+  });
+  var w = el('div','warnbox'); w.appendChild(el('b', null, 'Write the checking sentence. '));
+  w.appendChild(document.createTextNode('Finish this sentence in your plan: “My second method checks my first because ...” If you cannot finish it, you have two methods on the same question rather than a method and a check. Researchers call this triangulation.'));
+  box.appendChild(w);
+  var w2 = el('p'); w2.style.marginTop = '14px'; w2.style.fontSize = '13.5px'; w2.style.color = 'var(--gtxt)';
+  w2.textContent = 'If your mode changes later, that is allowed and sometimes right. Write down the date, the reason, and what changed in your plan.';
+  box.appendChild(w2);
+  out.appendChild(box);
+}
+var SUGG = {read:['ask','watch'], ask:['watch','read'], watch:['ask'], test:['ask','watch'], make:['watch','ask']};
+function showCheck(){
+  var a = q('pa').value, b = q('pb').value, out = q('cres'); out.innerHTML = '';
+  if (!a || !b) return;
+  if (a === b){ out.appendChild(el('div','warnbox','Choose two different methods.')); return; }
+  var A = BY[a], B = BY[b], box = el('div','rbox');
+  box.appendChild(el('h3', null, A.name + ' with ' + B.name));
+  var g = el('div','mfacts');
+  [[A.name + ' can show', A.show], [A.name + ' cannot show', A.limit], [B.name + ' can show', B.show], [B.name + ' cannot show', B.limit]].forEach(function(x){
+    var d = el('div'); d.appendChild(el('span','l', x[0])); d.appendChild(document.createTextNode(x[1])); g.appendChild(d);
+  });
+  box.appendChild(g);
+  var fa = FAM[A.family], fb = FAM[B.family], ok = false;
+  if (A.family === 'analyze' || B.family === 'analyze'){
+    box.appendChild(el('div','warnbox','An analysis method does not collect evidence. It works on data that another method collected. Choose two methods that collect evidence, from different families, and then choose the analysis method for the data both produce.'));
+  } else if (A.family === B.family){
+    var wb = el('div','warnbox'); wb.appendChild(el('b', null, 'Both are in the ' + fa.name + ' family. '));
+    wb.appendChild(document.createTextNode('Two methods from one family share a blind spot. Neither can show: ' + fa.limit.charAt(0).toLowerCase() + fa.limit.slice(1) + ' Try replacing one with a method from another family:'));
+    box.appendChild(wb);
+    var ul = el('ul','mlist');
+    (SUGG[A.family] || []).forEach(function(f){
+      M.filter(function(m){ return m.family === f && m.phase === 'research'; }).slice(0, 3).forEach(function(m){ ul.appendChild(methodRow(m)); });
+    });
+    box.appendChild(ul);
+  } else {
+    ok = true;
+    var ob = el('div','okbox'); ob.appendChild(el('b', null, 'Different families: ' + fa.name + ' and ' + fb.name + '. '));
+    ob.appendChild(document.createTextNode('Each method can cover what the other cannot show. Read the four lines above and check that the second method answers the gap the first one leaves.'));
+    box.appendChild(ob);
+    if ((A.family === 'test' && B.family === 'read') || (A.family === 'read' && B.family === 'test')){
+      box.appendChild(el('div','warnbox','Testing and reading rarely appear together in published design research. Check that the two are really answering the same question.'));
+    }
+  }
+  if (ok){
+    var s = el('div','sentence'), lb = el('label', null, 'Finish the checking sentence'); lb.setAttribute('for','chk-sentence');
+    var ta = document.createElement('textarea'); ta.id = 'chk-sentence';
+    ta.value = 'My second method, ' + B.name + ', checks my first, ' + A.name + ', because ';
+    s.appendChild(lb); s.appendChild(ta);
+    var row = el('div','row');
+    var cs = el('button','btn2','Copy sentence'); cs.type = 'button';
+    cs.addEventListener('click', function(){
+      copyRich(ta.value, esc(ta.value), function(k){ cs.textContent = k ? 'Copied' : 'Copy failed'; announce(k ? 'Sentence copied' : 'Could not copy.', 50); setTimeout(function(){ cs.textContent = 'Copy sentence'; }, 2000); });
+    });
+    row.appendChild(cs); s.appendChild(row); box.appendChild(s);
+  }
+  var ab = el('button','btn2','Add both to your shortlist'); ab.type = 'button'; ab.style.marginTop = '16px';
+  ab.addEventListener('click', function(){ setShort(a, true, true); setShort(b, true, true); announce(A.name + ' and ' + B.name + ' added to your shortlist.', 50); });
+  box.appendChild(ab);
+  out.appendChild(box);
+}
+function buildPlan(){
+  var qo = q('qopts');
+  FAMS.forEach(function(f){
+    qo.appendChild(radioCard('qg', f.id, QTEXT[f.id], 'Evidence: ' + f.evidence.toLowerCase() + '. Family: ' + f.name + '.', showQuestion));
+  });
+  var mo = q('mopts');
+  (APP.modes || []).forEach(function(md){ mo.appendChild(radioCard('mode', md.id, md.name, md.gives, showMode)); });
+  ['pa','pb'].forEach(function(id){
+    var sel = q(id), o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'Choose a method'; sel.appendChild(o0);
+    FAMS.forEach(function(f){
+      var g = document.createElement('optgroup'), list = M.filter(function(m){ return m.family === f.id; });
+      g.label = f.name + ' (' + list.length + ')';
+      list.slice().sort(function(x, y){ return x.name.localeCompare(y.name); }).forEach(function(m){
+        var o = document.createElement('option'); o.value = m.id; o.textContent = m.name; g.appendChild(o);
+      });
+      sel.appendChild(g);
+    });
+    sel.addEventListener('change', showCheck);
+  });
+  syncShort();
+}
+
 /* ---------- contributors ---------- */
 function contributors(){
   var wrap = q('clist');
@@ -1044,6 +1797,7 @@ function contributors(){
 q('stat-methods').textContent = APP.total;
 q('stat-cards').textContent   = APP.fullCount;
 q('stat-students').textContent= APP.students.length;
+q('stat-drafts').textContent  = APP.draftCount;
 PHASES.forEach(function(p){
   q('ddn-'+p).textContent = APP.counts[p] + ' methods';
   q('chipn-'+p).textContent = String(APP.counts[p]);
@@ -1066,6 +1820,19 @@ Search.init(JSON.parse(document.getElementById('syn-data').textContent));
   });
   window.addEventListener('resize', function(){ if (d.open) lbSize(); });
 })();
+(function(){
+  var w = q('fdefs');
+  FAMS.forEach(function(f){
+    var d = el('div'); d.appendChild(el('b', null, f.name));
+    d.appendChild(document.createTextNode('Answers: ' + f.asks.charAt(0).toLowerCase() + f.asks.slice(1) + '. Evidence: ' + f.evidence.toLowerCase() + '.'));
+    w.appendChild(d);
+  });
+  document.querySelectorAll('.ff').forEach(function(b){
+    var f = b.dataset.fam;
+    if (f !== 'all') b.appendChild(el('span','n', String(M.filter(function(m){ return m.family === f; }).length)));
+  });
+})();
+buildPlan();
 contributors();
 render();
 window.addEventListener('hashchange', function(){ route(); });
@@ -1080,17 +1847,18 @@ assert '</script' not in SYN.lower()
 LOGO = ('<img src="https://cdn.ncsu.edu/brand-assets/logos/ncstate-brick-2x1-red.png" '
         'alt="NC State University" onerror="this.style.display=\'none\';this.parentNode.classList.add(\'nologo\')">')
 
-def header(home_page=True):
+def header(page='home'):
+    home_page = page == 'home'
     back = "window.scrollTo(0,0)" if home_page else "home()"
     last = ('<button class="plain" onclick="go(\'sec-sources\')">Sources</button>'
             if home_page else '<button class="plain" onclick="home()">All methods</button>')
-    sid  = 'search' if home_page else 'search2'
+    sid  = {'home':'search','detail':'search2','plan':'search3','before':'search4'}[page]
     handler = ('oninput="search(this.value)" onkeydown="if(event.key===\'Escape\')clearSearch()"'
                if home_page else
                'onkeydown="if(event.key===\'Enter\'&&this.value.trim()){home();document.getElementById(\'search\').value=this.value;search(this.value);}"')
     clr = ('<button class="clr" id="clr" onclick="clearSearch()" aria-label="Clear search">&#215;</button>'
            if home_page else '')
-    mid = 'main-home' if home_page else 'main-detail'
+    mid = {'home':'main-home','detail':'main-detail','plan':'main-plan','before':'main-before'}[page]
     return f'''<a class="skip" href="#{mid}" onclick="return skipTo('{mid}')">Skip to main content</a>
 <header class="site">
 <div class="hbar"></div>
@@ -1105,11 +1873,14 @@ def header(home_page=True):
   <input id="{sid}" type="search" placeholder="Search methods, students" autocomplete="off" aria-label="Search methods" {handler}>
   {clr}
  </div>
+ <button class="planbtn" onclick="openPlan()" aria-label="Plan your research">Plan<span class="shortcount"></span></button>
  <nav class="top" aria-label="Browse by phase">
   <button class="r" onclick="setPhase('research')">Research</button>
   <button class="i" onclick="setPhase('insights')">Insights</button>
   <button class="d" onclick="setPhase('ideation')">Ideation</button>
   <button class="p" onclick="setPhase('proto')">Prototyping</button>
+  <button class="plan" onclick="openPlan()">Plan your research<span class="shortcount"></span></button>
+  <button class="plain navbefore" onclick="openBefore()">Before you collect</button>
   {last}
  </nav>
 </div>
@@ -1119,7 +1890,7 @@ FOOT = '''<footer class="site"><div class="in">
  <div class="brand"><div class="rule"></div>
   <div class="t">NC STATE UNIVERSITY<span>College of Design</span></div>
  </div>
- <div class="meta">Method cards written by Design Studies students at NC State's College of Design.<br>
+ <div class="meta">Most method cards were written by Design Studies students at NC State's College of Design. Drafted cards are marked.<br>
   Site created and maintained by Andr&eacute;s T&eacute;llez, Assistant Professor of Design Studies.<br>
   Published for students, faculty, and design practitioners.</div>
 </div></footer>'''
@@ -1150,14 +1921,15 @@ html = f'''<!DOCTYPE html>
 <script type="application/json" id="syn-data">{SYN}</script>
 
 <div id="p-home" class="page on">
-{header(True)}
+{header('home')}
 <main id="main-home" tabindex="-1">
 <section class="hero"><div class="wrap">
  <p class="kicker">NC State College of Design</p>
  <h1>Design Research<br><em>Methods</em></h1>
  <p class="lede">A working reference of 117 methods used to plan research, make sense of what it
-  finds, generate ideas, and test them. The detailed cards were researched and written by
-  students.</p>
+  finds, generate ideas, and test them. Most detailed cards were researched and written by
+  students. Eighteen more were drafted for the site and are marked as drafts until they are reviewed.</p>
+ <p class="herocta"><button class="herobtn" onclick="openPlan()">Plan your research</button> <button class="herobtn" onclick="openBefore()">Before you collect</button></p>
  <div class="chips">
   <button class="chip research" onclick="setPhase('research')">Research <span id="chipn-research"></span></button>
   <button class="chip insights" onclick="setPhase('insights')">Insights <span id="chipn-insights"></span></button>
@@ -1168,6 +1940,7 @@ html = f'''<!DOCTYPE html>
   <div class="stat"><b id="stat-methods"></b><span>Methods</span></div>
   <div class="stat"><b id="stat-cards"></b><span>Student-written cards</span></div>
   <div class="stat"><b id="stat-students"></b><span>Contributors</span></div>
+  <div class="stat"><b id="stat-drafts"></b><span>Draft entries awaiting review</span></div>
  </div>
 </div></section>
 
@@ -1178,7 +1951,23 @@ html = f'''<!DOCTYPE html>
  <button class="fb ideation" data-phase="ideation" aria-pressed="false" onclick="setPhase('ideation')">Ideation</button>
  <button class="fb proto" data-phase="proto" aria-pressed="false" onclick="setPhase('proto')">Prototyping</button>
  <span class="fcount" id="fcount"></span>
+</div>
+<div class="in fr" role="group" aria-label="Filter methods by evidence family">
+ <span class="flab" id="flab">Evidence family</span>
+ <button class="ff on" data-fam="all" aria-pressed="true" onclick="setFam('all')">All</button>
+ <button class="ff" data-fam="read" aria-pressed="false" onclick="setFam('read')">Read</button>
+ <button class="ff" data-fam="ask" aria-pressed="false" onclick="setFam('ask')">Ask</button>
+ <button class="ff" data-fam="watch" aria-pressed="false" onclick="setFam('watch')">Watch</button>
+ <button class="ff" data-fam="test" aria-pressed="false" onclick="setFam('test')">Test</button>
+ <button class="ff" data-fam="make" aria-pressed="false" onclick="setFam('make')">Make</button>
+ <button class="ff" data-fam="analyze" aria-pressed="false" onclick="setFam('analyze')">Analyze</button>
+ <button class="fhelp" id="fhelp" aria-expanded="false" aria-controls="fpanel" onclick="toggleFamHelp()">What are families?</button>
 </div></div>
+<div class="fpanel" id="fpanel"><div class="in">
+ <p class="lead">The phase tells you when in a project a designer would reach for a method. The family tells you what kind of evidence the method produces, which decides what a finding from it can support. A method sits in one phase and one family. To build a sound argument, choose methods from different families.</p>
+ <div class="fdefs" id="fdefs"></div>
+</div></div>
+<div class="fnote" id="fnote"><div class="in"><span id="fnote-text"></span><button type="button" onclick="setFam('all')">Show all families</button></div></div>
 <div class="sbanner" id="sbanner"><div class="in">
  <span id="btext"></span><button onclick="clearSearch()">Clear search</button>
 </div></div>
@@ -1281,7 +2070,7 @@ html = f'''<!DOCTYPE html>
 </div>
 
 <div id="p-detail" class="page">
-{header(False)}
+{header('detail')}
 <nav class="bc" aria-label="Breadcrumb"><div class="in">
  <button onclick="home()">All methods</button><span class="sep" aria-hidden="true">/</span>
  <button id="bc-phase" onclick="homePhase()"></button><span class="sep" aria-hidden="true">/</span>
@@ -1300,6 +2089,171 @@ html = f'''<!DOCTYPE html>
  <div id="d-main"></div>
  <aside id="d-side" aria-label="Quick reference"></aside>
 </div></div>
+</main>
+{FOOT}
+</div>
+
+<div id="p-plan" class="page">
+{header('plan')}
+<nav class="bc" aria-label="Breadcrumb"><div class="in">
+ <button onclick="home()">All methods</button><span class="sep" aria-hidden="true">/</span>
+ <span aria-current="page">Plan your research</span>
+</div></nav>
+<main id="main-plan" tabindex="-1">
+<section class="phero"><div class="wrap">
+ <p class="kicker">Planning tools</p>
+ <h1 id="plan-title" tabindex="-1">Plan your research</h1>
+ <p class="lede">Match your question to the kind of evidence it needs, choose two methods that check each other, and keep a shortlist to compare. Everything here points back to the method cards.</p>
+ <div class="pjump" role="navigation" aria-label="On this page">
+  <button onclick="go('plan-q')">Match your question</button>
+  <button onclick="go('plan-pair')">Choose two methods</button>
+  <button onclick="go('plan-short')">Your shortlist <span class="shortcount"></span></button>
+  <button onclick="openBefore()">Before you collect</button>
+ </div>
+</div></section>
+
+<section class="psec" id="plan-q"><div class="wrap">
+ <h2>What does your question ask?</h2>
+ <p class="sub">Most questions carry a verb that decides which kind of evidence you need before you choose a method. Pick the option that is closest to your question. If you have several sub-questions, run this once for each.</p>
+ <div class="qopts" id="qopts" role="radiogroup" aria-label="What your question asks"></div>
+ <div class="qres" id="qres" aria-live="polite"></div>
+</div></section>
+
+<section class="psec alt" id="plan-pair"><div class="wrap">
+ <h2>Choose two methods that check each other</h2>
+ <p class="sub">One method leaves a gap that a reader can see. A second method from a different family covers it, and that is what turns a set of findings into an argument. Start from the mode of your project, or test a pair you already have in mind.</p>
+ <h3 class="ph3">Start from your mode</h3>
+ <p class="sub s2">Your mode is a commitment about what you will produce and what you can claim. Write one sentence describing what you will hand in at the end, then choose the mode that matches that sentence.</p>
+ <div class="qopts modes" id="mopts" role="radiogroup" aria-label="Mode of your project"></div>
+ <div class="qres" id="mres" aria-live="polite"></div>
+ <h3 class="ph3 gap">Check your own pair</h3>
+ <div class="chkform">
+  <div class="fld"><label for="pa">First method</label><select id="pa"></select></div>
+  <div class="fld"><label for="pb">Second method</label><select id="pb"></select></div>
+ </div>
+ <div class="qres" id="cres" aria-live="polite"></div>
+</div></section>
+
+<section class="psec" id="plan-short"><div class="wrap">
+ <h2>Your shortlist</h2>
+ <p class="sub">Add methods from a card, from the lists above, or from a pair. Compare them side by side, then copy or print the list. The list stays on this device and is not sent anywhere.</p>
+ <div id="short"></div>
+</div></section>
+</main>
+{FOOT}
+</div>
+
+<div id="p-before" class="page">
+{header('before')}
+<nav class="bc" aria-label="Breadcrumb"><div class="in">
+ <button onclick="home()">All methods</button><span class="sep" aria-hidden="true">/</span>
+ <span aria-current="page">Before you collect</span>
+</div></nav>
+<main id="main-before" tabindex="-1">
+<section class="phero"><div class="wrap">
+ <p class="kicker">Planning tools</p>
+ <h1 id="before-title" tabindex="-1">Before you collect</h1>
+ <p class="lede">Most of what goes wrong in a student research project is set before the first interview or observation. Settle these six things first, then collect. This page does not replace your instructor&rsquo;s guidance or your institution&rsquo;s research ethics review.</p>
+ <div class="pjump" role="navigation" aria-label="On this page">
+  <button onclick="go('bt-plan')">Plan</button>
+  <button onclick="go('bt-analysis')">Analysis</button>
+  <button onclick="go('bt-consent')">Consent</button>
+  <button onclick="go('bt-protocol')">Protocol</button>
+  <button onclick="go('bt-numbers')">Numbers</button>
+  <button onclick="go('bt-name')">Naming</button>
+  <button onclick="go('bt-templates')">All templates</button>
+ </div>
+</div></section>
+
+<section class="psec" id="bt-plan"><div class="wrap">
+ <h2>Write the plan first</h2>
+ <p class="sub">A plan written in advance lets you tell a reader what changed and why. A plan written afterward only describes what happened.</p>
+ <ul class="btlist">
+  <li><b>Question and mode.</b> One main question, three to five sub-questions, and the mode of your project: into, through, or for design.</li>
+  <li><b>Two methods from different families.</b> Each should cover what the other cannot show. Write the checking sentence: &ldquo;My second method checks my first because &hellip;&rdquo;</li>
+  <li><b>A target sample, as a number.</b> Write it before you recruit, and write what you will do if recruitment stalls. Reducing to a smaller sample and saying so is honest. Switching to a different population without saying so is not.</li>
+  <li><b>A timeline with room for delay.</b> Recruitment and scheduling almost always take longer than you expect.</li>
+ </ul>
+ <p class="bttools" id="bt-plan-tools"></p>
+ <p class="btnext"><button onclick="openPlan()">Open Plan your research</button></p>
+</div></section>
+
+<section class="psec alt" id="bt-analysis"><div class="wrap">
+ <h2>Decide how you will analyze, now</h2>
+ <p class="sub">Criteria written after you have seen the material tend to fit the material. Write them before.</p>
+ <ul class="btlist">
+  <li><b>A codebook before you code.</b> Each code has a name, a one-sentence definition, an example, and a note on what it excludes.</li>
+  <li><b>A second coder.</b> Ask someone to code about 20 percent of your material with your codebook. Record where you disagreed and how you settled it.</li>
+  <li><b>Scales defined in advance.</b> If you rate or score things, write what a 1 and a 5 mean before you look at the items.</li>
+  <li><b>An exclusion rule.</b> Decide what counts as off-topic or unusable before you see the material.</li>
+  <li><b>What would count against your claim.</b> Name the evidence that would weaken your argument, then look for it.</li>
+ </ul>
+ <p class="bttools" id="bt-analysis-tools"></p>
+</div></section>
+
+<section class="psec" id="bt-consent"><div class="wrap">
+ <h2>Settle consent before you contact anyone</h2>
+ <p class="sub">Consent is arranged in advance, and your paper should say what you did. Whether your project needs formal review is decided by your instructor or institution, and it is decided before you collect.</p>
+ <ul class="btlist">
+  <li><b>Tell people what they are joining.</b> Who you are, what the project is, what you will ask or do, how long it takes, and that taking part is voluntary and they may stop at any time.</li>
+  <li><b>Ask for recording separately.</b> Audio, video, and photos each need their own yes.</li>
+  <li><b>Promise only what you will do.</b> If you promise anonymity, no participant is named anywhere in your paper, including the appendix. If you promise to delete recordings, delete them.</li>
+  <li><b>Take extra care with some groups.</b> Minors, people recruited through health or support communities, and people affected by a recent crisis need added protection. If your question points there, talk to your instructor or your ethics office before you contact anyone.</li>
+  <li><b>Store data where only you can reach it,</b> and remove identifying details from transcripts.</li>
+ </ul>
+ <p class="bttools" id="bt-consent-tools"></p>
+</div></section>
+
+<section class="psec alt" id="bt-protocol"><div class="wrap">
+ <h2>Write the protocol, then keep the record</h2>
+ <p class="sub">A protocol is what you will do, written so that another person could do it. A record shows what you did.</p>
+ <ul class="btlist">
+  <li><b>Try your instrument once.</b> Run the interview guide, survey, or observation sheet with a classmate before you use it with participants.</li>
+  <li><b>Write a question that could surprise you.</b> Include one that could return an answer you do not want. Ask about a specific recent event instead of habits.</li>
+  <li><b>Sample different times.</b> When you observe, spread sessions across days and hours so one unusual hour does not stand for the whole.</li>
+  <li><b>Keep description and interpretation apart.</b> Write what happened in one column and what you think it means in another.</li>
+  <li><b>Log every change.</b> Record the date, what changed, and why. A study that changed is normal. A study whose changes are hidden looks unreliable.</li>
+ </ul>
+ <p class="bttools" id="bt-protocol-tools"></p>
+</div></section>
+
+<section class="psec" id="bt-numbers"><div class="wrap">
+ <h2>Report numbers honestly</h2>
+ <p class="sub">Small samples are fine for a first project. Presenting them as larger than they are is the problem.</p>
+ <ul class="btlist">
+  <li><b>Below about 20 responses,</b> report counts (&ldquo;7 of 12&rdquo;), not percentages.</li>
+  <li><b>Target and actual.</b> Report both, and the gap, in your methods section.</li>
+  <li><b>Who the sample can speak for.</b> A convenience sample describes the people you reached. Do not call it representative.</li>
+  <li><b>What a rating meant.</b> If you report scores, say what the scale meant and who defined it.</li>
+  <li><b>Agreement between coders.</b> Report the number of agreements (&ldquo;14 of 16 excerpts&rdquo;) and how you settled the rest.</li>
+ </ul>
+ <p class="bttools" id="bt-numbers-tools"></p>
+</div></section>
+
+<section class="psec alt" id="bt-name"><div class="wrap">
+ <h2>Name the method for what you actually did</h2>
+ <p class="sub">A method name is a claim about rigor, and a reader who knows the method will check it. If what you did does not meet the requirements, use the name that fits.</p>
+ <table class="bttab">
+  <thead><tr><th scope="col">If you wrote</th><th scope="col">And what you did was</th><th scope="col">Use instead</th></tr></thead>
+  <tbody>
+   <tr><td>Focus group</td><td>Participants commented on a shared board over several days, without meeting</td><td>Asynchronous expert review</td></tr>
+   <tr><td>Thematic analysis</td><td>You counted word frequencies or made a word cloud</td><td>Word frequency analysis</td></tr>
+   <tr><td>Systematic literature review</td><td>You gathered sources without stated inclusion criteria or a search protocol</td><td>Purposive or scoping literature review</td></tr>
+   <tr><td>A/B test</td><td>Each respondent saw both versions and picked one</td><td>Forced choice preference test</td></tr>
+   <tr><td>Heuristic evaluation</td><td>One person applied part of a heuristic set</td><td>Informal expert review</td></tr>
+   <tr><td>Case study</td><td>You interviewed people at one organization</td><td>Interview study</td></tr>
+  </tbody>
+ </table>
+ <p class="sub">To use the stronger name, meet its requirements. A systematic review needs stated inclusion criteria and a documented search. A heuristic evaluation needs several evaluators and a complete heuristic set. Thematic analysis needs a codebook and coded excerpts.</p>
+ <p class="bttools" id="bt-name-tools"></p>
+</div></section>
+
+<section class="psec" id="bt-templates"><div class="wrap">
+ <h2>All templates</h2>
+ <p class="sub">Each file is a starting point to fill in and adapt. The same files appear on the method cards where they apply.</p>
+ <ul class="btall" id="bt-all"></ul>
+ <p class="btnote">These templates were drafted for this site. They are not official forms and are not course materials. The consent script does not replace formal review, and your instructor or institution decides what your project needs.</p>
+</div></section>
 </main>
 {FOOT}
 </div>
