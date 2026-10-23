@@ -355,10 +355,7 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .ddbars{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:2px}
 .ddseg{display:block;background:none;border:0;padding:6px 0 7px;cursor:pointer;border-radius:3px;font:inherit;color:inherit}
 .ddseg i{height:9px;border-radius:2px;background:rgba(255,255,255,.12);display:block;margin-bottom:8px;transition:background .15s}
-.ddseg i.research{background:rgba(253,201,7,.38)}
-.ddseg i.insights{background:rgba(235,91,84,.38)}
-.ddseg i.ideation{background:rgba(131,188,44,.38)}
-.ddseg i.proto{background:rgba(74,142,203,.38)}
+.ddseg i.research,.ddseg i.insights,.ddseg i.ideation,.ddseg i.proto{background:#c4c4c4}
 .ddseg i.on.research{background:var(--research)}
 .ddseg i.on.insights{background:var(--insights)}
 .ddseg i.on.ideation{background:var(--ideation)}
@@ -9083,22 +9080,22 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
   "research": {
    "name": "Research",
    "ddPhase": "Discover",
-   "ddNote": "Used in the Discover phase, where teams explore widely to understand users, contexts, and existing conditions."
+   "ddNote": "Used in the Research phase, where teams explore widely to understand users, contexts, and existing conditions."
   },
   "insights": {
    "name": "Insights",
    "ddPhase": "Define",
-   "ddNote": "Used in the Define phase, where teams synthesize research data and converge on a clear problem definition."
+   "ddNote": "Used in the Insights phase, where teams synthesize research data and converge on a clear problem definition."
   },
   "ideation": {
    "name": "Ideation",
    "ddPhase": "Develop",
-   "ddNote": "Used in the Develop phase, where teams diverge again to generate and explore many possible design solutions."
+   "ddNote": "Used in the Ideation phase, where teams diverge again to generate and explore many possible design solutions."
   },
   "proto": {
    "name": "Prototyping",
    "ddPhase": "Deliver",
-   "ddNote": "Used in the Deliver phase, where teams make ideas tangible, test them with users, and converge on solutions."
+   "ddNote": "Used in the Prototyping phase, where teams make ideas tangible, test them with users, and converge on solutions."
   }
  },
  "phaseColor": {
@@ -9409,8 +9406,8 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
   <div class="t">NC STATE UNIVERSITY<span>College of Design</span></div>
  </div>
  <div class="meta">Method cards written by Design Studies students at NC State's College of Design.<br>
-  Published for students, faculty, and design practitioners.<br>
-  Site created and maintained by Andr&eacute;s T&eacute;llez, Assistant Professor of Design Studies.</div>
+  Site created and maintained by Andr&eacute;s T&eacute;llez, Assistant Professor of Design Studies.<br>
+  Published for students, faculty, and design practitioners.</div>
 </div></footer>
 </div>
 
@@ -9462,8 +9459,8 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
   <div class="t">NC STATE UNIVERSITY<span>College of Design</span></div>
  </div>
  <div class="meta">Method cards written by Design Studies students at NC State's College of Design.<br>
-  Published for students, faculty, and design practitioners.<br>
-  Site created and maintained by Andr&eacute;s T&eacute;llez, Assistant Professor of Design Studies.</div>
+  Site created and maintained by Andr&eacute;s T&eacute;llez, Assistant Professor of Design Studies.<br>
+  Published for students, faculty, and design practitioners.</div>
 </div></footer>
 </div>
 
@@ -9965,7 +9962,7 @@ function detail(m){
   q('bc-name').textContent  = m.name;
 
   var hero = q('dhero'); hero.className = 'dhero ' + m.phase;
-  q('d-eyebrow').textContent = pc.name + ' · ' + pc.ddPhase;
+  q('d-eyebrow').textContent = pc.name;
   q('d-title').textContent   = m.name;
   q('d-alts').textContent    = (m.altNames && m.altNames.length) ? 'Also known as ' + m.altNames.join(', ') : '';
   var by = q('d-by'); by.innerHTML = '';

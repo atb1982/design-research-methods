@@ -5728,22 +5728,22 @@
   "research": {
    "name": "Research",
    "ddPhase": "Discover",
-   "ddNote": "Used in the Discover phase, where teams explore widely to understand users, contexts, and existing conditions."
+   "ddNote": "Used in the Research phase, where teams explore widely to understand users, contexts, and existing conditions."
   },
   "insights": {
    "name": "Insights",
    "ddPhase": "Define",
-   "ddNote": "Used in the Define phase, where teams synthesize research data and converge on a clear problem definition."
+   "ddNote": "Used in the Insights phase, where teams synthesize research data and converge on a clear problem definition."
   },
   "ideation": {
    "name": "Ideation",
    "ddPhase": "Develop",
-   "ddNote": "Used in the Develop phase, where teams diverge again to generate and explore many possible design solutions."
+   "ddNote": "Used in the Ideation phase, where teams diverge again to generate and explore many possible design solutions."
   },
   "proto": {
    "name": "Prototyping",
    "ddPhase": "Deliver",
-   "ddNote": "Used in the Deliver phase, where teams make ideas tangible, test them with users, and converge on solutions."
+   "ddNote": "Used in the Prototyping phase, where teams make ideas tangible, test them with users, and converge on solutions."
   }
  },
  "phaseColor": {
