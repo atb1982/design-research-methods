@@ -13,6 +13,13 @@ for _k, _v in _tp.items():
     for _l in _v:
         assert _l['url'].startswith('https://') and _l['title'] and _l['publisher'] and _l['format'] and _l['access'], _l
     _ids[_k]['templates'] = _v
+_pr = json.load(open('pairs.json', encoding='utf-8'))
+assert set(_pr) == set(_ids), set(_ids) ^ set(_pr)
+for _k, _v in _pr.items():
+    assert 2 <= len(_v) <= 4, _k
+    for _o, _why in _v:
+        assert _o in _ids and _o != _k and _why, (_k, _o)
+    _ids[_k]['pairs'] = [{'id': _o, 'why': _why} for _o, _why in _v]
 data_json = json.dumps(_d, ensure_ascii=False, indent=1)
 assert '</script' not in data_json.lower()
 
@@ -328,12 +335,22 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .ovlist li a{display:inline-block;padding:3px 0;font-weight:500;color:var(--g800);text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
 .ovlist li a:hover{text-decoration-color:var(--red);color:var(--red-dk)}
 .ovlist .pub{display:block;font-size:13px;color:var(--gtxt);margin-top:2px}
+.pairlist li{list-style:none;padding:10px 0;border-bottom:1px solid var(--g100);font-size:14px;line-height:1.55;color:var(--g700)}
+.pairlist button{display:inline-flex;align-items:center;gap:9px;padding:4px 0;font-size:14.5px;font-weight:500;color:var(--g800);cursor:pointer;background:none;border:0;font-family:inherit;text-align:left}
+.pairlist .nm{text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
+.pairlist button:hover{color:var(--red-dk)}
+.pairlist button:hover .nm{text-decoration-color:var(--red)}
+.pairlist .d{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.pairlist .ph{font-size:12px;font-weight:400;color:var(--gtxt)}
+.pairlist .why{display:block;font-size:13px;color:var(--gtxt);margin-top:1px}
 .tplist li{list-style:none;padding:11px 0;border-bottom:1px solid var(--g100);font-size:14px;line-height:1.55;color:var(--g700)}
 .tplist li a{display:inline-block;padding:3px 0;font-weight:500;color:var(--g800);text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
 .tplist li a:hover{text-decoration-color:var(--red);color:var(--red-dk)}
 .tplist .pub,.tplist .acc,.tplist .on{display:block;font-size:13px;margin-top:2px;color:var(--gtxt)}
 .tplist .on{color:var(--g700)}
 .ovlist .on{display:block;font-size:13px;color:var(--g700);margin-top:2px}
+.prose strong,.wlist strong,.slist strong{font-weight:700;color:var(--text)}
+.cite em{font-style:italic}
 .ovnote{font-size:12.5px;color:var(--gtxt);margin-top:10px}
 .exbox p+p{margin-top:12px}
 .noimg{background:var(--g100);border:2px dashed var(--g300);border-radius:5px;padding:30px 22px;text-align:center}
@@ -360,6 +377,7 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .ddseg:hover span{color:#fff;text-decoration-color:#fff}
 .ddseg:hover i{filter:brightness(1.35)}
 .ddseg:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.ddhelp{font-size:11.5px;color:rgba(255,255,255,.72);text-align:center;margin-top:6px}
 .ddnote{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6;margin-top:12px;padding-top:12px;
  border-top:1px solid rgba(255,255,255,.09)}
 .nlist li{padding:7px 0;border-bottom:1px solid var(--g100);font-size:13px;line-height:1.5;
@@ -437,6 +455,17 @@ function el(tag, cls, txt){
   if (cls) e.className = cls;
   if (txt != null) e.textContent = txt;
   return e;
+}
+/* **bold** and *italic* markup in card text; everything else stays plain text */
+function plain(s){ return String(s == null ? '' : s).replace(/\*+/g, ''); }
+function rich(parent, text){
+  String(text == null ? '' : text).split(/(\*\*[^*]+\*\*|\*[^*]+\*)/).forEach(function(p){
+    if (!p) return;
+    if (p.slice(0,2) === '**' && p.length > 4) parent.appendChild(el('strong', null, p.slice(2,-2)));
+    else if (p.charAt(0) === '*' && p.length > 2) parent.appendChild(el('em', null, p.slice(1,-1)));
+    else parent.appendChild(document.createTextNode(p));
+  });
+  return parent;
 }
 function esc(s){ var d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; }
 function mark(text, alt){
@@ -581,15 +610,15 @@ function setPhase(p){
 /* full-text index: every field of a card is searchable, with word forms and related terms */
 function idx(m){
   if (m._ix) return m._ix;
-  var join = function(a){ return (a || []).join(' '); };
+  var join = function(a){ return plain((a || []).join(' ')); };
   var fields = [
-    ['Description', m.whatItIs || ''],
+    ['Description', plain(m.whatItIs)],
     ['When to use it', join(m.whenToUse)],
     ['Steps', join(m.howToDoIt)],
     ['What you need', join(m.whatYouNeed)],
     ['Tips', join(m.tips)],
     ['Common mistakes', join(m.mistakes)],
-    ['Example', m.example || ''],
+    ['Example', plain(m.example)],
     ['Sources', join(m.sources)]
   ];
   var head = Search.block(m.name + ' ' + join(m.altNames));
@@ -686,7 +715,7 @@ function render(){
       if (query) ha.innerHTML = mark(m.name, alt); else ha.textContent = m.name;
       h.appendChild(ha);
       b.appendChild(h);
-      var snip = m.whatItIs.length > 112 ? m.whatItIs.slice(0,112) + '…' : m.whatItIs;
+      var wi = plain(m.whatItIs), snip = wi.length > 112 ? wi.slice(0,112) + '…' : wi;
       var pp = el('p');
       var ex = (query && Math.floor(ev.rank) >= 2) ? excerpt(m, alt) : null;
       if (ex) pp.innerHTML = '<b>' + esc(ex.label) + ':<\/b> ' + mark(ex.text, alt);
@@ -755,19 +784,19 @@ function detail(m){
     main.appendChild(el('div','notice',
       'This method has a short reference entry. Full documentation is written by students, and this card is available for a future class to complete.'));
   }
-  section(main, 'What it is', el('p','prose', m.whatItIs));
+  section(main, 'What it is', rich(el('p','prose'), m.whatItIs));
 
   if (m.kind === 'full'){
     if (m.whenToUse && m.whenToUse.length){
       var u = el('ul','wlist');
       m.whenToUse.forEach(function(x){
-        var li = el('li'); li.appendChild(el('span','d')); li.appendChild(el('span',null,x)); u.appendChild(li);
+        var li = el('li'); li.appendChild(el('span','d')); li.appendChild(rich(el('span'),x)); u.appendChild(li);
       });
       section(main, 'When to use it', u);
     }
     if (m.howToDoIt && m.howToDoIt.length){
       var o = el('ol','slist');
-      m.howToDoIt.forEach(function(x){ o.appendChild(el('li', null, x)); });
+      m.howToDoIt.forEach(function(x){ var li = el('li'); li.appendChild(rich(el('span'), x)); o.appendChild(li); });
       section(main, 'How to do it', o);
     }
     if (m.example){
@@ -793,7 +822,7 @@ function detail(m){
           a.href = p; a.target = '_blank'; a.rel = 'noopener'; a.textContent = p;
           d.appendChild(a);
         } else if (p) {
-          d.appendChild(document.createTextNode(p));
+          rich(d, p);
         }
       });
       sw.appendChild(d);
@@ -834,6 +863,22 @@ function detail(m){
     tw.appendChild(tu);
     tw.appendChild(el('p','ovnote','Links go to other websites. Templates are made by their publishers and are not part of the course books. Links checked October 2026.'));
     section(main, 'Templates and worksheets', tw);
+  }
+
+  if (m.pairs && m.pairs.length){
+    var pu = el('ul','pairlist');
+    m.pairs.forEach(function(pr){
+      var o = BY[pr.id]; if (!o) return;
+      var li = el('li'), b = document.createElement('button');
+      b.type = 'button';
+      var dot = el('span','d'); dot.style.background = PCOL[o.phase]; dot.setAttribute('aria-hidden','true');
+      b.appendChild(dot); b.appendChild(el('span','nm', o.name));
+      b.appendChild(el('span','ph', PC[o.phase].name));
+      b.addEventListener('click', function(){ open(o.id); });
+      li.appendChild(b); li.appendChild(el('span','why', pr.why));
+      pu.appendChild(li);
+    });
+    section(main, 'Pairs well with', pu);
   }
 
   if (m.library && m.library.length){
@@ -903,7 +948,7 @@ function detail(m){
 
   var dd = el('div','sb'); dd.appendChild(el('h2', null, 'Where it sits'));
   var ind = el('div','ddind');
-  ind.appendChild(el('div','lab','Double Diamond position. Select a phase to see its methods.'));
+  ind.appendChild(el('div','lab','Double Diamond position'));
   var bars = el('div','ddbars');
   PHASES.forEach(function(p){
     var b = el('button','ddseg' + (p===m.phase ? ' on' : ''));
@@ -917,6 +962,7 @@ function detail(m){
     bars.appendChild(b);
   });
   ind.appendChild(bars);
+  ind.appendChild(el('div','ddhelp','Select a phase to see its methods.'));
   ind.appendChild(el('div','ddnote', pc.ddNote));
   dd.appendChild(ind); sb.appendChild(dd);
 
