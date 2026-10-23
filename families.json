@@ -1,0 +1,587 @@
+{
+ "artifact-analysis": {
+  "family": "read",
+  "show": "What was made, with what materials, and how it looks and works.",
+  "limit": "How people received or used it, unless you also ask or watch."
+ },
+ "automated-remote-research": {
+  "family": "watch",
+  "show": "What large numbers of people do in their own settings, at scale.",
+  "limit": "Why they do it, or who they are, beyond what the software records."
+ },
+ "behavioral-mapping": {
+  "family": "watch",
+  "show": "Where people go and what they do in a space, with counts.",
+  "limit": "Why they chose a route or activity, or what happens outside the hours you mapped."
+ },
+ "buzz-reports": {
+  "family": "read",
+  "show": "What people are saying about a topic right now, and in what words.",
+  "limit": "How many people hold a view, or whether their talk matches their behavior."
+ },
+ "case-studies": {
+  "family": "read",
+  "show": "How a particular case unfolded in its context, in depth.",
+  "limit": "That other cases would behave the same way."
+ },
+ "competitive-testing": {
+  "family": "test",
+  "show": "How competing products compare on the same tasks, using the measures you set.",
+  "limit": "Why one product works better, or how any of them perform for people outside your test."
+ },
+ "content-inventory-audit": {
+  "family": "read",
+  "show": "What content exists and what condition it is in.",
+  "limit": "How readers find, use, or understand it."
+ },
+ "contextual-inquiry": {
+  "family": "watch",
+  "show": "How work really happens in its setting, including workarounds people forget to mention.",
+  "limit": "Patterns across a wider population, from a few visits."
+ },
+ "critical-incident-technique": {
+  "family": "ask",
+  "show": "Specific events that helped or hindered, as people recall them.",
+  "limit": "How often such events happen, or what people forgot."
+ },
+ "crowdsourcing": {
+  "family": "ask",
+  "show": "A wide range of contributions, quickly, from many people.",
+  "limit": "Who the contributors are, or whether they represent your users."
+ },
+ "cultural-probes": {
+  "family": "make",
+  "show": "What participants notice, value, and imagine when given open creative tasks.",
+  "limit": "A general claim, since only people who chose to respond are heard."
+ },
+ "design-ethnography": {
+  "family": "watch",
+  "show": "Meaning, culture, and everyday practice in a setting, built up over time.",
+  "limit": "How common a practice is beyond the setting you studied."
+ },
+ "diary-studies": {
+  "family": "ask",
+  "show": "Experiences and routines over days or weeks, recorded close to when they happened.",
+  "limit": "What people leave out, or how recording changed what they did."
+ },
+ "directed-storytelling": {
+  "family": "ask",
+  "show": "One person’s account of a specific experience, in sequence, with emotions and turning points.",
+  "limit": "What the person actually did, or how typical the story is."
+ },
+ "ergonomic-analysis": {
+  "family": "test",
+  "show": "Whether a tool or space fits the human body in reach, posture, force, and effort.",
+  "limit": "Preferences, meaning, or comfort over long use, unless you also ask."
+ },
+ "evidence-based-design": {
+  "family": "read",
+  "show": "What published studies and measured outcomes say about a design choice.",
+  "limit": "Whether those findings hold in your setting or for your users."
+ },
+ "experience-sampling-method": {
+  "family": "ask",
+  "show": "What people are doing, thinking, or feeling at random moments in daily life.",
+  "limit": "Why they feel it, or what happens in moments when they could not respond."
+ },
+ "experiments": {
+  "family": "test",
+  "show": "Whether a change moves an outcome, and by how much, under controlled conditions.",
+  "limit": "Why the effect happens, or whether it holds outside your test."
+ },
+ "extremes-and-mainstreams": {
+  "family": "ask",
+  "show": "Needs and workarounds at the edges of a population, next to typical use.",
+  "limit": "How common each need is."
+ },
+ "fly-on-the-wall-observation": {
+  "family": "watch",
+  "show": "Natural behavior, with little influence from you.",
+  "limit": "Intentions and reasons, unless you also ask."
+ },
+ "focus-groups": {
+  "family": "ask",
+  "show": "A range of views and the language a group uses, as people respond to each other.",
+  "limit": "What individuals would say alone, or what people actually do."
+ },
+ "graffiti-walls": {
+  "family": "make",
+  "show": "Quick, candid, anonymous responses to an open prompt.",
+  "limit": "A representative view, since people choose whether to write."
+ },
+ "guerilla-user-research": {
+  "family": "ask",
+  "show": "Fast first reactions from whoever is available in a public place.",
+  "limit": "Depth, or the views of people who were not there."
+ },
+ "innovation-sourcebook": {
+  "family": "read",
+  "show": "How other organizations solved similar problems, in a comparable form.",
+  "limit": "Whether those solutions would work for you."
+ },
+ "interviews": {
+  "family": "ask",
+  "show": "Experiences, beliefs, attitudes, and stated reasons, in people’s own words.",
+  "limit": "What people actually do, or the effect of a change."
+ },
+ "laddering": {
+  "family": "ask",
+  "show": "The chain from a feature to the personal value behind a preference.",
+  "limit": "Whether that chain applies beyond the person you asked."
+ },
+ "listening-tour": {
+  "family": "ask",
+  "show": "What people in an organization or community raise when they are given the floor.",
+  "limit": "The views of people who did not take part, or anything the leader’s presence shaped."
+ },
+ "literature-reviews": {
+  "family": "read",
+  "show": "What is already known, and where published accounts thin out.",
+  "limit": "What is true in your setting, or anything not yet studied."
+ },
+ "observation": {
+  "family": "watch",
+  "show": "What people do in a real setting, and in what order.",
+  "limit": "Why they do it, unless you also ask."
+ },
+ "participant-observation": {
+  "family": "watch",
+  "show": "Practice from the inside, including what people take for granted.",
+  "limit": "A neutral view, since your participation shapes what you see."
+ },
+ "participatory-action-research": {
+  "family": "make",
+  "show": "Change in a setting, shaped by the people affected, and what the group learns by acting.",
+  "limit": "A general claim, or a result that is independent of the people involved."
+ },
+ "personal-inventories": {
+  "family": "ask",
+  "show": "How a person relates to the objects they own and use.",
+  "limit": "How other people relate to similar objects."
+ },
+ "photo-studies": {
+  "family": "make",
+  "show": "What participants choose to notice and photograph in their own lives.",
+  "limit": "Why they chose it, unless you ask about each photo."
+ },
+ "picture-cards": {
+  "family": "make",
+  "show": "Associations and feelings that are hard to put into words, through what people choose and explain.",
+  "limit": "A general claim, since the cards you provide shape the answers."
+ },
+ "popular-media-scan": {
+  "family": "read",
+  "show": "How a topic is framed and described in public media.",
+  "limit": "What people think or do."
+ },
+ "questionnaires-surveys": {
+  "family": "ask",
+  "show": "What many people report about themselves, in a form you can count.",
+  "limit": "What people actually do, or why they answered as they did."
+ },
+ "remote-moderated-research": {
+  "family": "watch",
+  "show": "How people use a product in their own setting, with the chance to ask as they go.",
+  "limit": "The surroundings you cannot see, or behavior when no one is watching."
+ },
+ "secondary-research": {
+  "family": "read",
+  "show": "What published and existing sources already report.",
+  "limit": "Answers to questions those sources never asked."
+ },
+ "semantic-differential": {
+  "family": "test",
+  "show": "How a group rates the feel of a design on named qualities, as numbers.",
+  "limit": "Behavior, or why a design feels the way it does."
+ },
+ "shadowing": {
+  "family": "watch",
+  "show": "A person’s day or task as it unfolds across places and moments.",
+  "limit": "Patterns beyond the person you followed."
+ },
+ "site-search-analytics": {
+  "family": "watch",
+  "show": "What people search for and where searches fail.",
+  "limit": "Why they searched, or what they wanted when they typed nothing."
+ },
+ "the-love-letter-the-breakup-letter": {
+  "family": "make",
+  "show": "Strong feelings about a product, in the writer’s own words.",
+  "limit": "Everyday use, or the views of people who did not write."
+ },
+ "touchstone-tours": {
+  "family": "watch",
+  "show": "How a person relates to a space and its objects, as they narrate a walk through it.",
+  "limit": "How other people experience the same space."
+ },
+ "triading": {
+  "family": "ask",
+  "show": "The distinctions people draw between items, in their own words.",
+  "limit": "How common those distinctions are."
+ },
+ "unobtrusive-measures": {
+  "family": "watch",
+  "show": "Traces of behavior left behind, such as wear, litter, or logs, with no contact with participants.",
+  "limit": "Who left the traces, or why."
+ },
+ "abstraction-laddering": {
+  "family": "analyze",
+  "show": "A problem reframed at higher and lower levels of purpose.",
+  "limit": "Whether the reframing is right. It stays your interpretation until you test it."
+ },
+ "aeiou": {
+  "family": "watch",
+  "show": "Field notes sorted into activities, environments, interactions, objects, and users.",
+  "limit": "The reasons for behavior, unless you also ask."
+ },
+ "affinity-diagramming": {
+  "family": "analyze",
+  "show": "Themes that recur across notes, quotes, and observations.",
+  "limit": "Anything the data did not already contain, or how common a theme is."
+ },
+ "bulls-eye-diagramming": {
+  "family": "analyze",
+  "show": "Which findings a group ranks as most important, in agreed rings.",
+  "limit": "Why they matter. The ranking reflects the people who ranked."
+ },
+ "card-sorting": {
+  "family": "ask",
+  "show": "How people group and name items, and which categories make sense to them.",
+  "limit": "Whether a structure works when people use it."
+ },
+ "cognitive-mapping": {
+  "family": "analyze",
+  "show": "How a person connects ideas about a topic, drawn as a map.",
+  "limit": "Whether other people think the same way."
+ },
+ "concept-mapping": {
+  "family": "analyze",
+  "show": "How ideas relate to each other around a central topic.",
+  "limit": "Whether the relationships hold beyond the person who drew the map."
+ },
+ "content-analysis": {
+  "family": "read",
+  "show": "Patterns in text, media, or images, counted against a coding scheme.",
+  "limit": "How audiences receive the content."
+ },
+ "create-insight-statements": {
+  "family": "analyze",
+  "show": "Findings stated as a tension worth designing for.",
+  "limit": "That the insight is true. It is an interpretation of your data."
+ },
+ "elito-method": {
+  "family": "analyze",
+  "show": "A traceable path from observation to interpretation to design consequence.",
+  "limit": "Whether the interpretation is correct."
+ },
+ "eraf-systems-diagram": {
+  "family": "analyze",
+  "show": "The entities, relationships, and flows in a system.",
+  "limit": "How the system behaves over time."
+ },
+ "experience-diagramming": {
+  "family": "analyze",
+  "show": "A user’s steps, thoughts, and feelings across an experience.",
+  "limit": "The experiences of people you did not study."
+ },
+ "find-themes": {
+  "family": "analyze",
+  "show": "Recurring patterns in the data, named as topics.",
+  "limit": "How many people share each theme."
+ },
+ "importancedifficulty-matrix": {
+  "family": "analyze",
+  "show": "Items sorted by value against effort.",
+  "limit": "Whether the estimates of value and effort are right."
+ },
+ "kano-analysis": {
+  "family": "ask",
+  "show": "Which features people expect, want, or do not care about.",
+  "limit": "Behavior, or what people would pay for."
+ },
+ "kj-technique": {
+  "family": "analyze",
+  "show": "Groups that appear when a team clusters notes in silence.",
+  "limit": "Anything beyond the notes the team brought."
+ },
+ "mental-model-diagrams": {
+  "family": "analyze",
+  "show": "How people think and act around a task, set against what a product offers.",
+  "limit": "A model that holds for everyone."
+ },
+ "mind-mapping": {
+  "family": "analyze",
+  "show": "Related ideas branching from one topic.",
+  "limit": "Which ideas are good or true."
+ },
+ "personas": {
+  "family": "analyze",
+  "show": "Patterns of behavior and need, described as a typical person.",
+  "limit": "Real individuals, or how many people fit each persona."
+ },
+ "poems": {
+  "family": "watch",
+  "show": "Observations sorted into people, objects, environments, messages, and services.",
+  "limit": "The reasons for behavior, unless you also ask."
+ },
+ "problem-tree-analysis": {
+  "family": "analyze",
+  "show": "Proposed causes and consequences of a core problem.",
+  "limit": "That the causes are real. They are hypotheses until checked."
+ },
+ "rose-thorn-bud": {
+  "family": "analyze",
+  "show": "What a team sees as working, painful, or promising.",
+  "limit": "How many people agree."
+ },
+ "stakeholder-maps": {
+  "family": "analyze",
+  "show": "Who has an interest in a system and how they relate to each other.",
+  "limit": "What each stakeholder will actually do."
+ },
+ "statement-starters": {
+  "family": "analyze",
+  "show": "Problems reframed as open questions that invite ideas.",
+  "limit": "Whether the question is the right one."
+ },
+ "symmetric-clustering-matrix": {
+  "family": "analyze",
+  "show": "Which items relate most strongly when each is scored against the others.",
+  "limit": "Why they relate."
+ },
+ "task-analysis": {
+  "family": "analyze",
+  "show": "The actions, decisions, and system responses that make up a task.",
+  "limit": "Why people depart from the steps."
+ },
+ "ten-types-of-innovation-diagnostics": {
+  "family": "analyze",
+  "show": "Where an organization’s offerings are strong or thin across ten types of innovation.",
+  "limit": "How customers react."
+ },
+ "territory-maps": {
+  "family": "analyze",
+  "show": "How a large body of research findings clusters into areas.",
+  "limit": "Which areas matter most to users."
+ },
+ "thematic-networks": {
+  "family": "analyze",
+  "show": "How basic themes build into larger themes in text data.",
+  "limit": "Anything beyond the text you coded."
+ },
+ "top-five": {
+  "family": "analyze",
+  "show": "The findings or ideas a team finds most compelling.",
+  "limit": "That the team’s choices match what users need."
+ },
+ "visualize-the-vote": {
+  "family": "analyze",
+  "show": "Where a group’s attention and preferences lie.",
+  "limit": "Whether the preferred option is the better one."
+ },
+ "word-clouds": {
+  "family": "analyze",
+  "show": "Which words appear most often in a body of text.",
+  "limit": "What those words mean in context."
+ },
+ "alternative-worlds": {
+  "family": "make",
+  "show": "Ideas borrowed from how another context solves a similar problem.",
+  "limit": "Whether those ideas transfer to yours."
+ },
+ "analogous-inspiration": {
+  "family": "make",
+  "show": "Ideas drawn from an unrelated setting that shares a pattern with your problem.",
+  "limit": "Whether the pattern really carries over."
+ },
+ "bodystorming": {
+  "family": "make",
+  "show": "Ideas that come from acting out a situation in a space.",
+  "limit": "Whether the ideas work for real users."
+ },
+ "brainstorm-graphic-organizers": {
+  "family": "make",
+  "show": "A structured spread of ideas around a topic.",
+  "limit": "Which ideas are feasible or wanted."
+ },
+ "brainstorming": {
+  "family": "make",
+  "show": "A large number of ideas in a short time.",
+  "limit": "Which ideas are good, feasible, or wanted."
+ },
+ "bundle-ideas": {
+  "family": "make",
+  "show": "Stronger concepts built by combining related ideas.",
+  "limit": "Whether a bundle appeals to users."
+ },
+ "co-creation-session": {
+  "family": "make",
+  "show": "What users make and say when they help generate ideas.",
+  "limit": "A general claim, since a few participants shaped the ideas."
+ },
+ "concept-metaphors-and-analogies": {
+  "family": "make",
+  "show": "New angles on a concept from comparing it to something familiar.",
+  "limit": "Whether the comparison is accurate."
+ },
+ "concept-generating-matrix": {
+  "family": "make",
+  "show": "Ideas generated in each combination of two sets of categories.",
+  "limit": "Which combinations are practical."
+ },
+ "creative-toolkits": {
+  "family": "make",
+  "show": "What participants build or draw to express what they want.",
+  "limit": "A general claim, since the kit shapes what people make."
+ },
+ "design-charette": {
+  "family": "make",
+  "show": "Many ideas and critiques produced quickly by designers and stakeholders together.",
+  "limit": "How the ideas perform with users."
+ },
+ "design-workshops": {
+  "family": "make",
+  "show": "Ideas and agreements produced by a group in a structured session.",
+  "limit": "Whether they hold up outside the room."
+ },
+ "draw-it": {
+  "family": "make",
+  "show": "Visual ideas that words would not produce.",
+  "limit": "Whether the sketches are feasible or wanted."
+ },
+ "ideation-game": {
+  "family": "make",
+  "show": "Ideas prompted by the structure of a game.",
+  "limit": "Which ideas are good."
+ },
+ "image-boards": {
+  "family": "make",
+  "show": "A mood or direction, expressed through images.",
+  "limit": "What users make of that direction."
+ },
+ "mash-ups": {
+  "family": "make",
+  "show": "New concepts made by combining qualities from different things.",
+  "limit": "Whether a mash-up works in use."
+ },
+ "morphological-synthesis": {
+  "family": "make",
+  "show": "Solution combinations built systematically from parts.",
+  "limit": "Whether the combinations are practical."
+ },
+ "round-robin": {
+  "family": "make",
+  "show": "Ideas that build on each other as they pass between people.",
+  "limit": "Which ideas are worth pursuing."
+ },
+ "thumbnail-sketching": {
+  "family": "make",
+  "show": "Many quick visual options.",
+  "limit": "How they work, or whether people want them."
+ },
+ "ab-testing": {
+  "family": "test",
+  "show": "Which of two versions performs better on a measured outcome with real users.",
+  "limit": "Why one version wins, or what to try next."
+ },
+ "appearance-modeling": {
+  "family": "make",
+  "show": "How a design will look and feel in a realistic model.",
+  "limit": "Whether it works, or whether people want it."
+ },
+ "behavioral-prototype": {
+  "family": "make",
+  "show": "How people behave with a concept before a physical prototype exists.",
+  "limit": "How the finished product would perform."
+ },
+ "business-model-canvas": {
+  "family": "analyze",
+  "show": "How the parts of a business model fit together on one page.",
+  "limit": "Whether customers will pay, or whether the model will work."
+ },
+ "business-origami": {
+  "family": "make",
+  "show": "How a system or service works, simulated with paper figures.",
+  "limit": "How it would run at scale."
+ },
+ "cognitive-walkthrough": {
+  "family": "test",
+  "show": "Where a first-time user is likely to get stuck in a task, as judged by experts.",
+  "limit": "What real users do."
+ },
+ "desirability-testing": {
+  "family": "test",
+  "show": "Which words people choose to describe a design, positive and negative.",
+  "limit": "Whether they would use it."
+ },
+ "experience-prototyping": {
+  "family": "make",
+  "show": "How people respond to a concept in a simulated physical or social setting.",
+  "limit": "How they respond in real life."
+ },
+ "heuristic-evaluation": {
+  "family": "test",
+  "show": "Likely usability problems, found by experts against a set of principles.",
+  "limit": "Which problems real users face, or how severe those problems are for them."
+ },
+ "live-prototyping": {
+  "family": "test",
+  "show": "How a concept performs in a real setting with real people.",
+  "limit": "Why people respond as they do, unless you also ask."
+ },
+ "paper-prototyping": {
+  "family": "make",
+  "show": "Whether the structure and flow of an interface make sense, early and cheaply.",
+  "limit": "How it looks, feels, or performs in a finished form."
+ },
+ "parallel-prototyping": {
+  "family": "make",
+  "show": "How different directions compare before a team commits to one.",
+  "limit": "Which direction will succeed in the world."
+ },
+ "rapid-iterative-testing-evaluation": {
+  "family": "test",
+  "show": "Whether fixes made after one round of testing solved the problems found.",
+  "limit": "Whether the results hold with a larger group."
+ },
+ "role-playing": {
+  "family": "make",
+  "show": "Where a service experience is frustrating, acted out by people.",
+  "limit": "How real customers would react."
+ },
+ "scenario-description-swimlanes": {
+  "family": "analyze",
+  "show": "Who does what, and when, in a scenario.",
+  "limit": "Whether the scenario happens as described."
+ },
+ "stakeholder-walkthrough": {
+  "family": "analyze",
+  "show": "How stakeholders read the findings, and what they add.",
+  "limit": "Whether their reading matches users’ experience."
+ },
+ "storyboarding": {
+  "family": "make",
+  "show": "How an experience unfolds over time, drawn as a sequence.",
+  "limit": "How people would actually experience it."
+ },
+ "think-aloud-protocol": {
+  "family": "test",
+  "show": "What people are thinking as they use a design.",
+  "limit": "Thoughts people cannot or do not say aloud, or their natural pace of use."
+ },
+ "usability-report": {
+  "family": "analyze",
+  "show": "A summary of what usability testing found and what to fix.",
+  "limit": "More than the tests it reports on."
+ },
+ "usability-testing": {
+  "family": "test",
+  "show": "Where people struggle to complete tasks with a design.",
+  "limit": "Why they would choose it over others, or how they use it over time."
+ },
+ "wizard-of-oz": {
+  "family": "make",
+  "show": "How people respond to a system’s behavior before it is built.",
+  "limit": "Whether it can be built, or how it would perform at scale."
+ }
+}

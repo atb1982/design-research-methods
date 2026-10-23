@@ -57,7 +57,8 @@
    ],
    "pairedWith": "experience-prototyping",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "automated-remote-research",
@@ -84,7 +85,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "behavioral-mapping",
@@ -147,7 +149,8 @@
    ],
    "pairedWith": "scenario-description-swimlanes",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "buzz-reports",
@@ -208,7 +211,8 @@
    ],
    "pairedWith": "poems",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "case-studies",
@@ -272,7 +276,8 @@
    ],
    "pairedWith": "personas",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the steps, and the tips were expanded with material paraphrased from Martin and Hanington (2012), p. 28.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "competitive-testing",
@@ -294,14 +299,49 @@
      "title": "Competitive Testing"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "Researchers run **structured usability tasks** on **competitor products** to establish a **performance baseline**. Comparing task completion, error rates, and learnability shows where an existing product stands and which conventions users already expect.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 15, p. 36.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Dumas, J. S., & Redish, J. C. (1999). *A practical guide to usability testing* (Rev. ed.). Intellect Books.",
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Neusesser, T. (2024, January 5). *Competitive usability evaluations*. Nielsen Norman Group. https://www.nngroup.com/articles/competitive-usability-evaluations/",
+    "Rubin, J., & Chisnell, D. (2008). *Handbook of usability testing: How to plan, design, and conduct effective tests* (2nd ed.). Wiley."
+   ],
+   "whenToUse": [
+    "Early in a project, to see **how existing products perform** on the tasks your users care about.",
+    "When you need a **baseline** to beat or to compare your own design against.",
+    "When you want to learn **which conventions users already know** and where competitors fall short."
+   ],
+   "howToDoIt": [
+    "**Choose products and tasks**: Select two to four competing products and a small set of tasks that users really do on all of them. Keep the tasks identical across products.",
+    "**Define the measures**: Decide what to record, such as whether the task was completed, time on task, errors, and a short satisfaction rating.",
+    "**Recruit and plan the order**: Recruit participants who represent your users. Rotate the order in which people use the products so that practice or fatigue does not favor one product.",
+    "**Run the sessions**: Give each participant the tasks, observe, and record the measures and comments. Do not help unless a participant is stuck beyond a limit you set in advance.",
+    "**Compare and report**: Compare the products on each measure, note the specific problems and strengths behind the numbers, and state how many participants you had."
+   ],
+   "whatYouNeed": [
+    "Access to the competing products or prototypes",
+    "A task list and a recording sheet",
+    "Participants who represent your users"
+   ],
+   "tips": [
+    "Use exactly the same tasks on every product.",
+    "Pilot the tasks to check that they are clear.",
+    "Report the problems behind the scores, not only the scores."
+   ],
+   "mistakes": [
+    "Comparing products on different tasks.",
+    "Always showing your preferred product first.",
+    "Reporting percentages from a handful of participants."
+   ],
+   "example": "A student team designing a university event app tests three existing campus apps. Six students each try to find an event, save it, and share it on each app, in rotated order. All six finish the task on one app, while four of six give up saving events on another because the button is hidden. The team notes the first app's visible save button and uses that app as its baseline.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "content-inventory-audit",
@@ -321,14 +361,49 @@
      "title": "Content Inventory & Audit"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "An **inventory catalogs every piece of content** in a system; the **audit then evaluates each item** for accuracy, relevance, and redundancy. Together they produce a defensible argument for what to **keep, revise, consolidate, or retire** before any redesign begins.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 18, p. 42.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Halvorson, K., & Rach, M. (2012). *Content strategy for the web* (2nd ed.). New Riders.",
+    "Kaley, A. (2020, September 27). *Content inventory and auditing 101*. Nielsen Norman Group. https://www.nngroup.com/articles/content-audits/",
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "18F. (n.d.). *Content audit*. 18F Methods. https://methods.18f.gov/decide/content-audit/"
+   ],
+   "whenToUse": [
+    "When a **website, intranet, app, or document library has grown over time** and nobody is sure what it holds.",
+    "Before a **redesign, migration, or restructure**, to decide what to keep, revise, consolidate, or retire.",
+    "When you need **evidence of gaps and redundancy**, such as outdated pages, duplicate pages, or missing topics."
+   ],
+   "howToDoIt": [
+    "**Set the scope and the question**: Decide which part of the system you will cover and what the audit has to answer, such as which pages meet a specific user need. A defined scope is more useful than a promise to cover everything.",
+    "**Build the inventory**: List every item in a spreadsheet, one row per item. Record the title, location or URL, parent page, format, owner, and the date it was last updated. For very large sets, sample by a stated rule, such as every page in the top two levels of navigation.",
+    "**Define the audit criteria**: Write down what you will judge and how, such as accuracy, relevance, clarity, consistency, and whether the item duplicates another. Define each rating scale before you score anything.",
+    "**Audit each item**: Rate every item against the criteria and add a short note. Give each item a decision: keep, revise, consolidate, or retire.",
+    "**Summarize the findings**: Count the decisions and group the patterns, for example whether most outdated pages sit in one section. Report the result with the inventory attached so others can check your work."
+   ],
+   "whatYouNeed": [
+    "A spreadsheet or database",
+    "Access to the content, such as a site map, a crawler export, or a file list",
+    "Written audit criteria with defined rating scales"
+   ],
+   "tips": [
+    "Audit against a user need or a project goal, not against your own taste.",
+    "Add a column for the content owner. Decisions move faster when someone is accountable for each item.",
+    "Keep the inventory file. The same list lets you track what changed after a redesign."
+   ],
+   "mistakes": [
+    "Treating the inventory as the finding. A list of content is not an analysis.",
+    "Scoring items before the criteria are defined.",
+    "Auditing a sample without saying how you chose it."
+   ],
+   "example": "A library team plans to redesign its website. An inventory of 420 pages shows that 90 have not been updated in over three years and that 35 pages explain the same borrowing rules in different words. The team audits each page against three criteria: accurate, clear, and needed by a student. It retires 60 pages, merges the 35 duplicates into 6, and rewrites the rest. The redesign starts from a smaller, cleaner set of content.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "contextual-inquiry",
@@ -353,14 +428,49 @@
      "title": "Contextual Inquiry"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "**Observation and interviewing combine** in the participant's own environment, with the researcher positioned as **apprentice** and the participant as master. The method surfaces the **invisible structure of work**: the workarounds, interruptions, and physical constraints that never appear in a survey response.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 20, p. 46.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
+    "Beyer, H., & Holtzblatt, K. (1998). *Contextual design: Defining customer-centered systems*. Morgan Kaufmann.",
+    "Flaherty, K. (2020, December 6). *Contextual inquiry: Inspire design by observing and interviewing users in their context*. Nielsen Norman Group. https://www.nngroup.com/articles/contextual-inquiry/",
+    "Holtzblatt, K., & Beyer, H. (2017). *Contextual design: Design for life* (2nd ed.). Morgan Kaufmann.",
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "whenToUse": [
+    "When you need to understand **work or activities as they happen** in the real setting.",
+    "When **tools, workarounds, interruptions, and the physical setting** shape the activity.",
+    "When people **cannot easily describe** what they do but can show you."
+   ],
+   "howToDoIt": [
+    "**Plan the visit**: Choose an activity and a person who does it regularly. Arrange a time when the activity will take place, and get permission to observe and, if needed, to record.",
+    "**Set the relationship**: Explain that you want to learn from them. Take the role of apprentice and ask them to carry on as normal while you watch and ask questions.",
+    "**Watch and ask in the moment**: Observe the work and interrupt briefly to ask what they are doing and why, using what is in front of you as the prompt. Ask to see the tools, files, and objects they use.",
+    "**Share your interpretation**: Near the end, say back what you understood and let the participant correct it.",
+    "**Capture and analyze**: Write up notes, photos, and sketches the same day. Then bring several sessions together, for example in an affinity diagram or a flow of the work, and report the patterns that appeared across more than one person."
+   ],
+   "whatYouNeed": [
+    "A participant in their usual setting",
+    "A notebook, camera, or recorder (with permission)",
+    "A consent form or script"
+   ],
+   "tips": [
+    "Ask about a specific moment, such as “show me how you did that,” rather than general habits.",
+    "Leave time after the visit to write up notes while you still remember details.",
+    "Visit several people before you decide what is typical."
+   ],
+   "mistakes": [
+    "Turning the visit into a sit-down interview away from the work.",
+    "Leading the participant to confirm your ideas.",
+    "Visiting one person and treating that visit as typical."
+   ],
+   "example": "A team designing scheduling software for a dental clinic spends an afternoon at the front desk, watching staff book appointments and asking about each step. The team sees a paper calendar taped beside the screen because the software does not show a full day at a glance. The calendar never came up in earlier interviews, and it becomes the starting point for the new design.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "critical-incident-technique",
@@ -380,14 +490,49 @@
      "title": "Critical Incident Technique"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "Participants recount **specific events that went notably well or notably badly**. Anchoring recall to a **concrete incident** rather than a general impression produces detailed, verifiable accounts of what actually happened and why it mattered.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 22, p. 50.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Butterfield, L. D., Borgen, W. A., Amundson, N. E., & Maglio, A.-S. T. (2005). Fifty years of the critical incident technique: 1954–2004 and beyond. *Qualitative Research, 5*(4), 475–497. https://doi.org/10.1177/1468794105056924",
+    "Flanagan, J. C. (1954). The critical incident technique. *Psychological Bulletin, 51*(4), 327–358. https://doi.org/10.1037/h0061470",
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Rosala, M. (2020, January 26). *The critical incident technique in UX*. Nielsen Norman Group. https://www.nngroup.com/articles/critical-incident-technique/"
+   ],
+   "whenToUse": [
+    "When you want **detailed, specific accounts of events**, not general impressions.",
+    "When you need to find **what helps or hinders** people in an experience.",
+    "When **recall is better for memorable events**, such as an unusually good or bad experience."
+   ],
+   "howToDoIt": [
+    "**Define the activity and the aim**: State the experience you are studying, such as finding a book in a library, and what counts as a critical incident: an event that clearly helped or hindered the person's goal.",
+    "**Prepare the prompts**: Write two main questions, for example “Think of a time when finding a book went particularly well. What happened?” and “Think of a time when it went badly. What happened?”",
+    "**Collect incidents**: In interviews or on written forms, ask for one specific, recent incident at a time: what led up to it, what happened, what the person did, and what the result was.",
+    "**Check the details**: Ask for facts such as when, where, who, and what the person did. Avoid asking for opinions about what should have happened.",
+    "**Sort the incidents**: Write each incident on a card, group the cards into categories of causes and effects, and count how many incidents fall in each category. Report the categories with examples."
+   ],
+   "whatYouNeed": [
+    "Prompt questions",
+    "A recorder or written forms",
+    "Cards or a spreadsheet for sorting incidents"
+   ],
+   "tips": [
+    "Ask for recent incidents. Memory of detail fades fast.",
+    "Collect both helpful and unhelpful incidents.",
+    "Make the incident, not the participant's summary of it, the unit you analyze."
+   ],
+   "mistakes": [
+    "Collecting general complaints in place of incidents.",
+    "Collecting only negative incidents.",
+    "Counting categories without checking that a second person would sort the incidents the same way."
+   ],
+   "example": "A student studying a campus shuttle app asks ten riders to describe one time the app helped and one time it failed. She collects 19 incidents and sorts them into five categories. The largest category, wrong arrival times, holds seven incidents, so she reports it first, with two quoted examples.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "crowdsourcing",
@@ -450,7 +595,8 @@
    ],
    "pairedWith": "bundle-ideas",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, and the tips were expanded with material paraphrased from Martin and Hanington (2012), p. 52.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "cultural-probes",
@@ -513,7 +659,8 @@
    ],
    "pairedWith": "content-analysis",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "design-ethnography",
@@ -533,14 +680,50 @@
      "title": "Design Ethnography"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "Adapted from anthropology, **design ethnography** involves **sustained time spent in a community or setting** to understand culture, meaning, and practice from the inside. It **trades speed for depth** and is suited to problems where surface behavior is easy to observe but hard to interpret.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 27, p. 60.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
+    "Blomberg, J., Giacomi, J., Mosher, A., & Swenton-Wall, P. (1993). Ethnographic field methods and their relation to design. In D. Schuler & A. Namioka (Eds.), *Participatory design: Principles and practices* (pp. 123–155). Lawrence Erlbaum Associates.",
+    "Farrell, S., & Fessenden, T. (2024, January 12). *Field studies*. Nielsen Norman Group. https://www.nngroup.com/articles/field-studies/",
+    "Hammersley, M., & Atkinson, P. (2007). *Ethnography: Principles in practice* (3rd ed.). Routledge.",
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "whenToUse": [
+    "When you need to understand the **meaning, culture, and everyday practice** of a community.",
+    "When **surface behavior is easy to see but hard to interpret**.",
+    "When you can spend **extended time** in the setting."
+   ],
+   "howToDoIt": [
+    "**Frame the question and the setting**: Define what you want to understand and where you will spend time. Gain access through a gatekeeper and agree on what you may record.",
+    "**Plan the fieldwork**: Decide how long you will stay and how often you will visit. Choose the methods you will combine, such as observation, informal conversation, interviews, and collecting artifacts.",
+    "**Spend time and record**: Take field notes during or right after each visit. Keep descriptions of what happened separate from your reactions and interpretations, and keep a log of visits.",
+    "**Reflect on your position**: Write down how your background, your role, and your relationship to participants may shape what you see and how people respond to you.",
+    "**Analyze and report**: Code your notes and artifacts for themes, check the themes against later visits and against what participants say, and write a rich description that shows the evidence."
+   ],
+   "whatYouNeed": [
+    "Access agreed with the community",
+    "A field notebook and a record of visits",
+    "Consent and a plan to protect identities",
+    "Time across weeks or months"
+   ],
+   "tips": [
+    "Plan for more time than you think you need.",
+    "Return to the same site at different times and on different days.",
+    "Share early findings with participants to check your reading."
+   ],
+   "mistakes": [
+    "Making a few visits and calling it ethnography. State honestly how much time you spent.",
+    "Describing a group only from the outside and not in their own terms.",
+    "Overlooking your own influence on the setting."
+   ],
+   "example": "A student wants to understand how makers use a shared university workshop. Over eight weeks she attends open hours twice a week, takes field notes, talks with regulars, and collects photos with permission. She finds unwritten rules, such as never taking the last piece of a shared material. Those rules shape the signage she proposes.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "diary-studies",
@@ -617,7 +800,8 @@
    ],
    "pairedWith": "card-sorting",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "directed-storytelling",
@@ -637,14 +821,50 @@
      "title": "Directed Storytelling"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "A facilitator uses **targeted prompts** to guide participants through a **first-person account of a specific experience**. The structure keeps the story on topic while preserving the richness and sequence of the participant's own telling.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 31, p. 68.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Atkinson, R. (1998). *The life story interview*. SAGE Publications.",
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Quesenbery, W., & Brooks, K. (2010). *Storytelling for user experience: Crafting stories for better design*. Rosenfeld Media.",
+    "Rosala, M. (2020, January 26). *The critical incident technique in UX*. Nielsen Norman Group. https://www.nngroup.com/articles/critical-incident-technique/"
+   ],
+   "whenToUse": [
+    "When you want a participant's **own account of one specific experience**, told in sequence.",
+    "When you want to understand **motivations, emotions, and turning points** around an experience.",
+    "When general questions give **vague answers** and a specific story will give more detail."
+   ],
+   "howToDoIt": [
+    "**Choose the experience**: Pick one specific kind of experience that matters to your question, such as “the last time you moved to a new city” or “your first week at the library.”",
+    "**Write the prompts**: Draft an opening request such as “Tell me about the last time you ...” and follow-up prompts that move through the story: what happened first, what you were thinking, what happened next, and how it ended.",
+    "**Invite and listen**: Ask the participant to tell the story in their own words and let them lead the order. Use your prompts only to keep the story on topic and to ask for detail, never to suggest what happened.",
+    "**Probe for detail and meaning**: Ask about specific moments: what they were doing, feeling, and trying to achieve. Ask what they would change.",
+    "**Record and analyze**: With permission, record and transcribe. Mark the steps, turning points, and emotions in each story, then compare the stories to find shared patterns."
+   ],
+   "whatYouNeed": [
+    "Written prompts",
+    "A recorder, with consent",
+    "A quiet setting",
+    "A plan for transcription"
+   ],
+   "tips": [
+    "Ask about “the last time,” not about what people usually do.",
+    "Leave silence after a pause. People often add the most useful detail when you wait.",
+    "Report how many stories contain each pattern, for example five of eight."
+   ],
+   "mistakes": [
+    "Interrupting to correct or summarize the story.",
+    "Asking about general habits instead of one story.",
+    "Treating one person's story as how everyone experiences the situation."
+   ],
+   "example": "A student studying how first-year students find help on campus asks eight students to tell the story of the last time they were lost. She uses prompts for what happened first, what they tried, and how it ended. Six of the eight stories include a moment when the student chose not to ask anyone, and she follows up on the reasons for that choice.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "ergonomic-analysis",
@@ -664,14 +884,50 @@
      "title": "Ergonomic Analysis"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "Tools, workstations, and environments are **assessed against human physical capability** to evaluate **fit, reach, posture, effort, and safety**. The output is a set of dimensional and configurational requirements grounded in **anthropometric data**.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 33, p. 72.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Occupational Safety and Health Administration. (n.d.). *Ergonomics: Identify problems*. U.S. Department of Labor. https://www.osha.gov/ergonomics/identify-problems",
+    "Pheasant, S., & Haslegrave, C. M. (2006). *Bodyspace: Anthropometry, ergonomics and the design of work* (3rd ed.). CRC Press.",
+    "Stanton, N. A., Salmon, P. M., Rafferty, L. A., Walker, G. H., Baber, C., & Jenkins, D. P. (2013). *Human factors methods: A practical guide for engineering and design* (2nd ed.). Ashgate."
+   ],
+   "whenToUse": [
+    "When a **tool, workstation, or space** has to fit human bodies and movements.",
+    "When **people report discomfort, strain, or errors** during use.",
+    "Before you finalize **dimensions, heights, reaches, or forces** for a physical design."
+   ],
+   "howToDoIt": [
+    "**Define the task and the users**: Describe the activity, the equipment, and who will use it, including the range of body sizes and abilities.",
+    "**Gather anthropometric data**: Look up dimensions for your user group, such as reach, eye height, and hand size, from reliable tables. Decide which range of the population you will design for.",
+    "**Observe and measure the task**: Watch or record people doing the task. Note postures, reach distances, repetition, force, and duration, and measure the workspace.",
+    "**Assess fit and risk**: Compare what the task demands with what the body can comfortably do. Flag awkward postures, repeated motion, and high forces, using a checklist or a published assessment tool.",
+    "**Recommend changes**: Specify dimensions and arrangements that fit your user range, then check them with users or a mock-up."
+   ],
+   "whatYouNeed": [
+    "Anthropometric data tables",
+    "A tape measure and a camera",
+    "A checklist or assessment tool",
+    "Users or volunteers for a mock-up"
+   ],
+   "tips": [
+    "Design for a range of users, not for an average.",
+    "Include people at the edges of the range, such as the shortest and the tallest.",
+    "Test mock-ups at full size. Drawings hide reach and posture problems."
+   ],
+   "mistakes": [
+    "Designing for the “average person.”",
+    "Relying on photos without measurements.",
+    "Ignoring how long and how often the task is done."
+   ],
+   "example": "A student redesigning a lab bench and stool finds in published tables that a fixed 36-inch bench suits taller users but makes shorter users raise their shoulders. She tests cardboard mock-ups at two heights with five students. She recommends an adjustable stool and a footrest.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "evidence-based-design",
@@ -698,7 +954,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "experience-sampling-method",
@@ -725,7 +982,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "experiments",
@@ -745,14 +1003,50 @@
      "title": "Experiments"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "Variables are **deliberately manipulated under controlled conditions** to test whether a specific change produces a specific effect. Experiments answer **causal questions** that observational methods can only suggest.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 38, p. 82.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Lazar, J., Feng, J. H., & Hochheiser, H. (2017). *Research methods in human-computer interaction* (2nd ed.). Morgan Kaufmann.",
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Neusesser, T. (2024, August 30). *A/B testing 101*. Nielsen Norman Group. https://www.nngroup.com/articles/ab-testing/",
+    "Shadish, W. R., Cook, T. D., & Campbell, D. T. (2002). *Experimental and quasi-experimental designs for generalized causal inference*. Houghton Mifflin."
+   ],
+   "whenToUse": [
+    "When your question asks **whether a change causes an effect**.",
+    "When you can **control the conditions** and change one thing at a time.",
+    "When you need **numbers to compare** two or more versions."
+   ],
+   "howToDoIt": [
+    "**Write the hypothesis**: State what you expect in the form “changing X will change Y.” Name the one thing you will change and the one outcome you will measure.",
+    "**Design the conditions**: Create the versions to compare. Change only one thing between them and keep everything else the same. Add a baseline version when you can.",
+    "**Plan participants and assignment**: Decide how many participants you need and how you will assign them to conditions, ideally at random. If each person sees every version, rotate the order. Decide the sample size before you start.",
+    "**Run the experiment**: Follow the same script for every participant. Record the outcome in the same way each time and write down anything that went off plan.",
+    "**Analyze and report**: Compare the conditions with counts, averages, and ranges. At small scale, describe the result as suggestive and name what limits it. Do not report a significance test that you cannot explain."
+   ],
+   "whatYouNeed": [
+    "Two or more versions that differ in one respect",
+    "A measure of the outcome",
+    "A written script",
+    "Participants or observations"
+   ],
+   "tips": [
+    "Pilot the procedure before the real run.",
+    "Change one thing per comparison and say which one.",
+    "Write your sample size and analysis plan before you collect data."
+   ],
+   "mistakes": [
+    "Changing several things at once, so you cannot tell which one mattered.",
+    "Running the test again and again until a difference appears.",
+    "Claiming cause from a small convenience sample."
+   ],
+   "example": "A student wants to know whether a larger headline changes how many people stop to read a campus poster. On alternating days, she hangs one of two posters in the same hallway, identical except for headline size, and counts the people who stop for at least three seconds. Over ten days, the larger headline drew more stops on four of the five days it was up. She reports the result as suggestive and names weather and class schedules as limits.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "extremes-and-mainstreams",
@@ -779,7 +1073,8 @@
    "referenceUrl": "https://www.designkit.org/resources/1.html",
    "sources": [
     "IDEO.org. (2015). *The field guide to human-centered design*. https://www.designkit.org/resources/1.html"
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "fly-on-the-wall-observation",
@@ -804,14 +1099,49 @@
      "title": "Fly-on-the-Wall Observation"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "The researcher **observes behavior in a natural setting without interacting** with participants or altering the situation. Because nothing is asked, nothing is performed, which makes the method useful for establishing a **baseline of ordinary behavior**.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 42, p. 90.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
+    "Digital.gov. (2023, July 24). *Observation*. U.S. General Services Administration. https://digital.gov/guides/hcd/discovery-operations/observation",
+    "Goodman, E., Kuniavsky, M., & Moed, A. (2012). *Observing the user experience: A practitioner's guide to user research* (2nd ed.). Morgan Kaufmann.",
+    "LUMA Institute. (2012). *Innovating for people: Handbook of human-centered design methods*. LUMA Institute.",
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "whenToUse": [
+    "When you want to see **natural behavior** with as little influence as possible.",
+    "When **people would act differently** if you asked questions or interacted.",
+    "When you need a **baseline** of how a space or task works now, before you test a change."
+   ],
+   "howToDoIt": [
+    "**Pick the setting and get permission**: Choose where you will observe and check who needs to approve it. In public spaces, follow local rules. In private or semi-private spaces, get permission and explain what you are doing to those in charge.",
+    "**Plan a position and a time**: Choose a spot that gives a clear view without drawing attention. Plan how long and when to observe, and repeat at different times.",
+    "**Prepare your guide**: List what to record, for example people's paths, how long they stay, the objects they use, and how they interact. Use a sheet or a floor plan to speed up note taking.",
+    "**Observe without interacting**: Stay quiet and avoid influencing what happens. Record what you see and hear in neutral, specific terms, with times.",
+    "**Review and interpret**: Write up your notes as soon as you can. Mark anything you are unsure about as a question for later, and plan an interview or a second method for questions about why."
+   ],
+   "whatYouNeed": [
+    "An observation guide",
+    "A notebook, floor plan, or camera where allowed",
+    "Permission to observe"
+   ],
+   "tips": [
+    "Put a time next to every note.",
+    "Sketch the layout of the space and mark where you sat.",
+    "Plan a short interview or a second method for the “why” questions you cannot answer by watching."
+   ],
+   "mistakes": [
+    "Recording your interpretations as facts.",
+    "Joining in or helping, which changes the behavior you came to see.",
+    "Ignoring privacy, especially when taking photos or video."
+   ],
+   "example": "A student wants to know how people use a shared study room before she proposes a new layout. She sits in a corner for four one-hour sessions and notes who comes in, where they sit, and what they move. Groups of three or more repeatedly drag chairs to the same wall and leave the center table unused. She uses the pattern in her redesign and plans interviews to learn why.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "focus-groups",
@@ -831,14 +1161,50 @@
      "title": "Focus Groups"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "A **moderator guides a small, carefully composed group** through a structured discussion. The value lies in the **interaction between participants**, where agreement, disagreement, and elaboration reveal shared language and contested assumptions.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 43, p. 92.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Fessenden, T. (2022, July 31). *Focus groups 101*. Nielsen Norman Group. https://www.nngroup.com/articles/focus-groups-definition/",
+    "Krueger, R. A., & Casey, M. A. (2015). *Focus groups: A practical guide for applied research* (5th ed.). SAGE Publications.",
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Morgan, D. L. (1997). *Focus groups as qualitative research* (2nd ed.). SAGE Publications."
+   ],
+   "whenToUse": [
+    "When you want **a range of views and the language** a group uses about a topic.",
+    "When **discussion between people** will draw out opinions that one-to-one interviews would not.",
+    "Early in a project, to **explore concepts, wording, or reactions** before you test them."
+   ],
+   "howToDoIt": [
+    "**Define the purpose and the participants**: Write what you want to learn. Decide who should take part and recruit six to eight people per group who share something relevant, for example being first-year students.",
+    "**Write the discussion guide**: Draft a short set of open questions that move from general to specific, and plan an opening activity. Include a way to hear from quieter participants.",
+    "**Prepare the session**: Arrange a quiet space, name tags, consent, and a way to record. Assign a moderator and a note taker.",
+    "**Moderate the discussion**: Welcome people, set ground rules, and ask each question in turn. Invite all voices, ask for examples, and keep your own opinion out of it. Do not push the group toward agreement.",
+    "**Analyze the discussion**: Review the recordings and notes, code them by topic, and report where participants agreed, disagreed, and changed their minds. Remember that results describe these groups, not a wider population."
+   ],
+   "whatYouNeed": [
+    "Six to eight participants per group",
+    "A moderator and a note taker",
+    "A discussion guide and a way to record with consent",
+    "A quiet room"
+   ],
+   "tips": [
+    "Run more than one group to see whether the themes repeat.",
+    "Open with a short writing task so people form their own view before they hear others.",
+    "Put the most sensitive questions late and give people a way to pass."
+   ],
+   "mistakes": [
+    "Letting one strong voice set the group's opinion.",
+    "Asking about behavior that you should observe instead.",
+    "Treating agreement in the room as what the wider population thinks."
+   ],
+   "example": "A design student exploring how commuters think about bike sharing runs two groups of seven, each mixing riders and non-riders. After a warm-up, the groups discuss reasons for riding or not riding. Both groups raise worries about bike condition and locking, and only non-riders mention cost. She reports the themes with the number of groups behind them and plans a short survey to measure how widespread they are.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "graffiti-walls",
@@ -858,14 +1224,49 @@
      "title": "Graffiti Walls"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "A **public, low-barrier surface** such as a poster or whiteboard invites **anonymous written and drawn responses** to an open prompt. Anonymity and informality lower the cost of participation and surface **candid opinion**.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 45, p. 96.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
+    "Chang, C. (n.d.). *Before I die: Participate*. https://www.candychang.com/before-i-die-participate/",
+    "Europlanet. (n.d.). *Evaluation tool: Graffiti wall*. Europlanet Evaluation Toolkit. https://www.europlanet.org/outreach/europlanet-evaluation-toolkit/evaluation-tool-graffiti-wall/",
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "whenToUse": [
+    "To collect **quick, anonymous responses** from many people.",
+    "At **events, exhibits, or public spaces** where people pass by.",
+    "To **open a topic** or gather evaluation comments with a low barrier to taking part."
+   ],
+   "howToDoIt": [
+    "**Define the prompt and the place**: Write one open prompt, such as “What would make this space better?” Choose a spot with foot traffic and get permission to use it.",
+    "**Prepare the wall**: Mount large paper or a board, provide markers or sticky notes, and add a short note about what the wall is for and who will see the responses.",
+    "**Invite and maintain**: Invite people to take part. Walls rarely work if left alone, so stay nearby, refresh pens and paper, and keep the prompt visible.",
+    "**Document**: Photograph the wall in sections at set times, before anything is removed or covered. Record the date, time, and place.",
+    "**Analyze**: Transcribe the responses, remove anything that identifies a person, and group them by theme. Count the themes and quote examples, and say that responses are anonymous and self-selected."
+   ],
+   "whatYouNeed": [
+    "Large paper or a board",
+    "Markers or sticky notes",
+    "A camera",
+    "Permission to use the space"
+   ],
+   "tips": [
+    "Keep the prompt short and open.",
+    "Photograph the wall at intervals, not only at the end.",
+    "Decide before you start how you will handle off-topic or offensive content, and report what you did."
+   ],
+   "mistakes": [
+    "Leaving the wall unattended.",
+    "Treating the wall as a representative sample.",
+    "Writing up the responses without saying that people chose to take part."
+   ],
+   "example": "At a campus open house, a student places a poster-sized sheet with the prompt “What is missing from this building?” next to the elevator. Over three hours, 54 notes are added, and 31 of them mention a place to eat or drink. She reports the count, notes that visitors chose to take part, and uses the theme to write interview questions.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "guerilla-user-research",
@@ -892,7 +1293,8 @@
    "referenceUrl": "https://rosenfeldmedia.com/books/the-user-experience-team-of-one/",
    "sources": [
     "Buley, L. (2013). *The user experience team of one: A research and design survival guide*. Rosenfeld Media."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "innovation-sourcebook",
@@ -919,7 +1321,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699",
    "sources": [
     "Kumar, V. (2013). *101 design methods: A structured approach for driving innovation in your organization*. Wiley."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "interviews",
@@ -995,7 +1398,8 @@
    ],
    "pairedWith": "ab-testing",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "laddering",
@@ -1015,14 +1419,49 @@
      "title": "Laddering"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "A **sequence of why questions** moves an interview from **concrete product attributes up to the personal values** behind them. The resulting chain connects a surface preference to the underlying motivation that drives it.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 52, p. 110.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Gutman, J. (1982). A means-end chain model based on consumer categorization processes. *Journal of Marketing, 46*(2), 60–72.",
+    "Interaction Design Foundation. (n.d.). *Laddering questions: Drilling down deep and moving sideways in UX research*. https://ixdf.org/literature/article/laddering-questions-drilling-down-deep-and-moving-sideways-in-ux-research",
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Reynolds, T. J., & Gutman, J. (1988). Laddering theory, method, analysis, and interpretation. *Journal of Advertising Research, 28*(1), 11–31."
+   ],
+   "whenToUse": [
+    "When you want to understand **why** someone prefers or avoids something.",
+    "When you need to move from **features to the values** behind a preference.",
+    "After a first round of interviews turns up preferences that you cannot yet explain."
+   ],
+   "howToDoIt": [
+    "**Start with something concrete**: Ask about a product, feature, or choice the participant knows, for example “What do you like about this app?”",
+    "**Ask why it matters**: For each answer, ask a version of “Why is that important to you?” Vary your wording so that it does not feel mechanical.",
+    "**Climb the ladder**: Keep going until answers move from attributes (what the thing has), to consequences (what it does for the person), to values (what the person cares about). Stop when answers repeat or the participant cannot go further.",
+    "**Move sideways**: When one chain ends, return to the starting point and ask a different question to begin a new ladder.",
+    "**Record and map the chains**: Write each chain as a series of linked statements. Compare chains across participants to see which attributes lead to which values."
+   ],
+   "whatYouNeed": [
+    "An interview guide with starting questions",
+    "A recorder, with consent",
+    "Space to write out the chains"
+   ],
+   "tips": [
+    "Use softer versions of “why,” such as “What does that give you?” or “How does that help?”",
+    "Use the participant's own words when you write the chain.",
+    "Do not force a ladder to reach values if the person's answers stop earlier."
+   ],
+   "mistakes": [
+    "Repeating “why” until the participant feels cross-examined.",
+    "Supplying the next rung yourself.",
+    "Treating one ladder as the truth rather than one person's account."
+   ],
+   "example": "Asked what they like about a reusable water bottle, a participant says it keeps water cold. Why does that matter? “I drink more water.” Why does that matter? “I get fewer headaches and I focus better.” The chain runs from an attribute (insulation), to a consequence (drinking more), to a value (feeling well and focused). The designer sees that a cold-keeping feature supports a goal that other features might serve too.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "listening-tour",
@@ -1094,7 +1533,8 @@
    ],
    "pairedWith": "design-workshops",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the tips, the common mistakes, and the example were expanded with material paraphrased from the sources cited on this card (Hirsch, 2024; Soroka, n.d.; Tyre, 2026), because the submitted steps listed situations for use.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "literature-reviews",
@@ -1161,7 +1601,8 @@
    ],
    "pairedWith": "brainstorming",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "observation",
@@ -1181,14 +1622,49 @@
      "title": "Observation"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "People, artifacts, environments, and interactions are **watched and recorded systematically**. A **defined protocol** for what to look at, how to record it, and when to sample separates research observation from casual noticing.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 57, p. 120.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
+    "Digital.gov. (2023, July 24). *Observation*. U.S. General Services Administration. https://digital.gov/guides/hcd/discovery-operations/observation",
+    "Farrell, S., & Fessenden, T. (2024, January 12). *Field studies*. Nielsen Norman Group. https://www.nngroup.com/articles/field-studies/",
+    "Goodman, E., Kuniavsky, M., & Moed, A. (2012). *Observing the user experience: A practitioner's guide to user research* (2nd ed.). Morgan Kaufmann.",
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "whenToUse": [
+    "When you need to know **what people actually do**, not what they say they do.",
+    "When behavior is **routine, habitual, or hard to describe**, such as how people move through a space or use a tool.",
+    "When you need **primary evidence of an environment**, such as how a space or service is used at different times."
+   ],
+   "howToDoIt": [
+    "**Define what you will observe**: Write the question, the people or setting, and the behaviors that matter. List them in an observation guide so you notice the same things in every session.",
+    "**Choose how to record**: Decide on field notes, a tally sheet, photos, sketches, or video. Check whether you need permission, and plan how you will protect people's identity.",
+    "**Plan the sampling**: Decide when and for how long you will observe, for example three sessions of 45 minutes at different times of day, so that one unusual hour does not stand for the whole.",
+    "**Observe and record**: Write down what happened in neutral terms first: what people did, in what order, and where. Keep your interpretations in a separate column or margin.",
+    "**Review and interpret**: Read your notes soon after each session and add detail. Then look for patterns across sessions and say how many sessions and people each pattern rests on."
+   ],
+   "whatYouNeed": [
+    "An observation guide or template",
+    "A notebook, tally sheet, or camera",
+    "Permission to observe the setting"
+   ],
+   "tips": [
+    "Keep what you saw separate from what you think it means.",
+    "Observe at different times and on different days.",
+    "Try your guide in a short pilot session first."
+   ],
+   "mistakes": [
+    "Noting only what confirms what you expected.",
+    "Changing the setting through your presence and not saying so.",
+    "Observing once and treating it as typical."
+   ],
+   "example": "A researcher studying a campus coffee shop spends three 45-minute sessions there at different times. Using a guide, she records where people queue, what they do while they wait, and where the line breaks down. Her notes show that the line loops back on itself at the pickup counter in all three sessions. She reports the pattern with the number of sessions behind it and follows up with short interviews.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "participant-observation",
@@ -1254,7 +1730,8 @@
    ],
    "pairedWith": "business-model-canvas",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the materials list, the tips, the common mistakes, and the example were expanded with material paraphrased from Martin and Hanington (2012), pp. 124 to 125.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "participatory-action-research",
@@ -1276,14 +1753,50 @@
      "title": "Participatory Action Research (PAR)"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "The people affected by a problem **participate as co-researchers** rather than as subjects, **sharing authority over questions, analysis, and action**. The method is committed to **producing change** in the setting studied, not only knowledge about it.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 60, p. 126.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
+    "Baum, F., MacDougall, C., & Smith, D. (2006). Participatory action research. *Journal of Epidemiology & Community Health, 60*(10), 854–857. https://doi.org/10.1136/jech.2004.028662",
+    "Howard, J. (2024). *Participatory action research*. Participatory Methods, Institute of Development Studies. https://www.participatorymethods.org/methodology/participatory-action-research/",
+    "Kemmis, S., McTaggart, R., & Nixon, R. (2014). *The action research planner: Doing critical participatory action research*. Springer. https://doi.org/10.1007/978-981-4560-67-2",
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "whenToUse": [
+    "When the people affected by a problem should **help define the problem and the action**.",
+    "When the goal is **change in a community or setting**, not only knowledge about it.",
+    "When you can commit to **a long, shared process** over several cycles."
+   ],
+   "howToDoIt": [
+    "**Build the relationship**: Meet the community or group, learn what it cares about, and agree on how you will work together, including who decides what.",
+    "**Form the research group**: Invite participants to act as co-researchers. Agree on roles, meeting times, and how decisions are made.",
+    "**Plan together**: Define the issue and the questions together, and choose the methods the group will use, such as interviews, mapping, or a survey.",
+    "**Act and observe**: Carry out the plan, collect data as a group, and take an action based on what you learn.",
+    "**Reflect and repeat**: Review the results together, decide what to change, and plan the next cycle. Share the findings with the wider community in forms it can use."
+   ],
+   "whatYouNeed": [
+    "A group of co-researchers",
+    "Time for several cycles",
+    "Methods the group chooses and can use",
+    "A way to document meetings and decisions"
+   ],
+   "tips": [
+    "Agree on how decisions are made before the work starts.",
+    "Share the data you hold with the group.",
+    "Plan what happens when your involvement ends. In a single semester, a full cycle is rarely possible, so describe a smaller, shared-inquiry approach by that name."
+   ],
+   "mistakes": [
+    "Using the label but keeping control of the questions.",
+    "Underestimating the time and effort the process takes.",
+    "Treating participants' time and expertise as free."
+   ],
+   "example": "A student works with residents of an apartment complex who want safer paths at night. Residents help design a walking survey, photograph problem spots, and meet to rank them. The group takes its ranked map to the landlord and asks for lighting repairs. At the next meeting, the group reviews what changed and chooses the next step.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "personal-inventories",
@@ -1347,7 +1860,8 @@
    ],
    "pairedWith": "co-creation-session",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "photo-studies",
@@ -1374,7 +1888,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "picture-cards",
@@ -1394,14 +1909,50 @@
      "title": "Picture Cards"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "A **curated set of images and words** gives participants **concrete material to think and talk with**. Visual prompts help people describe experiences that are difficult to articulate from memory alone.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 65, p. 136.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Sanders, E. B.-N. (2000). Generative tools for co-designing. In S. A. R. Scrivener, L. J. Ball, & A. Woodcock (Eds.), *Collaborative design* (pp. 3–12). Springer.",
+    "Sanders, E. B.-N., Brandt, E., & Binder, T. (2010). A framework for organizing the tools and techniques of participatory design. In *Proceedings of the 11th Biennial Participatory Design Conference* (pp. 195–198). ACM. https://doi.org/10.1145/1900441.1900476",
+    "Sanders, E. B.-N., & Stappers, P. J. (2012). *Convivial toolbox: Generative research for the front end of design*. BIS Publishers."
+   ],
+   "whenToUse": [
+    "When participants **struggle to put feelings or experiences into words**.",
+    "To gather **associations, preferences, and meanings** around a topic.",
+    "In **interviews or workshops**, where something to point at can start a conversation."
+   ],
+   "howToDoIt": [
+    "**Decide what the cards must help people say**: State the topic, for example what a good study space feels like.",
+    "**Build the card set**: Collect 30 to 60 images and words that cover a range: people, places, objects, abstract images, and words. Include some ambiguous or surprising images. Print them as cards and number the backs.",
+    "**Give a clear task**: Ask participants to choose cards that say something about the topic and to explain each choice. You can also ask them to arrange the cards into a collage or a sequence.",
+    "**Listen to the explanation**: What participants say about a card matters more than the card itself. Ask why they chose it and record the answer.",
+    "**Analyze**: Record which cards were chosen and the reasons. Code the reasons by theme and compare across participants. Report the pictures together with the words."
+   ],
+   "whatYouNeed": [
+    "A printed set of cards",
+    "A table or wall",
+    "A recorder and a camera for the arrangements",
+    "Participants"
+   ],
+   "tips": [
+    "Try the set with two people first and remove cards that confuse everyone.",
+    "Let participants add their own words or sketches.",
+    "Photograph each arrangement before you clear the table."
+   ],
+   "mistakes": [
+    "Using only polished stock-photo images, which push people toward generic answers.",
+    "Interpreting a chosen card without asking the participant.",
+    "Using the cards to confirm an idea you already have."
+   ],
+   "example": "A student exploring how students feel about studying in the library gives each of six participants 40 image cards and asks them to pick five that show what studying there is like. Three choose images of crowds and noise, and two choose a quiet corner. Each explains the choice, and she builds her themes from the explanations, not from the pictures alone.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "popular-media-scan",
@@ -1421,14 +1972,49 @@
      "title": "Popular Media Scan"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "News, advertising, social platforms, and entertainment are **reviewed systematically** to identify **new language, attitudes, and cultural shifts** around a topic. The scan situates a design problem in the **public conversation** surrounding it.",
    "reference": "Kumar, V. (2013). 101 design methods: A structured approach for driving innovation in your organization. Wiley. Method 1.2.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699",
    "sources": [
+    "Government Office for Science. (2024). *The futures toolkit*. GOV.UK. https://www.gov.uk/government/publications/futures-toolkit-for-policy-makers-and-analysts/the-futures-toolkit-html",
+    "Innovation Wiki. (n.d.). *Popular media scan*. verrocchio Institute. https://www.innovation.wiki/en/method/popular-media-scan/",
+    "Krippendorff, K. (2019). *Content analysis: An introduction to its methodology* (4th ed.). SAGE Publications.",
     "Kumar, V. (2013). *101 design methods: A structured approach for driving innovation in your organization*. Wiley."
-   ]
+   ],
+   "whenToUse": [
+    "At the start of a project, to see **how a topic is talked about** in public.",
+    "To spot **new language, trends, and attitudes** that interviews with a few people might miss.",
+    "To gather **examples of how brands, media, and communities** frame an issue."
+   ],
+   "howToDoIt": [
+    "**Define the topic and the period**: Write the topic, the time span, and the audience you care about, for example how streaming services are described in news and social posts over the last year.",
+    "**Choose the sources**: List the kinds of media you will cover, such as news sites, magazines, advertising, social platforms, podcasts, and entertainment. Write down why you chose each.",
+    "**Collect on a schedule**: Search and save items in a shared folder or spreadsheet, recording the source, date, link, and a short note. Stop at a number or time limit that you set in advance.",
+    "**Code the items**: Tag each item for themes, such as tone, key phrases, claims, and images. Keep a running list of new words and phrases.",
+    "**Summarize the picture**: Report the main themes with counts, quote short examples, and say which kinds of media you did not cover."
+   ],
+   "whatYouNeed": [
+    "Search tools and access to the media",
+    "A spreadsheet or board for saved items",
+    "Written scope, source list, and tags"
+   ],
+   "tips": [
+    "Include sources that disagree with each other.",
+    "Save a copy or screenshot of each item, since pages change or disappear.",
+    "Keep what the media says separate from what people do."
+   ],
+   "mistakes": [
+    "Reading a few convenient articles and calling it a scan.",
+    "Treating media coverage as public opinion.",
+    "Skipping the record of how items were found."
+   ],
+   "example": "A student exploring how people talk about digital minimalism scans 60 items from news sites, social posts, and advertisements over two months. She tags each item for tone and finds the phrase “digital detox” in about a third of them, often tied to wellness products. She reports the pattern and states that her scan did not cover video platforms.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "questionnaires-surveys",
@@ -1486,7 +2072,8 @@
    ],
    "pairedWith": "experience-diagramming",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "remote-moderated-research",
@@ -1513,7 +2100,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "secondary-research",
@@ -1538,14 +2126,49 @@
      "title": "Secondary Research"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "**Existing studies, reports, datasets, and documentation** are gathered and synthesized **before any new data is collected**. Done first, it prevents a team from spending primary research effort on questions that are already answered.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 74, p. 154.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
+    "Azarova, M. (2022, February 20). *Secondary research in UX*. Nielsen Norman Group. https://www.nngroup.com/articles/secondary-research-in-ux/",
+    "IDEO.org. (n.d.). *Secondary research*. Design Kit. https://www.designkit.org/methods/secondary-research.html",
+    "IDEO.org. (2015). *The field guide to human-centered design*. IDEO.org.",
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "whenToUse": [
+    "At the **start of a project**, before you collect any new data.",
+    "When you need **context, history, facts, or figures** that interviews cannot supply.",
+    "When time, access, or ethics **limit primary research** and published material can answer part of the question."
+   ],
+   "howToDoIt": [
+    "**Frame the question**: Write the question you want published material to help answer, and list the terms people use to describe the topic.",
+    "**List possible sources**: Look for peer-reviewed articles, industry and government reports, datasets, news coverage, and organizational documents. Note who produced each source and why.",
+    "**Search with a record**: Write down where you searched, the search terms, and the dates, so another person could repeat the search. State the rule for what you include and what you leave out.",
+    "**Check each source**: Read the source itself, not a summary of it. Judge the author, the date, the method, and the sample, and whether the findings fit your population and setting.",
+    "**Synthesize**: Organize what you found by theme or by question. Note where sources agree and disagree, and name the gaps that primary research would need to fill."
+   ],
+   "whatYouNeed": [
+    "Library and database access",
+    "A reference manager or a spreadsheet for sources",
+    "A written question and inclusion rules"
+   ],
+   "tips": [
+    "Start broad, then narrow as you learn the vocabulary of the field.",
+    "Save full citation details as you go. Recovering them later is slow.",
+    "Keep what a source reports separate from what you conclude from it."
+   ],
+   "mistakes": [
+    "Citing a statistic from another article without opening the original.",
+    "Treating the first search results as the full picture.",
+    "Stopping at summary. Synthesis means comparing sources, not listing them."
+   ],
+   "example": "A student plans research on how first-year students find rooms in a library. Before visiting the building, she reads published studies on wayfinding in public buildings, two library design reports, and the building's floor plans. She learns that confusing sign wording is a repeated finding in earlier work and that no study covers first-year students. That gap becomes her primary research question.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "semantic-differential",
@@ -1565,14 +2188,49 @@
      "title": "Semantic Differential"
     }
    ],
-   "kind": "brief",
+   "kind": "full",
    "student": "",
    "whatItIs": "Participants **rate a concept on a series of bipolar adjective scales**, such as cluttered to clean. The resulting profile turns aesthetic and emotional response into **comparable quantitative data**.",
    "reference": "Martin, B., & Hanington, B. (2012). Universal methods of design. Rockport Publishers. Method 75, p. 156.",
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
-    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+    "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.",
+    "Osgood, C. E., Suci, G. J., & Tannenbaum, P. H. (1957). *The measurement of meaning*. University of Illinois Press.",
+    "Rosala, M. (2020, June 7). *Rating scales in UX research: Likert or semantic differential?* Nielsen Norman Group. https://www.nngroup.com/articles/rating-scales/"
+   ],
+   "whenToUse": [
+    "When you want to compare **how people feel about** designs, brands, or spaces.",
+    "When you need **numbers on qualities** such as modern, friendly, or trustworthy.",
+    "When you want to compare **two or more designs**, or one design before and after a change, on the same dimensions."
+   ],
+   "howToDoIt": [
+    "**Choose what to rate**: Decide on the concept, product, or image set, and on the group who will rate it.",
+    "**Select adjective pairs**: Pick opposite pairs that fit your question, such as cluttered and clean or cold and warm. Use 8 to 15 pairs and check that each pair makes sense for what you are rating. Vary which side is positive so that people do not tick one side without thought.",
+    "**Build the scale**: Use five or seven points between the two adjectives and label only the ends. Pilot the form with a few people.",
+    "**Collect ratings**: Show each item the same way and in rotated or random order. Collect ratings on a form or on paper.",
+    "**Plot and compare**: Calculate the average for each pair and each item, plot the averages as a profile line, and compare the profiles. With few responses, report counts and ranges rather than precise averages."
+   ],
+   "whatYouNeed": [
+    "Items to rate",
+    "A list of adjective pairs",
+    "A rating form",
+    "Participants"
+   ],
+   "tips": [
+    "Take adjectives from people's own words, for example from earlier interviews.",
+    "Mix the positive adjective between the left and right sides.",
+    "Ask people to rate one item at a time, then compare afterward."
+   ],
+   "mistakes": [
+    "Using pairs that are not true opposites.",
+    "Reporting averages from a handful of respondents as if they were exact.",
+    "Treating ratings as a record of behavior."
+   ],
+   "example": "A student compares two logo concepts for a community garden. Twenty respondents rate each on pairs such as plain and lively, and formal and friendly, using a seven-point scale. Logo B scores higher on friendly and logo A scores higher on trustworthy. The student reports both profiles and plans interviews to learn why.",
+   "origin": "draft",
+   "draftNote": "Draft entry. This card was drafted for the site from the sources listed under Where to learn more, so that the method has steps a student can follow. A student or faculty reviewer has not checked it yet, and the example is an illustration, not a report of a real study.",
+   "editorNote": "",
+   "expandedNote": ""
   },
   {
    "id": "shadowing",
@@ -1633,7 +2291,8 @@
    ],
    "pairedWith": "thumbnail-sketching",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the materials list, the tips, and the common mistakes were expanded with material paraphrased from Martin and Hanington (2012), p. 158.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "site-search-analytics",
@@ -1660,7 +2319,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "the-love-letter-the-breakup-letter",
@@ -1687,7 +2347,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "touchstone-tours",
@@ -1721,7 +2382,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "triading",
@@ -1748,7 +2410,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "unobtrusive-measures",
@@ -1813,7 +2476,8 @@
    ],
    "pairedWith": "morphological-synthesis",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the materials list, the tips, the common mistakes, and the example were expanded with material paraphrased from Martin and Hanington (2012), pp. 190 to 191.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "abstraction-laddering",
@@ -1840,7 +2504,8 @@
    "referenceUrl": "https://www.luma-institute.com",
    "sources": [
     "LUMA Institute. (2012). *Innovating for people: Handbook of human-centered design methods*."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "aeiou",
@@ -1907,7 +2572,8 @@
    ],
    "pairedWith": "think-aloud-protocol",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "affinity-diagramming",
@@ -1936,7 +2602,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "bulls-eye-diagramming",
@@ -2005,7 +2672,8 @@
    ],
    "pairedWith": "storyboarding",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "card-sorting",
@@ -2078,7 +2746,8 @@
    ],
    "pairedWith": "diary-studies",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "cognitive-mapping",
@@ -2143,7 +2812,8 @@
    ],
    "pairedWith": "concept-metaphors-and-analogies",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the steps, and the tips were expanded with material paraphrased from Martin and Hanington (2012), p. 30.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "concept-mapping",
@@ -2207,7 +2877,8 @@
    ],
    "pairedWith": "cognitive-walkthrough",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "content-analysis",
@@ -2270,7 +2941,8 @@
    ],
    "pairedWith": "cultural-probes",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "create-insight-statements",
@@ -2297,7 +2969,8 @@
    "referenceUrl": "https://www.designkit.org/resources/1.html",
    "sources": [
     "IDEO.org. (2015). *The field guide to human-centered design*. https://www.designkit.org/resources/1.html"
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "elito-method",
@@ -2324,7 +2997,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "eraf-systems-diagram",
@@ -2351,7 +3025,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699",
    "sources": [
     "Kumar, V. (2013). *101 design methods: A structured approach for driving innovation in your organization*. Wiley."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "experience-diagramming",
@@ -2411,7 +3086,8 @@
    ],
    "pairedWith": "questionnaires-surveys",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "find-themes",
@@ -2438,7 +3114,8 @@
    "referenceUrl": "https://www.designkit.org/resources/1.html",
    "sources": [
     "IDEO.org. (2015). *The field guide to human-centered design*. https://www.designkit.org/resources/1.html"
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "importancedifficulty-matrix",
@@ -2465,7 +3142,8 @@
    "referenceUrl": "https://www.luma-institute.com",
    "sources": [
     "LUMA Institute. (2012). *Innovating for people: Handbook of human-centered design methods*."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "kano-analysis",
@@ -2492,7 +3170,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "kj-technique",
@@ -2519,7 +3198,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "mental-model-diagrams",
@@ -2583,7 +3263,8 @@
    ],
    "pairedWith": "heuristic-evaluation",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "mind-mapping",
@@ -2610,7 +3291,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "personas",
@@ -2677,7 +3359,8 @@
    ],
    "pairedWith": "case-studies",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "poems",
@@ -2740,7 +3423,8 @@
    ],
    "pairedWith": "buzz-reports",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "problem-tree-analysis",
@@ -2767,7 +3451,8 @@
    "referenceUrl": "https://www.luma-institute.com",
    "sources": [
     "LUMA Institute. (2012). *Innovating for people: Handbook of human-centered design methods*."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "rose-thorn-bud",
@@ -2827,7 +3512,8 @@
    ],
    "pairedWith": "parallel-prototyping",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "stakeholder-maps",
@@ -2854,7 +3540,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "statement-starters",
@@ -2930,7 +3617,8 @@
    ],
    "pairedWith": "behavioral-prototype",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "symmetric-clustering-matrix",
@@ -2957,7 +3645,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699",
    "sources": [
     "Kumar, V. (2013). *101 design methods: A structured approach for driving innovation in your organization*. Wiley."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "task-analysis",
@@ -2984,7 +3673,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "ten-types-of-innovation-diagnostics",
@@ -3011,7 +3701,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699",
    "sources": [
     "Kumar, V. (2013). *101 design methods: A structured approach for driving innovation in your organization*. Wiley."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "territory-maps",
@@ -3081,7 +3772,8 @@
    ],
    "pairedWith": "usability-report",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "thematic-networks",
@@ -3108,7 +3800,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "top-five",
@@ -3135,7 +3828,8 @@
    "referenceUrl": "https://www.designkit.org/resources/1.html",
    "sources": [
     "IDEO.org. (2015). *The field guide to human-centered design*. https://www.designkit.org/resources/1.html"
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "visualize-the-vote",
@@ -3204,7 +3898,8 @@
    ],
    "pairedWith": "live-prototyping",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "word-clouds",
@@ -3263,7 +3958,8 @@
    ],
    "pairedWith": "ideation-game",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "alternative-worlds",
@@ -3327,7 +4023,8 @@
    ],
    "pairedWith": "usability-testing",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "analogous-inspiration",
@@ -3354,7 +4051,8 @@
    "referenceUrl": "https://www.designkit.org/resources/1.html",
    "sources": [
     "IDEO.org. (2015). *The field guide to human-centered design*. https://www.designkit.org/resources/1.html"
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "bodystorming",
@@ -3414,7 +4112,8 @@
    ],
    "pairedWith": "rapid-iterative-testing-evaluation",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "brainstorm-graphic-organizers",
@@ -3471,7 +4170,8 @@
    ],
    "pairedWith": "business-origami",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, and the tips were expanded with material paraphrased from Martin and Hanington (2012), p. 22.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "brainstorming",
@@ -3540,7 +4240,8 @@
    ],
    "pairedWith": "literature-reviews",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "bundle-ideas",
@@ -3600,7 +4301,8 @@
    ],
    "pairedWith": "crowdsourcing",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "co-creation-session",
@@ -3673,7 +4375,8 @@
    ],
    "pairedWith": "personal-inventories",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "concept-metaphors-and-analogies",
@@ -3739,7 +4442,8 @@
    ],
    "pairedWith": "cognitive-mapping",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, and the tips were expanded with material paraphrased from Kumar (2013), method 5.7.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "concept-generating-matrix",
@@ -3773,7 +4477,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699",
    "sources": [
     "Kumar, V. (2013). *101 design methods: A structured approach for driving innovation in your organization*. Wiley."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "creative-toolkits",
@@ -3842,7 +4547,8 @@
    ],
    "pairedWith": "desirability-testing",
    "expandedNote": "Editorial note: the submitted card was brief, so the tips, the common mistakes, and the description were expanded with material paraphrased from Martin and Hanington (2012), p. 48.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "design-charette",
@@ -3869,7 +4575,8 @@
    "referenceUrl": "https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458",
    "sources": [
     "Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "design-workshops",
@@ -3942,7 +4649,8 @@
    ],
    "pairedWith": "listening-tour",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the tips, and the example were expanded with material paraphrased from Martin and Hanington (2012), p. 62.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "draw-it",
@@ -4004,7 +4712,8 @@
    ],
    "pairedWith": "stakeholder-walkthrough",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "ideation-game",
@@ -4063,7 +4772,8 @@
    ],
    "pairedWith": "word-clouds",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "image-boards",
@@ -4132,7 +4842,8 @@
    ],
    "pairedWith": "appearance-modeling",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, and the tips were expanded with material paraphrased from Martin and Hanington (2012), p. 100.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "mash-ups",
@@ -4193,7 +4904,8 @@
    ],
    "pairedWith": "role-playing",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "morphological-synthesis",
@@ -4256,7 +4968,8 @@
    ],
    "pairedWith": "unobtrusive-measures",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the materials list, the tips, the common mistakes, and the example were expanded with material paraphrased from Kumar (2013), method 6.1.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "round-robin",
@@ -4316,7 +5029,8 @@
    ],
    "pairedWith": "wizard-of-oz",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "thumbnail-sketching",
@@ -4381,7 +5095,8 @@
    ],
    "pairedWith": "shadowing",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the materials list, the tips, and the common mistakes were expanded with material paraphrased from LUMA Institute (2012), p. 60.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "ab-testing",
@@ -4444,7 +5159,8 @@
    ],
    "pairedWith": "interviews",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "appearance-modeling",
@@ -4512,7 +5228,8 @@
    ],
    "pairedWith": "image-boards",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "behavioral-prototype",
@@ -4583,7 +5300,8 @@
    ],
    "pairedWith": "statement-starters",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "business-model-canvas",
@@ -4650,7 +5368,8 @@
    ],
    "pairedWith": "participant-observation",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the materials list, the tips, and the example were expanded with material paraphrased from IDEO.org (2015), pp. 123 to 125.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "business-origami",
@@ -4711,7 +5430,8 @@
    ],
    "pairedWith": "brainstorm-graphic-organizers",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the steps, and the tips were expanded with material paraphrased from Martin and Hanington (2012), p. 24.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "cognitive-walkthrough",
@@ -4774,7 +5494,8 @@
    ],
    "pairedWith": "concept-mapping",
    "expandedNote": "Editorial note: the submitted card was brief, so the description, the situations for use, the steps, the materials list, the tips, the common mistakes, and the example were expanded with material paraphrased from Martin and Hanington (2012), pp. 32 to 33.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "desirability-testing",
@@ -4837,7 +5558,8 @@
    ],
    "pairedWith": "creative-toolkits",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "experience-prototyping",
@@ -4895,7 +5617,8 @@
    ],
    "pairedWith": "artifact-analysis",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "heuristic-evaluation",
@@ -4956,7 +5679,8 @@
    ],
    "pairedWith": "mental-model-diagrams",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "live-prototyping",
@@ -5023,7 +5747,8 @@
    ],
    "pairedWith": "visualize-the-vote",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "paper-prototyping",
@@ -5065,7 +5790,8 @@
    "referenceUrl": "https://rosenfeldmedia.com/books/the-user-experience-team-of-one/",
    "sources": [
     "Buley, L. (2013). *The user experience team of one: A research and design survival guide*. Rosenfeld Media."
-   ]
+   ],
+   "origin": "reference"
   },
   {
    "id": "parallel-prototyping",
@@ -5124,7 +5850,8 @@
    ],
    "pairedWith": "rose-thorn-bud",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "rapid-iterative-testing-evaluation",
@@ -5191,7 +5918,8 @@
    ],
    "pairedWith": "bodystorming",
    "expandedNote": "Editorial note: the submitted card was brief, so the description were expanded with material paraphrased from Martin and Hanington (2012), p. 142.",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "role-playing",
@@ -5261,7 +5989,8 @@
    ],
    "pairedWith": "mash-ups",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "scenario-description-swimlanes",
@@ -5320,7 +6049,8 @@
    ],
    "pairedWith": "behavioral-mapping",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "stakeholder-walkthrough",
@@ -5383,7 +6113,8 @@
    ],
    "pairedWith": "draw-it",
    "expandedNote": "",
-   "editorNote": "As defined in Universal Methods of Design (Martin & Hanington, 2012, p. 168), a stakeholder walkthrough is a group usability inspection in which end users, stakeholders, and the design team step through a task-based scenario together from the end user's perspective. This card describes a related participatory practice: co-synthesizing research findings with stakeholders and community co-designers."
+   "editorNote": "As defined in Universal Methods of Design (Martin & Hanington, 2012, p. 168), a stakeholder walkthrough is a group usability inspection in which end users, stakeholders, and the design team step through a task-based scenario together from the end user's perspective. This card describes a related participatory practice: co-synthesizing research findings with stakeholders and community co-designers.",
+   "origin": "student"
   },
   {
    "id": "storyboarding",
@@ -5458,7 +6189,8 @@
    ],
    "pairedWith": "bulls-eye-diagramming",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "think-aloud-protocol",
@@ -5525,7 +6257,8 @@
    ],
    "pairedWith": "aeiou",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "usability-report",
@@ -5595,7 +6328,8 @@
    ],
    "pairedWith": "territory-maps",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "usability-testing",
@@ -5662,7 +6396,8 @@
    ],
    "pairedWith": "alternative-worlds",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   },
   {
    "id": "wizard-of-oz",
@@ -5721,7 +6456,8 @@
    ],
    "pairedWith": "round-robin",
    "expandedNote": "",
-   "editorNote": ""
+   "editorNote": "",
+   "origin": "student"
   }
  ],
  "phaseConfig": {
@@ -5760,7 +6496,7 @@
  },
  "total": 117,
  "fullCount": 66,
- "briefCount": 51,
+ "briefCount": 33,
  "imageCount": 59,
  "students": [
   "Addy Hawes",
@@ -5796,5 +6532,6 @@
   "Tayshon Harris",
   "Tyler Surface",
   "Zaire Perkins"
- ]
+ ],
+ "draftCount": 18
 }

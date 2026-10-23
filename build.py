@@ -20,6 +20,20 @@ for _k, _v in _pr.items():
     for _o, _why in _v:
         assert _o in _ids and _o != _k and _why, (_k, _o)
     _ids[_k]['pairs'] = [{'id': _o, 'why': _why} for _o, _why in _v]
+_fm = json.load(open('families.json', encoding='utf-8'))
+assert set(_fm) == set(_ids), set(_ids) ^ set(_fm)
+_FAMS = [
+ {'id':'read','name':'Read','evidence':'Artifacts, texts, images, and records','asks':'What exists, what was made, or how something came to be'},
+ {'id':'ask','name':'Ask','evidence':'People\u2019s own accounts','asks':'What people say, believe, remember, value, or prefer'},
+ {'id':'watch','name':'Watch','evidence':'Observed behavior','asks':'What people actually do, and in what setting'},
+ {'id':'test','name':'Test','evidence':'A controlled comparison or a measurement','asks':'Whether one version works better than another, and by how much'},
+ {'id':'make','name':'Make','evidence':'Something you or participants made, and the reactions to it','asks':'What is possible, or how people respond to something that does not exist yet'},
+ {'id':'analyze','name':'Analyze','evidence':'Data you already have, from any family','asks':'What patterns, structure, or priorities a body of data holds'},
+]
+for _k, _v in _fm.items():
+    assert _v['family'] in {f['id'] for f in _FAMS} and _v['show'] and _v['limit'], _k
+    _ids[_k].update(_v)
+_d['families'] = _FAMS
 data_json = json.dumps(_d, ensure_ascii=False, indent=1)
 assert '</script' not in data_json.lower()
 
@@ -109,6 +123,24 @@ nav.top .plain:hover{border-bottom-color:rgba(255,255,255,.3)}
 /* FILTER */
 .filters{background:#fff;border-bottom:1px solid var(--g200);position:sticky;top:70px;z-index:200}
 .filters .in{max-width:var(--maxw);margin:0 auto;padding:0 32px;height:52px;display:flex;align-items:center;gap:8px;overflow-x:auto}
+.filters .in.fr{height:46px;border-top:1px solid var(--g100);background:var(--g50);max-width:none;padding:0 max(32px,calc((100vw - var(--maxw))/2 + 32px))}
+.flab{font-size:12.5px;font-weight:500;color:var(--g700);white-space:nowrap;flex-shrink:0;margin-right:2px}
+.ff{font-size:13px;font-weight:500;padding:5px 13px;border:1px solid var(--g300);border-radius:40px;color:var(--g700);background:#fff;white-space:nowrap;flex-shrink:0;min-height:30px}
+.ff:hover{border-color:var(--g600);color:var(--text)}
+.ff.on{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.ff .n{font-size:11.5px;opacity:.8;margin-left:5px}
+.fhelp{margin-left:auto;font-size:12.5px;font-weight:500;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;flex-shrink:0;padding:4px 2px;min-height:28px}
+.fpanel{display:none;background:#fff;border-bottom:1px solid var(--g200)}
+.fpanel.on{display:block}
+.fpanel .in{max-width:var(--maxw);margin:0 auto;padding:18px 32px 22px}
+.fpanel p.lead{font-size:14px;color:var(--g700);max-width:78ch;line-height:1.65;margin-bottom:14px}
+.fdefs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 28px}
+.fdefs div{font-size:13px;line-height:1.55;color:var(--g700)}
+.fdefs b{display:block;font-size:14px;color:var(--text);font-weight:700}
+.fnote{background:#eef4fb;border-bottom:1px solid #c9dcf0;padding:10px 0;display:none}
+.fnote.on{display:block}
+.fnote .in{max-width:var(--maxw);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:13.5px;color:var(--g800)}
+.fnote button{min-height:28px;padding:0 4px;font-size:12.5px;font-weight:700;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .fb{font-family:'Roboto Condensed',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.6px;
  text-transform:uppercase;padding:6px 14px;border:1px solid var(--g200);border-radius:40px;color:var(--g600);
  white-space:nowrap;flex-shrink:0;transition:all .14s}
@@ -149,7 +181,7 @@ mark{background:#ffe9a8;color:inherit;border-radius:2px;padding:0 1px}
 .phase{padding:64px 0}
 .phase+.phase{border-top:1px solid var(--g200)}
 .phase.hide,.phase.nomatch{display:none}
-#sec-dd,#sec-research,#sec-insights,#sec-ideation,#sec-proto,#sec-sources,#sec-contributors{scroll-margin-top:122px}
+#sec-dd,#sec-research,#sec-insights,#sec-ideation,#sec-proto,#sec-sources,#sec-contributors{scroll-margin-top:172px}
 /* while searching, results sit directly under the header: no hero, no framework section */
 .searching .hero,.searching .dd{display:none}
 .searching .phase{padding:30px 0}
@@ -178,8 +210,11 @@ mark{background:#ffe9a8;color:inherit;border-radius:2px;padding:0 1px}
 .card .thumb{aspect-ratio:16/10;background:var(--g100);overflow:hidden}
 .card .thumb img{width:100%;height:100%;object-fit:cover}
 .card .body{padding:14px 16px;flex:1}
+.card .tags{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
 .card .ph{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.3px;
- text-transform:uppercase;display:block;margin-bottom:6px}
+ text-transform:uppercase;display:block}
+.fam{font-size:11.5px;line-height:1;font-weight:500;color:var(--g700);border:1px solid var(--g300);border-radius:10px;padding:3px 8px;background:#fff;white-space:nowrap}
+.card.brief .fam{background:var(--g50)}
 .card .ph.research{color:var(--rd)}
 .card .ph.insights{color:var(--id)}
 .card .ph.ideation{color:var(--idd)}
@@ -353,6 +388,24 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 .cite em{font-style:italic}
 .ovnote{font-size:12.5px;color:var(--gtxt);margin-top:10px}
 .exbox p+p{margin-top:12px}
+.showbox{border:1px solid var(--g200);border-radius:5px;overflow:hidden}
+.showbox .fh{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 18px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:14px;color:var(--g700);line-height:1.5}
+.showbox .fh .fam{font-size:13px;padding:4px 11px;border-color:var(--g400)}
+.showbox .fh button{margin-left:auto;font-size:13px;font-weight:500;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;min-height:28px;padding:2px 0}
+.showbox .cols{display:grid;grid-template-columns:1fr 1fr}
+.showbox .col{padding:16px 18px;font-size:14.5px;line-height:1.62;color:var(--g800)}
+.showbox .col+.col{border-left:1px solid var(--g200)}
+.showbox .col .l{font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.showbox .col.yes .l{color:var(--idd)}
+.showbox .col.no .l{color:var(--id)}
+.showbox .foot{padding:11px 18px;border-top:1px solid var(--g200);font-size:12.5px;color:var(--gtxt);line-height:1.55}
+.cite{display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
+.cite .ct{flex:1;min-width:0}
+.cpy{flex-shrink:0;font-size:12.5px;font-weight:500;color:var(--red-dk);text-decoration:underline;text-underline-offset:3px;min-height:28px;padding:2px 2px;white-space:nowrap}
+.cpy:hover{color:var(--red)}
+.cpyall{margin-top:12px;font-size:13px;font-weight:500;color:var(--g800);border:1.5px solid var(--g400);border-radius:3px;padding:0 14px;min-height:36px}
+.cpyall:hover{border-color:var(--g800)}
+.libbox .cp{display:flex;gap:16px;margin-top:3px;flex-wrap:wrap}
 .noimg{background:var(--g100);border:2px dashed var(--g300);border-radius:5px;padding:30px 22px;text-align:center}
 .noimg .t{font-family:'Roboto Condensed',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.3px;
  text-transform:uppercase;color:var(--g600);margin-bottom:8px}
@@ -408,6 +461,12 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
  .phead p{text-align:left}
 }
 @media(max-width:640px){
+ .showbox .cols{grid-template-columns:1fr}
+ .showbox .col+.col{border-left:0;border-top:1px solid var(--g200)}
+ .fdefs{grid-template-columns:1fr}
+ .filters .in.fr{padding-left:18px;padding-right:18px}
+ .fpanel .in,.fnote .in{padding-left:18px;padding-right:18px}
+ .cite{flex-direction:column;gap:2px}
  .wrap,.hin,.filters .in,.bc .in,footer.site .in,.sbanner .in{padding-left:18px;padding-right:18px}
  .dbody{padding:30px 18px}
  .sgrid,.ddgrid,.clist{grid-template-columns:1fr}
@@ -421,14 +480,14 @@ dialog.lb :focus-visible{outline:3px solid #fff;outline-offset:3px}
 }
 @media(max-width:420px){.grid{grid-template-columns:1fr}}
 @media print{
- header.site,.filters,.sbanner,footer.site,.bc,.skip,.actions,.more,.seeall,#p-home,dialog.lb,.zoomhint{display:none!important}
+ header.site,.filters,.sbanner,.fnote,.fpanel,footer.site,.bc,.skip,.actions,.more,.seeall,#p-home,dialog.lb,.zoomhint,.cpy,.cpyall{display:none!important}
  #p-detail{display:block!important}
  body{color:#000;background:#fff}
  .dhero{background:none!important;padding:0 0 14px;border-bottom:2px solid #000}
  .dhero *{color:#000!important}
  .dbody{padding:18px 0;max-width:none}
  .dlayout{display:block}
- .sb,.blk,.cite,.tipbox,.exbox{break-inside:avoid}
+ .sb,.blk,.cite,.tipbox,.exbox,.showbox{break-inside:avoid}
  .sb img{max-width:70%}
  .cite a,.sb figcaption a{color:#000}
  .ddind{background:none;border:1px solid #999}
@@ -441,7 +500,8 @@ JS = r"""
 var APP = JSON.parse(document.getElementById('app-data').textContent);
 var M = APP.methods, PC = APP.phaseConfig, PCOL = APP.phaseColor;
 var BY = {}; M.forEach(function(m){ BY[m.id] = m; });
-var phase = 'all', query = '', ALTS = [], cur = 'research';
+var phase = 'all', fam = 'all', query = '', ALTS = [], cur = 'research';
+var FAMS = APP.families, FAM = {}; FAMS.forEach(function(f){ FAM[f.id] = f; });
 var PHASES = ['research','insights','ideation','proto'];
 var SITE_TITLE = document.title;
 var shownKey = null, savedY = 0, savedId = '', annTimer = null;
@@ -572,6 +632,7 @@ function search(v){
   query = v.trim().toLowerCase();
   ALTS = query ? Search.alternatives(Search.tokenize(query)) : [];
   var home = q('p-home'), wasSearching = home.classList.contains('searching');
+  if (query && fam !== 'all') setFam('all', true);
   home.classList.toggle('searching', !!query);
   if (query !== '' && !wasSearching) jumpTo(0);
   if (query === '' && wasSearching) jumpTo(0);
@@ -598,10 +659,37 @@ function setPhase(p){
   });
   PHASES.forEach(function(x){ q('sec-'+x).classList.toggle('hide', !(p==='all' || p===x)); });
   if (shownKey){ clearHash(); route(); }
+  if (fam !== 'all') setFam(fam, true);
   render();
-  var n = p==='all' ? M.length : M.filter(function(m){ return m.phase===p; }).length;
+  var n = p==='all' ? M.filter(function(m){ return fam==='all' || m.family===fam; }).length : M.filter(function(m){ return m.phase===p && (fam==='all' || m.family===fam); }).length;
   announce(p==='all' ? 'Showing all ' + n + ' methods' : 'Showing ' + n + ' ' + PC[p].name + ' methods');
   if (p !== 'all') setTimeout(function(){ go('sec-'+p); }, 70);
+}
+
+function famCount(f){ return M.filter(function(m){ return (f==='all' || m.family===f) && (phase==='all' || m.phase===phase); }).length; }
+function setFam(f, quiet){
+  if (!quiet && query) clearSearch();
+  fam = f;
+  document.querySelectorAll('.ff').forEach(function(b){
+    var on = b.dataset.fam === f; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  var note = q('fnote');
+  if (f === 'all'){ note.classList.remove('on'); }
+  else {
+    var n = famCount(f), F = FAM[f];
+    q('fnote-text').textContent = 'Showing ' + n + (n===1 ? ' method' : ' methods') + ' in the ' + F.name + ' family. Evidence: ' + F.evidence.toLowerCase() + '.' + (n === 0 ? ' No methods match this phase and family together.' : '');
+    note.classList.add('on');
+  }
+  if (!quiet){
+    if (shownKey){ clearHash(); route(); }
+    render();
+    announce(f==='all' ? 'Showing all families' : 'Showing ' + famCount(f) + ' ' + FAM[f].name + ' methods');
+    if (f !== 'all') setTimeout(function(){ var first = PHASES.filter(function(p){ return !q('sec-'+p).classList.contains('hide') && !q('sec-'+p).classList.contains('nomatch'); })[0]; if (first) go('sec-'+first); }, 70);
+  }
+}
+function toggleFamHelp(){
+  var pnl = q('fpanel'), b = q('fhelp'), on = !pnl.classList.contains('on');
+  pnl.classList.toggle('on', on); b.setAttribute('aria-expanded', on ? 'true' : 'false');
 }
 
 /* full-text index: every field of a card is searchable, with word forms and related terms */
@@ -671,7 +759,7 @@ function banner(){
   announce(msg);
 }
 function count(){
-  var n = phase==='all' ? M.length : M.filter(function(m){ return m.phase===phase; }).length;
+  var n = M.filter(function(m){ return (phase==='all' || m.phase===phase) && (fam==='all' || m.family===fam); }).length;
   q('fcount').textContent = n + (n===1?' method':' methods');
 }
 
@@ -682,14 +770,15 @@ function render(){
     var list = M.filter(function(m){
       if (m.phase !== p) return false;
       if (!query && phase!=='all' && phase!==p) return false;
+      if (fam !== 'all' && m.family !== fam) return false;
       return true;
     }).map(function(m, i){ return {m:m, ev:evalCard(m), i:i}; })
       .filter(function(o){ return o.ev !== null; });
     if (query){ list.sort(function(a,b){ return a.ev.rank - b.ev.rank || a.i - b.i; }); }
-    q('sec-'+p).classList.toggle('nomatch', !!query && !list.length);
+    q('sec-'+p).classList.toggle('nomatch', (!!query || fam !== 'all') && !list.length);
     g.innerHTML = '';
     if (!list.length){
-      if (!query) g.appendChild(el('div','empty','No methods.'));
+      if (!query && fam === 'all') g.appendChild(el('div','empty','No methods.'));
       return;
     }
     list.forEach(function(o){
@@ -704,7 +793,10 @@ function render(){
         t.appendChild(im); c.appendChild(t);
       }
       var b = el('div','body');
-      b.appendChild(el('span','ph '+m.phase, PC[m.phase].name));
+      var tg = el('div','tags');
+      tg.appendChild(el('span','ph '+m.phase, PC[m.phase].name));
+      tg.appendChild(el('span','fam', FAM[m.family].name));
+      b.appendChild(tg);
       var h = el('h3');
       var ha = document.createElement('a');
       ha.href = '#' + m.id;
@@ -726,7 +818,7 @@ function render(){
         by.appendChild(document.createTextNode('By '));
         by.appendChild(el('b', null, m.student));
       } else {
-        by.appendChild(el('span','ref-tag','Reference entry'));
+        by.appendChild(el('span','ref-tag', m.origin==='draft' ? 'Draft entry' : 'Reference entry'));
       }
       f.appendChild(by);
       var go = el('span','go','View'); go.setAttribute('aria-hidden','true');
@@ -746,12 +838,53 @@ function section(parent, title, node){
   parent.appendChild(w);
 }
 var BOOKS = [
-  {k:'Universal Methods of Design', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458', gated:true},
-  {k:'101 Design Methods', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699', gated:true},
-  {k:'The Field Guide to Human-Centered Design', url:'https://www.designkit.org/resources/1.html', gated:false},
-  {k:'Innovating for People', url:'https://www.luma-institute.com', gated:false},
-  {k:'The User Experience Team of One', url:'https://rosenfeldmedia.com/books/the-user-experience-team-of-one/', gated:false}
+  {k:'Universal Methods of Design', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=6039458', gated:true,
+   cite:'Martin & Hanington, 2012', ref:'Martin, B., & Hanington, B. (2012). *Universal methods of design: 100 ways to research complex problems, develop innovative ideas, and design effective solutions*. Rockport Publishers.'},
+  {k:'101 Design Methods', url:'https://ebookcentral.proquest.com/lib/ncsu/detail.action?docID=861699', gated:true,
+   cite:'Kumar, 2013', ref:'Kumar, V. (2013). *101 design methods: A structured approach for driving innovation in your organization*. Wiley.'},
+  {k:'The Field Guide to Human-Centered Design', url:'https://www.designkit.org/resources/1.html', gated:false,
+   cite:'IDEO.org, 2015', ref:'IDEO.org. (2015). *The field guide to human-centered design*. IDEO.org.'},
+  {k:'Innovating for People', url:'https://www.luma-institute.com', gated:false,
+   cite:'LUMA Institute, 2012', ref:'LUMA Institute. (2012). *Innovating for people: Handbook of human-centered design methods*. LUMA Institute.'},
+  {k:'The User Experience Team of One', url:'https://rosenfeldmedia.com/books/the-user-experience-team-of-one/', gated:false,
+   cite:'Buley, 2013', ref:'Buley, L. (2013). *The user experience team of one: A research and design survival guide*. Rosenfeld Media.'}
 ];
+/* copy a citation as plain text and, where the browser allows, as formatted text with italics */
+function toHtml(t){ return esc(t).replace(/\*([^*]+)\*/g, '<i>$1<\/i>'); }
+function copyRich(text, html, done){
+  function fallback(){
+    try {
+      var t = document.createElement('textarea'); t.value = text; t.setAttribute('readonly',''); t.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(t); t.select();
+      var ok = document.execCommand('copy'); document.body.removeChild(t); done(ok);
+    } catch(e){ done(false); }
+  }
+  function plainOnly(){
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ done(true); }, fallback);
+    else fallback();
+  }
+  try {
+    if (navigator.clipboard && navigator.clipboard.write && window.ClipboardItem){
+      var item = new ClipboardItem({'text/plain': new Blob([text], {type:'text/plain'}), 'text/html': new Blob([html], {type:'text/html'})});
+      navigator.clipboard.write([item]).then(function(){ done(true); }, plainOnly);
+      return;
+    }
+  } catch(e){}
+  plainOnly();
+}
+function copyButton(label, aria, getPair){
+  var b = el('button','cpy', label); b.type = 'button';
+  b.setAttribute('aria-label', aria);
+  b.addEventListener('click', function(){
+    var pr = getPair();
+    copyRich(plain(pr[0]), pr[1], function(ok){
+      b.textContent = ok ? 'Copied' : 'Copy failed';
+      announce(ok ? 'Copied to the clipboard' : 'Could not copy. Select the text and copy it yourself.', 50);
+      setTimeout(function(){ b.textContent = label; }, 2000);
+    });
+  });
+  return b;
+}
 function bookInfo(name){
   for (var i = 0; i < BOOKS.length; i++){ if (String(name).indexOf(BOOKS[i].k) === 0) return BOOKS[i]; }
   return null;
@@ -772,16 +905,39 @@ function detail(m){
     by.appendChild(sb);
     by.appendChild(document.createTextNode(', a student in D 492 Intro to Design Research, ' + (m.semester || 'Spring 2026')));
   } else {
-    by.appendChild(el('em', null, 'Reference entry, not yet documented by a student'));
+    by.appendChild(el('em', null, m.origin==='draft'
+      ? 'Draft entry, written for this site and not yet reviewed'
+      : 'Reference entry, not yet documented by a student'));
   }
 
   /* main column */
   var main = q('d-main'); main.innerHTML = '';
+  if (m.origin === 'draft' && m.draftNote){
+    main.appendChild(el('div','notice', m.draftNote));
+  }
   if (m.kind === 'brief'){
     main.appendChild(el('div','notice',
       'This method has a short reference entry. Full documentation is written by students, and this card is available for a future class to complete.'));
   }
   section(main, 'What it is', rich(el('p','prose'), m.whatItIs));
+
+  if (m.family && FAM[m.family]){
+    var F = FAM[m.family], sbx = el('div','showbox');
+    var fh = el('div','fh');
+    fh.appendChild(el('span','fam', F.name));
+    fh.appendChild(el('span', null, 'Evidence: ' + F.evidence.toLowerCase() + '.'));
+    var fb = el('button', null, 'See all ' + F.name + ' methods'); fb.type = 'button';
+    fb.addEventListener('click', function(){ setPhase('all'); setFam(m.family); });
+    fh.appendChild(fb);
+    sbx.appendChild(fh);
+    var cols = el('div','cols');
+    var c1 = el('div','col yes'); c1.appendChild(el('div','l','Can show')); c1.appendChild(el('p', null, m.show)); cols.appendChild(c1);
+    var c2 = el('div','col no'); c2.appendChild(el('div','l','Cannot show')); c2.appendChild(el('p', null, m.limit)); cols.appendChild(c2);
+    sbx.appendChild(cols);
+    if (m.family === 'analyze') sbx.appendChild(el('div','foot','Analysis methods work on data you collected with another family. Their findings are only as strong as that data.'));
+    else sbx.appendChild(el('div','foot','Pair this with a method from a different family so that each covers the other\u2019s blind spot.'));
+    section(main, 'What it can show', sbx);
+  }
 
   if (m.kind === 'full'){
     if (m.whenToUse && m.whenToUse.length){
@@ -811,19 +967,30 @@ function detail(m){
   if (m.kind === 'full' && m.sources && m.sources.length){
     var sw = el('div');
     m.sources.forEach(function(s){
-      var d = el('div','cite');
+      var d = el('div','cite'), ct = el('span','ct');
       var parts = String(s).split(/(https?:\/\/\S+)/);
       parts.forEach(function(p){
         if (/^https?:\/\//.test(p)){
           var a = document.createElement('a');
           a.href = p; a.target = '_blank'; a.rel = 'noopener'; a.textContent = p;
-          d.appendChild(a);
+          ct.appendChild(a);
         } else if (p) {
-          rich(d, p);
+          rich(ct, p);
         }
       });
+      d.appendChild(ct);
+      d.appendChild(copyButton('Copy reference', 'Copy this reference: ' + plain(s).slice(0, 60), function(){ return [s, toHtml(s)]; }));
       sw.appendChild(d);
     });
+    var ca = el('button','cpyall','Copy all references'); ca.type = 'button';
+    ca.addEventListener('click', function(){
+      copyRich(m.sources.map(plain).join('\n\n'), m.sources.map(function(x){ return '<p>' + toHtml(x) + '<\/p>'; }).join(''), function(ok){
+        ca.textContent = ok ? 'Copied' : 'Copy failed';
+        announce(ok ? 'All references copied' : 'Could not copy.', 50);
+        setTimeout(function(){ ca.textContent = 'Copy all references'; }, 2000);
+      });
+    });
+    sw.appendChild(ca);
     section(main, 'Where to learn more', sw);
   }
 
@@ -893,6 +1060,13 @@ function detail(m){
       }
       li.appendChild(document.createTextNode(', ' + e.where));
       if (bk && bk.gated) li.appendChild(el('span','gt','Library link. Off campus, an NC State sign-in is required.'));
+      if (bk && bk.ref){
+        var pg = /p\.\s*(\d+)/.exec(e.where), it = '(' + bk.cite + (pg ? ', p. ' + pg[1] : '') + ')';
+        var cp = el('span','cp');
+        cp.appendChild(copyButton('Copy in-text citation', 'Copy the in-text citation ' + it, function(){ return [it, esc(it)]; }));
+        cp.appendChild(copyButton('Copy reference', 'Copy the reference for ' + bk.k, function(){ return [bk.ref, toHtml(bk.ref)]; }));
+        li.appendChild(cp);
+      }
       lu.appendChild(li);
     });
     section(main, 'Where this method appears in the course books', lu);
@@ -1044,6 +1218,7 @@ function contributors(){
 q('stat-methods').textContent = APP.total;
 q('stat-cards').textContent   = APP.fullCount;
 q('stat-students').textContent= APP.students.length;
+q('stat-drafts').textContent  = APP.draftCount;
 PHASES.forEach(function(p){
   q('ddn-'+p).textContent = APP.counts[p] + ' methods';
   q('chipn-'+p).textContent = String(APP.counts[p]);
@@ -1065,6 +1240,18 @@ Search.init(JSON.parse(document.getElementById('syn-data').textContent));
     if (lbTrigger && document.body.contains(lbTrigger)) lbTrigger.focus();
   });
   window.addEventListener('resize', function(){ if (d.open) lbSize(); });
+})();
+(function(){
+  var w = q('fdefs');
+  FAMS.forEach(function(f){
+    var d = el('div'); d.appendChild(el('b', null, f.name));
+    d.appendChild(document.createTextNode('Answers: ' + f.asks.charAt(0).toLowerCase() + f.asks.slice(1) + '. Evidence: ' + f.evidence.toLowerCase() + '.'));
+    w.appendChild(d);
+  });
+  document.querySelectorAll('.ff').forEach(function(b){
+    var f = b.dataset.fam;
+    if (f !== 'all') b.appendChild(el('span','n', String(M.filter(function(m){ return m.family === f; }).length)));
+  });
 })();
 contributors();
 render();
@@ -1156,8 +1343,8 @@ html = f'''<!DOCTYPE html>
  <p class="kicker">NC State College of Design</p>
  <h1>Design Research<br><em>Methods</em></h1>
  <p class="lede">A working reference of 117 methods used to plan research, make sense of what it
-  finds, generate ideas, and test them. The detailed cards were researched and written by
-  students.</p>
+  finds, generate ideas, and test them. Most detailed cards were researched and written by
+  students. Eighteen more were drafted for the site and are marked as drafts until they are reviewed.</p>
  <div class="chips">
   <button class="chip research" onclick="setPhase('research')">Research <span id="chipn-research"></span></button>
   <button class="chip insights" onclick="setPhase('insights')">Insights <span id="chipn-insights"></span></button>
@@ -1168,6 +1355,7 @@ html = f'''<!DOCTYPE html>
   <div class="stat"><b id="stat-methods"></b><span>Methods</span></div>
   <div class="stat"><b id="stat-cards"></b><span>Student-written cards</span></div>
   <div class="stat"><b id="stat-students"></b><span>Contributors</span></div>
+  <div class="stat"><b id="stat-drafts"></b><span>Draft entries awaiting review</span></div>
  </div>
 </div></section>
 
@@ -1178,7 +1366,23 @@ html = f'''<!DOCTYPE html>
  <button class="fb ideation" data-phase="ideation" aria-pressed="false" onclick="setPhase('ideation')">Ideation</button>
  <button class="fb proto" data-phase="proto" aria-pressed="false" onclick="setPhase('proto')">Prototyping</button>
  <span class="fcount" id="fcount"></span>
+</div>
+<div class="in fr" role="group" aria-label="Filter methods by evidence family">
+ <span class="flab" id="flab">Evidence family</span>
+ <button class="ff on" data-fam="all" aria-pressed="true" onclick="setFam('all')">All</button>
+ <button class="ff" data-fam="read" aria-pressed="false" onclick="setFam('read')">Read</button>
+ <button class="ff" data-fam="ask" aria-pressed="false" onclick="setFam('ask')">Ask</button>
+ <button class="ff" data-fam="watch" aria-pressed="false" onclick="setFam('watch')">Watch</button>
+ <button class="ff" data-fam="test" aria-pressed="false" onclick="setFam('test')">Test</button>
+ <button class="ff" data-fam="make" aria-pressed="false" onclick="setFam('make')">Make</button>
+ <button class="ff" data-fam="analyze" aria-pressed="false" onclick="setFam('analyze')">Analyze</button>
+ <button class="fhelp" id="fhelp" aria-expanded="false" aria-controls="fpanel" onclick="toggleFamHelp()">What are families?</button>
 </div></div>
+<div class="fpanel" id="fpanel"><div class="in">
+ <p class="lead">The phase tells you when in a project a designer would reach for a method. The family tells you what kind of evidence the method produces, which decides what a finding from it can support. A method sits in one phase and one family. To build a sound argument, choose methods from different families.</p>
+ <div class="fdefs" id="fdefs"></div>
+</div></div>
+<div class="fnote" id="fnote"><div class="in"><span id="fnote-text"></span><button type="button" onclick="setFam('all')">Show all families</button></div></div>
 <div class="sbanner" id="sbanner"><div class="in">
  <span id="btext"></span><button onclick="clearSearch()">Clear search</button>
 </div></div>

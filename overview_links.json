@@ -6,63 +6,6 @@
    "url": "https://www.nngroup.com/articles/unmoderated-usability-testing/"
   }
  ],
- "competitive-testing": [
-  {
-   "title": "Competitive Usability Evaluations: Definition",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/competitive-usability-evaluations/"
-  }
- ],
- "content-inventory-audit": [
-  {
-   "title": "Content Inventory and Auditing 101",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/content-audits/"
-  },
-  {
-   "title": "Content audit",
-   "publisher": "18F Methods",
-   "url": "https://methods.18f.gov/decide/content-audit/"
-  }
- ],
- "contextual-inquiry": [
-  {
-   "title": "Contextual Inquiry: Inspire Design by Observing and Interviewing Users in Their Context",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/contextual-inquiry/"
-  },
-  {
-   "title": "Contextual inquiry",
-   "publisher": "18F Methods",
-   "url": "https://methods.18f.gov/discover/contextual-inquiry"
-  }
- ],
- "critical-incident-technique": [
-  {
-   "title": "The Critical Incident Technique in UX",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/critical-incident-technique/"
-  }
- ],
- "design-ethnography": [
-  {
-   "title": "Field Studies",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/field-studies/"
-  }
- ],
- "ergonomic-analysis": [
-  {
-   "title": "Ergonomics: Identify Problems",
-   "publisher": "U.S. Occupational Safety and Health Administration",
-   "url": "https://www.osha.gov/ergonomics/identify-problems"
-  },
-  {
-   "title": "Ergonomics: Overview",
-   "publisher": "U.S. Occupational Safety and Health Administration",
-   "url": "https://www.osha.gov/ergonomics"
-  }
- ],
  "evidence-based-design": [
   {
    "title": "About EBD",
@@ -82,34 +25,11 @@
    "url": "https://www.apa.org/research-practice/conduct-research/sampling-longitudinal-research"
   }
  ],
- "experiments": [
-  {
-   "title": "A/B Testing 101",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/ab-testing/",
-   "note": "Covers the A/B test, the most common controlled experiment in digital design."
-  }
- ],
  "extremes-and-mainstreams": [
   {
    "title": "Extremes and Mainstreams",
    "publisher": "IDEO.org Design Kit",
    "url": "https://www.designkit.org/methods/extremes-and-mainstreams.html"
-  }
- ],
- "fly-on-the-wall-observation": [
-  {
-   "title": "Observation",
-   "publisher": "Digital.gov",
-   "url": "https://digital.gov/guides/hcd/discovery-operations/observation",
-   "note": "Covers fly-on-the-wall and participatory observation."
-  }
- ],
- "focus-groups": [
-  {
-   "title": "Focus Groups 101",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/focus-groups-definition/"
   }
  ],
  "guerilla-user-research": [
@@ -119,25 +39,6 @@
    "url": "https://openpracticelibrary.com/practice/guerilla-testing/"
   }
  ],
- "observation": [
-  {
-   "title": "Observation",
-   "publisher": "Digital.gov",
-   "url": "https://digital.gov/guides/hcd/discovery-operations/observation"
-  },
-  {
-   "title": "Field Studies",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/field-studies/"
-  }
- ],
- "participatory-action-research": [
-  {
-   "title": "Participatory Action Research",
-   "publisher": "Participatory Methods",
-   "url": "https://www.participatorymethods.org/methodology/participatory-action-research/"
-  }
- ],
  "photo-studies": [
   {
    "title": "Photojournal",
@@ -145,38 +46,11 @@
    "url": "https://www.designkit.org/methods/photojournal.html"
   }
  ],
- "picture-cards": [
-  {
-   "title": "Generative Design Method Cards (see Image collaging and What if? cards)",
-   "publisher": "Elizabeth Sanders, MakeTools via Design Research Methods",
-   "url": "https://designresearchmethods.com/wp-content/uploads/2019/02/Sanders_MethodCards.pdf",
-   "note": "Closest free match. The cards describe image-based tools that participants select and arrange."
-  }
- ],
  "remote-moderated-research": [
   {
    "title": "Remote Moderated Usability Tests: Why to Do Them",
    "publisher": "Nielsen Norman Group",
    "url": "https://www.nngroup.com/articles/moderated-remote-usability-test-why/"
-  }
- ],
- "secondary-research": [
-  {
-   "title": "Secondary Research in UX",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/secondary-research-in-ux/"
-  },
-  {
-   "title": "Secondary Research",
-   "publisher": "IDEO.org Design Kit",
-   "url": "https://www.designkit.org/methods/secondary-research.html"
-  }
- ],
- "semantic-differential": [
-  {
-   "title": "Rating Scales in UX Research: Likert or Semantic Differential?",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/rating-scales/"
   }
  ],
  "site-search-analytics": [
@@ -344,14 +218,6 @@
    "note": "A three-minute video introduction."
   }
  ],
- "directed-storytelling": [
-  {
-   "title": "The Critical Incident Technique in UX",
-   "publisher": "Nielsen Norman Group",
-   "url": "https://www.nngroup.com/articles/critical-incident-technique/",
-   "note": "Closest free match. A related technique in which participants recount specific past experiences."
-  }
- ],
  "eraf-systems-diagram": [
   {
    "title": "ERAF Systems Diagram",
@@ -360,46 +226,12 @@
    "note": "The overview is free to read. Step-by-step instructions need a free registration."
   }
  ],
- "graffiti-walls": [
-  {
-   "title": "Evaluation Tool: Graffiti Wall",
-   "publisher": "Europlanet Evaluation Toolkit",
-   "url": "https://www.europlanet.org/outreach/europlanet-evaluation-toolkit/evaluation-tool-graffiti-wall/"
-  },
-  {
-   "title": "Before I Die: Participate",
-   "publisher": "Candy Chang",
-   "url": "https://www.candychang.com/before-i-die-participate/",
-   "note": "A well-known public wall that invites written responses."
-  }
- ],
  "innovation-sourcebook": [
   {
    "title": "Innovation Sourcebook",
    "publisher": "Innovation Wiki, verrocchio Institute",
    "url": "https://www.innovation.wiki/en/method/innovation-sourcebook/",
    "note": "The overview is free to read. Step-by-step instructions need a free registration."
-  }
- ],
- "laddering": [
-  {
-   "title": "Laddering Questions: Drilling Down Deep and Moving Sideways in UX Research",
-   "publisher": "Interaction Design Foundation",
-   "url": "https://ixdf.org/literature/article/laddering-questions-drilling-down-deep-and-moving-sideways-in-ux-research"
-  }
- ],
- "popular-media-scan": [
-  {
-   "title": "Popular Media Scan",
-   "publisher": "Innovation Wiki, verrocchio Institute",
-   "url": "https://www.innovation.wiki/en/method/popular-media-scan/",
-   "note": "The overview is free to read. Step-by-step instructions need a free registration."
-  },
-  {
-   "title": "The Futures Toolkit (see Horizon Scanning)",
-   "publisher": "UK Government Office for Science",
-   "url": "https://www.gov.uk/government/publications/futures-toolkit-for-policy-makers-and-analysts/the-futures-toolkit-html",
-   "note": "Closest free match for the scanning step. A long document."
   }
  ],
  "symmetric-clustering-matrix": [
