@@ -1,0 +1,2108 @@
+{
+ "artifact-analysis": [
+  [
+   "photo-studies",
+   "Photographs record the objects you examine so others can review them."
+  ],
+  [
+   "interviews",
+   "Owners explain what the objects mean to them."
+  ],
+  [
+   "personal-inventories",
+   "Inventories show how people actually use and arrange their things."
+  ],
+  [
+   "design-ethnography",
+   "Fieldwork supplies the cultural setting that gives an artifact meaning."
+  ]
+ ],
+ "automated-remote-research": [
+  [
+   "site-search-analytics",
+   "Both read behavior data that people leave behind without being asked."
+  ],
+  [
+   "interviews",
+   "Follow-up interviews explain the patterns the data shows."
+  ],
+  [
+   "remote-moderated-research",
+   "Moderated sessions test what the logs only hint at."
+  ],
+  [
+   "questionnaires-surveys",
+   "Surveys add the reasons behind the clicks."
+  ]
+ ],
+ "behavioral-mapping": [
+  [
+   "observation",
+   "Systematic watching supplies the movements that get mapped."
+  ],
+  [
+   "shadowing",
+   "Following one person adds detail to a map of many."
+  ],
+  [
+   "fly-on-the-wall-observation",
+   "Quiet observation keeps the movements natural."
+  ],
+  [
+   "interviews",
+   "People explain why they moved the way they did."
+  ]
+ ],
+ "buzz-reports": [
+  [
+   "popular-media-scan",
+   "Both track what the public is saying right now."
+  ],
+  [
+   "secondary-research",
+   "Published studies add depth to fast-moving chatter."
+  ],
+  [
+   "affinity-diagramming",
+   "Clustering sorts a pile of mentions into themes."
+  ],
+  [
+   "word-clouds",
+   "A word cloud shows which terms dominate the buzz."
+  ]
+ ],
+ "case-studies": [
+  [
+   "interviews",
+   "Interviews supply first-person evidence inside the case."
+  ],
+  [
+   "secondary-research",
+   "Existing reports fill in the background of the case."
+  ],
+  [
+   "content-analysis",
+   "Documents and media from the case can be coded for themes."
+  ],
+  [
+   "literature-reviews",
+   "A review shows how earlier cases were studied."
+  ]
+ ],
+ "competitive-testing": [
+  [
+   "usability-testing",
+   "Both put tasks in front of real users."
+  ],
+  [
+   "think-aloud-protocol",
+   "Spoken thoughts explain why a competitor product works or fails."
+  ],
+  [
+   "heuristic-evaluation",
+   "Experts can review the same competitors against known rules."
+  ],
+  [
+   "ten-types-of-innovation-diagnostics",
+   "Diagnostics show where rivals concentrate their effort."
+  ]
+ ],
+ "content-inventory-audit": [
+  [
+   "card-sorting",
+   "Users regroup the content you have just cataloged."
+  ],
+  [
+   "site-search-analytics",
+   "Failed searches point to gaps the audit should check."
+  ],
+  [
+   "interviews",
+   "Stakeholders explain why content exists and who owns it."
+  ],
+  [
+   "competitive-testing",
+   "Comparing against rivals shows what content is missing."
+  ]
+ ],
+ "contextual-inquiry": [
+  [
+   "affinity-diagramming",
+   "Field notes cluster into the structure of the work."
+  ],
+  [
+   "task-analysis",
+   "Observed steps break down into actions and decisions."
+  ],
+  [
+   "experience-diagramming",
+   "Observations become a map of the full experience."
+  ],
+  [
+   "observation",
+   "A defined protocol keeps the visit focused."
+  ]
+ ],
+ "critical-incident-technique": [
+  [
+   "interviews",
+   "Incidents are collected through a conversation."
+  ],
+  [
+   "directed-storytelling",
+   "Prompts help people tell an incident in order."
+  ],
+  [
+   "find-themes",
+   "Incidents from many people group into recurring causes."
+  ],
+  [
+   "usability-testing",
+   "Testing shows whether a fix removes the incident."
+  ]
+ ],
+ "crowdsourcing": [
+  [
+   "questionnaires-surveys",
+   "Surveys give the crowd a structured way to respond."
+  ],
+  [
+   "content-analysis",
+   "Open responses are coded for patterns."
+  ],
+  [
+   "word-clouds",
+   "A cloud summarizes thousands of short answers quickly."
+  ],
+  [
+   "brainstorming",
+   "Crowd ideas feed a team's own idea sessions."
+  ]
+ ],
+ "cultural-probes": [
+  [
+   "interviews",
+   "Participants talk through their returned kits."
+  ],
+  [
+   "photo-studies",
+   "Photo tasks are a common probe activity."
+  ],
+  [
+   "diary-studies",
+   "Both ask people to document their lives over time."
+  ],
+  [
+   "creative-toolkits",
+   "Making tasks extend what a probe can capture."
+  ]
+ ],
+ "design-ethnography": [
+  [
+   "participant-observation",
+   "Joining in is the core fieldwork practice."
+  ],
+  [
+   "interviews",
+   "Conversations explain what observation can only record."
+  ],
+  [
+   "shadowing",
+   "Following individuals adds close-up cases."
+  ],
+  [
+   "thematic-networks",
+   "A theme network turns long field notes into a structured account."
+  ]
+ ],
+ "diary-studies": [
+  [
+   "interviews",
+   "An exit interview explains the entries."
+  ],
+  [
+   "experience-sampling-method",
+   "Prompts at random times add moments the diary would miss."
+  ],
+  [
+   "cultural-probes",
+   "Probe kits can include diary tasks."
+  ],
+  [
+   "experience-diagramming",
+   "Entries map onto a timeline of the experience."
+  ]
+ ],
+ "directed-storytelling": [
+  [
+   "interviews",
+   "Stories are gathered in an interview setting."
+  ],
+  [
+   "critical-incident-technique",
+   "Both anchor recall in a specific event."
+  ],
+  [
+   "find-themes",
+   "Stories group into shared patterns."
+  ],
+  [
+   "personas",
+   "Stories give personas their voice and detail."
+  ]
+ ],
+ "ergonomic-analysis": [
+  [
+   "observation",
+   "Watching use reveals reach and posture problems."
+  ],
+  [
+   "task-analysis",
+   "Task steps show where strain happens."
+  ],
+  [
+   "usability-testing",
+   "Testing confirms that dimensional changes help."
+  ],
+  [
+   "behavioral-mapping",
+   "Maps show how bodies move through a space."
+  ]
+ ],
+ "evidence-based-design": [
+  [
+   "literature-reviews",
+   "A review gathers the studies that decisions rest on."
+  ],
+  [
+   "secondary-research",
+   "Existing data supports choices before new data is collected."
+  ],
+  [
+   "experiments",
+   "Controlled tests produce new evidence."
+  ],
+  [
+   "case-studies",
+   "Documented cases show outcomes in real settings."
+  ]
+ ],
+ "experience-sampling-method": [
+  [
+   "diary-studies",
+   "Both capture experience as it happens."
+  ],
+  [
+   "interviews",
+   "Follow-up conversations explain the samples."
+  ],
+  [
+   "questionnaires-surveys",
+   "Short in-the-moment surveys are the usual prompt."
+  ],
+  [
+   "experience-diagramming",
+   "Samples place feelings along a timeline."
+  ]
+ ],
+ "experiments": [
+  [
+   "ab-testing",
+   "A/B tests are experiments run on live designs."
+  ],
+  [
+   "usability-testing",
+   "Tasks can be varied under controlled conditions."
+  ],
+  [
+   "questionnaires-surveys",
+   "Surveys measure the outcome of each condition."
+  ],
+  [
+   "evidence-based-design",
+   "Experiments create the evidence that this approach cites."
+  ]
+ ],
+ "extremes-and-mainstreams": [
+  [
+   "interviews",
+   "Extreme and typical users are best met one on one."
+  ],
+  [
+   "personas",
+   "Extreme cases sharpen persona contrasts."
+  ],
+  [
+   "affinity-diagramming",
+   "Differences between the two groups cluster into insights."
+  ],
+  [
+   "analogous-inspiration",
+   "Both look to the edges for unfamiliar ideas."
+  ]
+ ],
+ "fly-on-the-wall-observation": [
+  [
+   "interviews",
+   "Interviews explain what silent observation could not ask."
+  ],
+  [
+   "observation",
+   "It is one form of systematic observation."
+  ],
+  [
+   "behavioral-mapping",
+   "Observed movement can be plotted on a plan."
+  ],
+  [
+   "aeiou",
+   "AEIOU organizes what you saw."
+  ]
+ ],
+ "focus-groups": [
+  [
+   "interviews",
+   "One-on-one interviews test what the group said aloud."
+  ],
+  [
+   "questionnaires-surveys",
+   "Surveys check how widely group views are held."
+  ],
+  [
+   "affinity-diagramming",
+   "Comments cluster into shared themes."
+  ],
+  [
+   "word-clouds",
+   "A cloud summarizes the language the group used."
+  ]
+ ],
+ "graffiti-walls": [
+  [
+   "content-analysis",
+   "Written responses are coded for patterns."
+  ],
+  [
+   "word-clouds",
+   "A cloud shows the most frequent words on the wall."
+  ],
+  [
+   "affinity-diagramming",
+   "Comments are clustered into themes."
+  ],
+  [
+   "picture-cards",
+   "Images can seed the wall's prompt."
+  ]
+ ],
+ "guerilla-user-research": [
+  [
+   "usability-testing",
+   "Quick sessions are small usability tests."
+  ],
+  [
+   "paper-prototyping",
+   "Paper prototypes are easy to carry into public spaces."
+  ],
+  [
+   "think-aloud-protocol",
+   "Passersby are asked to speak as they try a task."
+  ],
+  [
+   "questionnaires-surveys",
+   "A short survey fits the same hurried setting."
+  ]
+ ],
+ "innovation-sourcebook": [
+  [
+   "analogous-inspiration",
+   "Examples from other fields feed the sourcebook."
+  ],
+  [
+   "concept-metaphors-and-analogies",
+   "Patterns found in cases become analogies."
+  ],
+  [
+   "mash-ups",
+   "Entries can be combined into new ideas."
+  ],
+  [
+   "secondary-research",
+   "Collecting examples is a form of secondary research."
+  ]
+ ],
+ "interviews": [
+  [
+   "observation",
+   "Watching checks what people say against what they do."
+  ],
+  [
+   "questionnaires-surveys",
+   "Surveys test interview findings at larger scale."
+  ],
+  [
+   "affinity-diagramming",
+   "Interview notes cluster into themes."
+  ],
+  [
+   "personas",
+   "Interviews supply the detail personas rely on."
+  ]
+ ],
+ "laddering": [
+  [
+   "interviews",
+   "Laddering is a line of questioning inside an interview."
+  ],
+  [
+   "abstraction-laddering",
+   "Both move between concrete and abstract levels."
+  ],
+  [
+   "create-insight-statements",
+   "Uncovered values become insight statements."
+  ],
+  [
+   "triading",
+   "Triads give laddering its starting contrasts."
+  ]
+ ],
+ "listening-tour": [
+  [
+   "interviews",
+   "Each stop is a conversation."
+  ],
+  [
+   "stakeholder-maps",
+   "A map shows whom to visit."
+  ],
+  [
+   "focus-groups",
+   "Group sessions can join individual visits."
+  ],
+  [
+   "participatory-action-research",
+   "Both treat the people involved as partners."
+  ]
+ ],
+ "literature-reviews": [
+  [
+   "secondary-research",
+   "Reviews are a core step in secondary research."
+  ],
+  [
+   "evidence-based-design",
+   "Reviewed studies justify design choices."
+  ],
+  [
+   "interviews",
+   "Interviews fill gaps the literature leaves open."
+  ],
+  [
+   "content-analysis",
+   "Sources can be coded for recurring claims."
+  ]
+ ],
+ "observation": [
+  [
+   "interviews",
+   "Conversation explains the behavior you saw."
+  ],
+  [
+   "aeiou",
+   "AEIOU gives notes a clear structure."
+  ],
+  [
+   "shadowing",
+   "Shadowing is observation that follows a person."
+  ],
+  [
+   "fly-on-the-wall-observation",
+   "Quiet watching is the least intrusive form."
+  ]
+ ],
+ "participant-observation": [
+  [
+   "design-ethnography",
+   "Participation is the heart of ethnographic work."
+  ],
+  [
+   "interviews",
+   "Interviews check what you experienced against participants' views."
+  ],
+  [
+   "observation",
+   "Structured notes keep participation rigorous."
+  ],
+  [
+   "shadowing",
+   "Shadowing adds close-up views of single users."
+  ]
+ ],
+ "participatory-action-research": [
+  [
+   "co-creation-session",
+   "Co-creation puts participants in the design work."
+  ],
+  [
+   "design-workshops",
+   "Workshops give shared analysis a structure."
+  ],
+  [
+   "listening-tour",
+   "A tour builds the trust the work needs."
+  ],
+  [
+   "stakeholder-walkthrough",
+   "Participants help interpret what was found."
+  ]
+ ],
+ "personal-inventories": [
+  [
+   "interviews",
+   "People explain why they keep and use each object."
+  ],
+  [
+   "touchstone-tours",
+   "A tour shows objects in the places they live."
+  ],
+  [
+   "artifact-analysis",
+   "Objects can be examined more closely."
+  ],
+  [
+   "photo-studies",
+   "Photos document the inventory."
+  ]
+ ],
+ "photo-studies": [
+  [
+   "interviews",
+   "Photos prompt rich conversation."
+  ],
+  [
+   "cultural-probes",
+   "Photo tasks are common probe activities."
+  ],
+  [
+   "picture-cards",
+   "Images give participants a shared vocabulary."
+  ],
+  [
+   "diary-studies",
+   "Daily photos create a visual diary."
+  ]
+ ],
+ "picture-cards": [
+  [
+   "interviews",
+   "Cards give an interview concrete material."
+  ],
+  [
+   "focus-groups",
+   "Groups respond to the same set of images."
+  ],
+  [
+   "photo-studies",
+   "Participant photos can be added to the deck."
+  ],
+  [
+   "image-boards",
+   "Chosen cards often become an image board."
+  ]
+ ],
+ "popular-media-scan": [
+  [
+   "buzz-reports",
+   "Both follow public conversation over time."
+  ],
+  [
+   "content-analysis",
+   "Collected items are coded for themes."
+  ],
+  [
+   "secondary-research",
+   "A scan adds recent culture to published research."
+  ],
+  [
+   "word-clouds",
+   "A cloud shows the vocabulary of the coverage."
+  ]
+ ],
+ "questionnaires-surveys": [
+  [
+   "interviews",
+   "Interviews explain the numbers a survey produces."
+  ],
+  [
+   "semantic-differential",
+   "Rating scales are a common survey format."
+  ],
+  [
+   "word-clouds",
+   "Open answers can be summarized visually."
+  ],
+  [
+   "focus-groups",
+   "Groups help draft and test survey questions."
+  ]
+ ],
+ "remote-moderated-research": [
+  [
+   "think-aloud-protocol",
+   "Participants talk through tasks over video."
+  ],
+  [
+   "usability-testing",
+   "Sessions are usability tests held at a distance."
+  ],
+  [
+   "interviews",
+   "The format suits interviews as well."
+  ],
+  [
+   "automated-remote-research",
+   "Logs show scale while sessions show reasons."
+  ]
+ ],
+ "secondary-research": [
+  [
+   "literature-reviews",
+   "A review is the formal way to gather sources."
+  ],
+  [
+   "interviews",
+   "Interviews fill gaps in existing studies."
+  ],
+  [
+   "evidence-based-design",
+   "Findings support design decisions."
+  ],
+  [
+   "case-studies",
+   "Published cases offer ready examples."
+  ]
+ ],
+ "semantic-differential": [
+  [
+   "questionnaires-surveys",
+   "The scales are delivered through a survey."
+  ],
+  [
+   "desirability-testing",
+   "Both measure how a design feels to people."
+  ],
+  [
+   "image-boards",
+   "Boards show the qualities that scales then rate."
+  ],
+  [
+   "interviews",
+   "Interviews explain why people chose a rating."
+  ]
+ ],
+ "shadowing": [
+  [
+   "interviews",
+   "Follow-up questions explain what you saw."
+  ],
+  [
+   "observation",
+   "Shadowing is a close form of observation."
+  ],
+  [
+   "aeiou",
+   "AEIOU organizes field notes from a shadowing day."
+  ],
+  [
+   "experience-diagramming",
+   "Shadowing notes become a map of the day."
+  ]
+ ],
+ "site-search-analytics": [
+  [
+   "card-sorting",
+   "Users regroup content around the terms they search."
+  ],
+  [
+   "content-inventory-audit",
+   "Missing results show gaps in the inventory."
+  ],
+  [
+   "automated-remote-research",
+   "Both read passive behavior data."
+  ],
+  [
+   "usability-testing",
+   "Testing shows why searches fail."
+  ]
+ ],
+ "the-love-letter-the-breakup-letter": [
+  [
+   "interviews",
+   "Letters give interviews strong starting points."
+  ],
+  [
+   "personal-inventories",
+   "Letters explain why objects are kept or discarded."
+  ],
+  [
+   "content-analysis",
+   "Letters can be coded for emotional themes."
+  ],
+  [
+   "rose-thorn-bud",
+   "Both separate what people value from what frustrates them."
+  ]
+ ],
+ "touchstone-tours": [
+  [
+   "interviews",
+   "The tour is a mobile interview."
+  ],
+  [
+   "photo-studies",
+   "Photos record what the participant points out."
+  ],
+  [
+   "personal-inventories",
+   "Objects along the tour are inventoried."
+  ],
+  [
+   "observation",
+   "Notes capture how the participant moves through the place."
+  ]
+ ],
+ "triading": [
+  [
+   "interviews",
+   "Triads are an interview technique."
+  ],
+  [
+   "card-sorting",
+   "Both reveal how people group things."
+  ],
+  [
+   "laddering",
+   "Differences named in a triad can be laddered upward."
+  ],
+  [
+   "affinity-diagramming",
+   "Collected criteria cluster into themes."
+  ]
+ ],
+ "unobtrusive-measures": [
+  [
+   "observation",
+   "Quiet observation is one unobtrusive measure."
+  ],
+  [
+   "content-analysis",
+   "Records and traces can be coded."
+  ],
+  [
+   "artifact-analysis",
+   "Physical traces are artifacts to examine."
+  ],
+  [
+   "questionnaires-surveys",
+   "Surveys can test what the traces suggest."
+  ]
+ ],
+ "abstraction-laddering": [
+  [
+   "statement-starters",
+   "A reframed problem becomes a How Might We question."
+  ],
+  [
+   "create-insight-statements",
+   "Moving up in abstraction helps state an insight."
+  ],
+  [
+   "laddering",
+   "Both move between concrete and abstract levels."
+  ],
+  [
+   "problem-tree-analysis",
+   "A tree shows causes behind the problem you reframed."
+  ]
+ ],
+ "aeiou": [
+  [
+   "observation",
+   "AEIOU structures field observation."
+  ],
+  [
+   "affinity-diagramming",
+   "Notes under the five headings cluster into themes."
+  ],
+  [
+   "shadowing",
+   "Shadowing supplies the notes."
+  ],
+  [
+   "personas",
+   "Observed users inform persona detail."
+  ]
+ ],
+ "affinity-diagramming": [
+  [
+   "interviews",
+   "Interview quotes are the usual raw material."
+  ],
+  [
+   "create-insight-statements",
+   "Clusters are rewritten as insights."
+  ],
+  [
+   "visualize-the-vote",
+   "Voting picks the clusters that matter most."
+  ],
+  [
+   "territory-maps",
+   "Clusters can be arranged into broader territories."
+  ]
+ ],
+ "bulls-eye-diagramming": [
+  [
+   "affinity-diagramming",
+   "Clusters become the items placed on the target."
+  ],
+  [
+   "visualize-the-vote",
+   "Votes decide which ring an item belongs in."
+  ],
+  [
+   "importancedifficulty-matrix",
+   "Both rank items so a team can focus."
+  ],
+  [
+   "top-five",
+   "The innermost ring is a short list of priorities."
+  ]
+ ],
+ "card-sorting": [
+  [
+   "content-inventory-audit",
+   "The inventory supplies the cards."
+  ],
+  [
+   "site-search-analytics",
+   "Search terms suggest category names."
+  ],
+  [
+   "mental-model-diagrams",
+   "Groupings show how people think about a topic."
+  ],
+  [
+   "affinity-diagramming",
+   "Team clustering follows the same logic as user sorting."
+  ]
+ ],
+ "cognitive-mapping": [
+  [
+   "interviews",
+   "Participants' own words become the nodes."
+  ],
+  [
+   "concept-mapping",
+   "Both draw ideas as connected maps."
+  ],
+  [
+   "mental-model-diagrams",
+   "Maps feed a fuller model of how people think."
+  ],
+  [
+   "mind-mapping",
+   "Mind maps offer a looser first draft."
+  ]
+ ],
+ "concept-mapping": [
+  [
+   "cognitive-mapping",
+   "Both link ideas to show structure."
+  ],
+  [
+   "mind-mapping",
+   "Mind maps are a quicker starting sketch."
+  ],
+  [
+   "thematic-networks",
+   "Themes can be linked into a network."
+  ],
+  [
+   "brainstorm-graphic-organizers",
+   "Organizers add structure to the ideas on the map."
+  ]
+ ],
+ "content-analysis": [
+  [
+   "word-clouds",
+   "Frequency of terms gives a quick first look."
+  ],
+  [
+   "thematic-networks",
+   "Codes are organized into themes."
+  ],
+  [
+   "popular-media-scan",
+   "A scan supplies the media to analyze."
+  ],
+  [
+   "find-themes",
+   "Coded material is grouped into topics."
+  ]
+ ],
+ "create-insight-statements": [
+  [
+   "find-themes",
+   "Themes are the input for insight statements."
+  ],
+  [
+   "statement-starters",
+   "An insight turns into a How Might We question."
+  ],
+  [
+   "affinity-diagramming",
+   "Clusters reveal the tension an insight names."
+  ],
+  [
+   "top-five",
+   "A short list keeps the strongest insights."
+  ]
+ ],
+ "elito-method": [
+  [
+   "observation",
+   "Observations fill the first column."
+  ],
+  [
+   "create-insight-statements",
+   "Interpretations lead toward insight statements."
+  ],
+  [
+   "find-themes",
+   "Rows can be grouped by theme."
+  ],
+  [
+   "personas",
+   "Value judgments help describe personas."
+  ]
+ ],
+ "eraf-systems-diagram": [
+  [
+   "stakeholder-maps",
+   "Actors in the system come from a stakeholder map."
+  ],
+  [
+   "experience-diagramming",
+   "The system view complements the user's journey."
+  ],
+  [
+   "scenario-description-swimlanes",
+   "Lanes show who does what in the system."
+  ],
+  [
+   "mental-model-diagrams",
+   "A model of thinking can sit beside the system model."
+  ]
+ ],
+ "experience-diagramming": [
+  [
+   "personas",
+   "A persona gives the diagram a person to follow."
+  ],
+  [
+   "shadowing",
+   "Shadowing supplies the steps."
+  ],
+  [
+   "storyboarding",
+   "A map's key moments become storyboard frames."
+  ],
+  [
+   "scenario-description-swimlanes",
+   "Lanes add the actors behind each step."
+  ]
+ ],
+ "find-themes": [
+  [
+   "affinity-diagramming",
+   "Clustering is the first pass at themes."
+  ],
+  [
+   "create-insight-statements",
+   "Each theme can become an insight."
+  ],
+  [
+   "thematic-networks",
+   "Themes are organized into a network."
+  ],
+  [
+   "territory-maps",
+   "Themes are plotted as territories."
+  ]
+ ],
+ "importancedifficulty-matrix": [
+  [
+   "visualize-the-vote",
+   "Voting supplies the importance scores."
+  ],
+  [
+   "bulls-eye-diagramming",
+   "Both help a team decide what to do first."
+  ],
+  [
+   "kano-analysis",
+   "Kano adds how users feel about each feature."
+  ],
+  [
+   "top-five",
+   "The easy, valuable items form a short list."
+  ]
+ ],
+ "kano-analysis": [
+  [
+   "questionnaires-surveys",
+   "Kano answers come from a paired-question survey."
+  ],
+  [
+   "importancedifficulty-matrix",
+   "Results are weighed against effort."
+  ],
+  [
+   "personas",
+   "Personas show who values each feature."
+  ],
+  [
+   "bulls-eye-diagramming",
+   "Features can be ranked by the rings."
+  ]
+ ],
+ "kj-technique": [
+  [
+   "affinity-diagramming",
+   "KJ is a silent form of affinity work."
+  ],
+  [
+   "find-themes",
+   "Groups are named as themes."
+  ],
+  [
+   "visualize-the-vote",
+   "Voting follows the silent ranking."
+  ],
+  [
+   "brainstorming",
+   "Ideas from a session are the items grouped."
+  ]
+ ],
+ "mental-model-diagrams": [
+  [
+   "interviews",
+   "Interviews reveal how people think and act."
+  ],
+  [
+   "card-sorting",
+   "Sorting supplies the groupings of mental models."
+  ],
+  [
+   "personas",
+   "Segments in the diagram line up with personas."
+  ],
+  [
+   "task-analysis",
+   "Task steps fill the behaviors in the top half."
+  ]
+ ],
+ "mind-mapping": [
+  [
+   "concept-mapping",
+   "Both organize ideas visually."
+  ],
+  [
+   "brainstorming",
+   "Brainstorm output can be mapped."
+  ],
+  [
+   "cognitive-mapping",
+   "Cognitive maps add cause and effect."
+  ],
+  [
+   "find-themes",
+   "Branches suggest themes."
+  ]
+ ],
+ "personas": [
+  [
+   "interviews",
+   "Interviews supply the patterns personas summarize."
+  ],
+  [
+   "experience-diagramming",
+   "A persona moves through a mapped experience."
+  ],
+  [
+   "storyboarding",
+   "Personas star in storyboards."
+  ],
+  [
+   "statement-starters",
+   "Persona needs become How Might We questions."
+  ]
+ ],
+ "poems": [
+  [
+   "observation",
+   "POEMS structures what you observe."
+  ],
+  [
+   "aeiou",
+   "Both sort observations into a framework."
+  ],
+  [
+   "affinity-diagramming",
+   "Notes cluster across the five categories."
+  ],
+  [
+   "behavioral-mapping",
+   "Maps show the people and objects in place."
+  ]
+ ],
+ "problem-tree-analysis": [
+  [
+   "abstraction-laddering",
+   "Both separate causes from broader purpose."
+  ],
+  [
+   "statement-starters",
+   "Root causes become How Might We questions."
+  ],
+  [
+   "stakeholder-maps",
+   "The people who cause or feel each effect are mapped."
+  ],
+  [
+   "create-insight-statements",
+   "Causes lead to a clear insight statement."
+  ]
+ ],
+ "rose-thorn-bud": [
+  [
+   "affinity-diagramming",
+   "Notes by color are clustered into themes."
+  ],
+  [
+   "visualize-the-vote",
+   "Voting picks the thorns and buds to pursue."
+  ],
+  [
+   "usability-testing",
+   "The method is a quick way to review test findings."
+  ],
+  [
+   "statement-starters",
+   "Thorns and buds turn into questions."
+  ]
+ ],
+ "stakeholder-maps": [
+  [
+   "interviews",
+   "Interviews confirm each group's interests."
+  ],
+  [
+   "listening-tour",
+   "A tour reaches the groups on the map."
+  ],
+  [
+   "eraf-systems-diagram",
+   "The map extends into a full system."
+  ],
+  [
+   "problem-tree-analysis",
+   "Each party can be placed on the cause or effect it touches."
+  ]
+ ],
+ "statement-starters": [
+  [
+   "create-insight-statements",
+   "Insights are the base for a question."
+  ],
+  [
+   "brainstorming",
+   "The question launches an idea session."
+  ],
+  [
+   "abstraction-laddering",
+   "Laddering helps find the right level for the question."
+  ],
+  [
+   "problem-tree-analysis",
+   "Causes suggest which questions to ask."
+  ]
+ ],
+ "symmetric-clustering-matrix": [
+  [
+   "affinity-diagramming",
+   "Both group items by relatedness."
+  ],
+  [
+   "card-sorting",
+   "Sort results can fill the matrix."
+  ],
+  [
+   "find-themes",
+   "Clusters are named as themes."
+  ],
+  [
+   "importancedifficulty-matrix",
+   "Matrices of different types can be compared."
+  ]
+ ],
+ "task-analysis": [
+  [
+   "observation",
+   "Observed work gives the steps."
+  ],
+  [
+   "contextual-inquiry",
+   "A visit shows the workarounds that analysis should capture."
+  ],
+  [
+   "usability-testing",
+   "Testing checks the redesigned steps."
+  ],
+  [
+   "experience-diagramming",
+   "Steps are placed in the wider experience."
+  ]
+ ],
+ "ten-types-of-innovation-diagnostics": [
+  [
+   "competitive-testing",
+   "Rivals' offerings can be rated on the same ten types."
+  ],
+  [
+   "innovation-sourcebook",
+   "The sourcebook supplies comparable examples."
+  ],
+  [
+   "business-model-canvas",
+   "Findings feed the canvas."
+  ],
+  [
+   "importancedifficulty-matrix",
+   "Gaps are ranked by value and effort."
+  ]
+ ],
+ "territory-maps": [
+  [
+   "affinity-diagramming",
+   "Clusters become the territories."
+  ],
+  [
+   "find-themes",
+   "Themes name each territory."
+  ],
+  [
+   "bulls-eye-diagramming",
+   "Territories can be ranked by importance."
+  ],
+  [
+   "statement-starters",
+   "Each territory suggests a question for ideation."
+  ]
+ ],
+ "thematic-networks": [
+  [
+   "content-analysis",
+   "Coding produces the basic themes."
+  ],
+  [
+   "find-themes",
+   "Themes are the network's building blocks."
+  ],
+  [
+   "concept-mapping",
+   "Both draw ideas as linked structures."
+  ],
+  [
+   "interviews",
+   "Interview transcripts are common source text."
+  ]
+ ],
+ "top-five": [
+  [
+   "visualize-the-vote",
+   "Votes narrow the list."
+  ],
+  [
+   "importancedifficulty-matrix",
+   "The matrix helps choose the five."
+  ],
+  [
+   "create-insight-statements",
+   "The top insights are stated clearly."
+  ],
+  [
+   "bulls-eye-diagramming",
+   "The center of the target is the short list."
+  ]
+ ],
+ "visualize-the-vote": [
+  [
+   "affinity-diagramming",
+   "Voting follows clustering."
+  ],
+  [
+   "top-five",
+   "Votes produce a ranked short list."
+  ],
+  [
+   "importancedifficulty-matrix",
+   "Votes can score importance."
+  ],
+  [
+   "design-workshops",
+   "Workshops rely on quick group decisions."
+  ]
+ ],
+ "word-clouds": [
+  [
+   "content-analysis",
+   "A cloud is a first look before careful coding."
+  ],
+  [
+   "questionnaires-surveys",
+   "Open survey answers can be visualized."
+  ],
+  [
+   "find-themes",
+   "Frequent words suggest themes."
+  ],
+  [
+   "popular-media-scan",
+   "Media text can be summarized the same way."
+  ]
+ ],
+ "alternative-worlds": [
+  [
+   "concept-metaphors-and-analogies",
+   "Both borrow from another setting."
+  ],
+  [
+   "mash-ups",
+   "Combine the borrowed ideas with your own."
+  ],
+  [
+   "analogous-inspiration",
+   "A real analogous setting grounds the exercise."
+  ],
+  [
+   "brainstorming",
+   "Ideas from the other world are collected."
+  ]
+ ],
+ "analogous-inspiration": [
+  [
+   "concept-metaphors-and-analogies",
+   "Analogies turn what you observed into ideas."
+  ],
+  [
+   "mash-ups",
+   "Elements from the other field are combined."
+  ],
+  [
+   "innovation-sourcebook",
+   "Examples from the sourcebook suggest which fields to study."
+  ],
+  [
+   "alternative-worlds",
+   "Both ask how others would solve the problem."
+  ]
+ ],
+ "bodystorming": [
+  [
+   "role-playing",
+   "Both act out an experience."
+  ],
+  [
+   "storyboarding",
+   "Acting out a scene shows what frames to draw."
+  ],
+  [
+   "design-workshops",
+   "Workshops provide space and participants."
+  ],
+  [
+   "experience-prototyping",
+   "Props make the scene feel real."
+  ]
+ ],
+ "brainstorm-graphic-organizers": [
+  [
+   "brainstorming",
+   "Organizers give a session its structure."
+  ],
+  [
+   "mind-mapping",
+   "Mind maps are one type of organizer."
+  ],
+  [
+   "affinity-diagramming",
+   "Ideas are clustered after the session."
+  ],
+  [
+   "bundle-ideas",
+   "Grouped ideas are combined into concepts."
+  ]
+ ],
+ "brainstorming": [
+  [
+   "statement-starters",
+   "A How Might We question gives the session a focus."
+  ],
+  [
+   "round-robin",
+   "Passing sheets keeps quieter voices involved."
+  ],
+  [
+   "bundle-ideas",
+   "Ideas are grouped and combined afterward."
+  ],
+  [
+   "visualize-the-vote",
+   "Votes choose which ideas to develop."
+  ]
+ ],
+ "bundle-ideas": [
+  [
+   "brainstorming",
+   "Brainstorming produces the raw ideas."
+  ],
+  [
+   "affinity-diagramming",
+   "Clustering shows which ideas belong together."
+  ],
+  [
+   "visualize-the-vote",
+   "Votes select the best bundles."
+  ],
+  [
+   "concept-generating-matrix",
+   "A matrix makes new combinations deliberate."
+  ]
+ ],
+ "co-creation-session": [
+  [
+   "creative-toolkits",
+   "Toolkits give participants materials to build with."
+  ],
+  [
+   "design-workshops",
+   "Workshops provide the format."
+  ],
+  [
+   "participatory-action-research",
+   "Both share authority with participants."
+  ],
+  [
+   "personas",
+   "Personas help recruit the right participants."
+  ]
+ ],
+ "concept-metaphors-and-analogies": [
+  [
+   "analogous-inspiration",
+   "A study of another setting supplies the analogy."
+  ],
+  [
+   "mash-ups",
+   "Metaphors can be layered over a design challenge."
+  ],
+  [
+   "alternative-worlds",
+   "Both look at the problem from somewhere else."
+  ],
+  [
+   "brainstorming",
+   "Metaphors give a session new angles."
+  ]
+ ],
+ "concept-generating-matrix": [
+  [
+   "morphological-synthesis",
+   "Both build solutions from combinations of parts."
+  ],
+  [
+   "brainstorming",
+   "Ideas fill each cell."
+  ],
+  [
+   "bundle-ideas",
+   "Cell ideas are bundled into concepts."
+  ],
+  [
+   "importancedifficulty-matrix",
+   "Generated concepts are ranked afterward."
+  ]
+ ],
+ "creative-toolkits": [
+  [
+   "co-creation-session",
+   "Toolkits are used inside a session."
+  ],
+  [
+   "draw-it",
+   "Drawing is a common toolkit activity."
+  ],
+  [
+   "image-boards",
+   "Images and collage are typical toolkit materials."
+  ],
+  [
+   "design-workshops",
+   "Workshops host the toolkit activities."
+  ]
+ ],
+ "design-charette": [
+  [
+   "design-workshops",
+   "A charrette is an intensive workshop."
+  ],
+  [
+   "stakeholder-maps",
+   "The map decides who joins."
+  ],
+  [
+   "thumbnail-sketching",
+   "Quick sketches produce many ideas fast."
+  ],
+  [
+   "visualize-the-vote",
+   "Votes close the session with a decision."
+  ]
+ ],
+ "design-workshops": [
+  [
+   "brainstorming",
+   "Brainstorming is a common workshop activity."
+  ],
+  [
+   "visualize-the-vote",
+   "Votes reach a group decision."
+  ],
+  [
+   "co-creation-session",
+   "Participants help design alongside the team."
+  ],
+  [
+   "design-charette",
+   "A charrette is a compressed workshop."
+  ]
+ ],
+ "draw-it": [
+  [
+   "creative-toolkits",
+   "Toolkits supply drawing materials."
+  ],
+  [
+   "thumbnail-sketching",
+   "Both use fast, rough drawing."
+  ],
+  [
+   "interviews",
+   "Drawings prompt a discussion."
+  ],
+  [
+   "storyboarding",
+   "Drawings can grow into a sequence."
+  ]
+ ],
+ "ideation-game": [
+  [
+   "brainstorming",
+   "A game loosens up an idea session."
+  ],
+  [
+   "round-robin",
+   "Both use structured turns."
+  ],
+  [
+   "mash-ups",
+   "Game constraints create unusual combinations."
+  ],
+  [
+   "design-workshops",
+   "Games fit a workshop agenda."
+  ]
+ ],
+ "image-boards": [
+  [
+   "creative-toolkits",
+   "Participants build boards from toolkit images."
+  ],
+  [
+   "picture-cards",
+   "Cards are a quick source of images."
+  ],
+  [
+   "personas",
+   "Boards show a persona's world."
+  ],
+  [
+   "thumbnail-sketching",
+   "Sketches turn the mood into layouts."
+  ]
+ ],
+ "mash-ups": [
+  [
+   "analogous-inspiration",
+   "Another field supplies the quality to borrow."
+  ],
+  [
+   "concept-metaphors-and-analogies",
+   "Both reframe the problem through something familiar."
+  ],
+  [
+   "brainstorming",
+   "Mash-up prompts spark new sessions."
+  ],
+  [
+   "alternative-worlds",
+   "Both ask what a different setting would do."
+  ]
+ ],
+ "morphological-synthesis": [
+  [
+   "concept-generating-matrix",
+   "Both build solutions from combinations."
+  ],
+  [
+   "brainstorming",
+   "Brainstorming lists the variations."
+  ],
+  [
+   "bundle-ideas",
+   "Combined parts are bundled into concepts."
+  ],
+  [
+   "importancedifficulty-matrix",
+   "Combinations are ranked for follow-up."
+  ]
+ ],
+ "round-robin": [
+  [
+   "brainstorming",
+   "It is a structured form of brainstorming."
+  ],
+  [
+   "visualize-the-vote",
+   "Votes pick among the evolved ideas."
+  ],
+  [
+   "bundle-ideas",
+   "Finished sheets are grouped and combined."
+  ],
+  [
+   "ideation-game",
+   "Both give an idea session clear rules."
+  ]
+ ],
+ "thumbnail-sketching": [
+  [
+   "brainstorming",
+   "Sketches turn spoken ideas into visible ones."
+  ],
+  [
+   "draw-it",
+   "Both rely on drawing instead of words."
+  ],
+  [
+   "storyboarding",
+   "Thumbnails become the frames of a story."
+  ],
+  [
+   "paper-prototyping",
+   "Chosen sketches are built as paper screens."
+  ]
+ ],
+ "ab-testing": [
+  [
+   "experiments",
+   "A/B tests follow the logic of controlled experiments."
+  ],
+  [
+   "usability-testing",
+   "Testing explains why one version wins."
+  ],
+  [
+   "parallel-prototyping",
+   "Parallel versions are what gets compared."
+  ],
+  [
+   "live-prototyping",
+   "Versions can be tested in real use."
+  ]
+ ],
+ "appearance-modeling": [
+  [
+   "image-boards",
+   "Boards set the look the model will show."
+  ],
+  [
+   "desirability-testing",
+   "Users react to how the model looks."
+  ],
+  [
+   "experience-prototyping",
+   "A model can be placed in a simulated setting."
+  ],
+  [
+   "paper-prototyping",
+   "Paper tests function before a model tests appearance."
+  ]
+ ],
+ "behavioral-prototype": [
+  [
+   "wizard-of-oz",
+   "A hidden person can simulate the system."
+  ],
+  [
+   "role-playing",
+   "Actors can stand in for missing parts."
+  ],
+  [
+   "bodystorming",
+   "Both test behavior with simple props."
+  ],
+  [
+   "experience-prototyping",
+   "Both place users in a simulated context."
+  ]
+ ],
+ "business-model-canvas": [
+  [
+   "stakeholder-maps",
+   "The map fills the partner and customer blocks."
+  ],
+  [
+   "ten-types-of-innovation-diagnostics",
+   "Diagnostics show where the model can change."
+  ],
+  [
+   "personas",
+   "Personas describe the customer segments."
+  ],
+  [
+   "business-origami",
+   "Origami tests how value moves through the model."
+  ]
+ ],
+ "business-origami": [
+  [
+   "stakeholder-maps",
+   "The map names the actors to cut out."
+  ],
+  [
+   "eraf-systems-diagram",
+   "A system diagram can precede the paper model."
+  ],
+  [
+   "scenario-description-swimlanes",
+   "Lanes record the same flows in a table."
+  ],
+  [
+   "role-playing",
+   "Participants act out the model."
+  ]
+ ],
+ "cognitive-walkthrough": [
+  [
+   "heuristic-evaluation",
+   "Both are expert reviews before user testing."
+  ],
+  [
+   "usability-testing",
+   "Testing checks what experts predicted."
+  ],
+  [
+   "task-analysis",
+   "Task steps are the walkthrough's script."
+  ],
+  [
+   "think-aloud-protocol",
+   "Spoken thoughts show what users really expect."
+  ]
+ ],
+ "desirability-testing": [
+  [
+   "semantic-differential",
+   "Both measure feelings with word choices."
+  ],
+  [
+   "appearance-modeling",
+   "Models give users something to react to."
+  ],
+  [
+   "usability-testing",
+   "Usability shows whether it works, desirability whether people want it."
+  ],
+  [
+   "interviews",
+   "Interviews explain the chosen words."
+  ]
+ ],
+ "experience-prototyping": [
+  [
+   "bodystorming",
+   "Both act out a use situation."
+  ],
+  [
+   "role-playing",
+   "Roles make the experience feel real."
+  ],
+  [
+   "storyboarding",
+   "A storyboard plans the experience."
+  ],
+  [
+   "usability-testing",
+   "Users are then tested inside the simulated setting."
+  ]
+ ],
+ "heuristic-evaluation": [
+  [
+   "cognitive-walkthrough",
+   "Both are expert reviews."
+  ],
+  [
+   "usability-testing",
+   "Testing finds what experts miss."
+  ],
+  [
+   "usability-report",
+   "Findings are written up for the team."
+  ],
+  [
+   "competitive-testing",
+   "The same rules can be applied to rivals."
+  ]
+ ],
+ "live-prototyping": [
+  [
+   "ab-testing",
+   "Live versions can be compared."
+  ],
+  [
+   "usability-testing",
+   "Observation explains what people do in the real setting."
+  ],
+  [
+   "experience-prototyping",
+   "A simulated setting precedes the live one."
+  ],
+  [
+   "observation",
+   "Systematic watching records live behavior."
+  ]
+ ],
+ "paper-prototyping": [
+  [
+   "thumbnail-sketching",
+   "Sketches are the starting point."
+  ],
+  [
+   "usability-testing",
+   "Paper screens are tested with users."
+  ],
+  [
+   "think-aloud-protocol",
+   "Users speak as they tap the paper."
+  ],
+  [
+   "rapid-iterative-testing-evaluation",
+   "Paper is quick to change between sessions."
+  ]
+ ],
+ "parallel-prototyping": [
+  [
+   "thumbnail-sketching",
+   "Sketches produce the multiple directions."
+  ],
+  [
+   "ab-testing",
+   "Parallel versions can be compared with numbers."
+  ],
+  [
+   "usability-testing",
+   "Each direction is tested with users."
+  ],
+  [
+   "paper-prototyping",
+   "Paper keeps each version cheap."
+  ]
+ ],
+ "rapid-iterative-testing-evaluation": [
+  [
+   "think-aloud-protocol",
+   "Users explain problems as they appear."
+  ],
+  [
+   "usability-testing",
+   "The cycle is built from short usability tests."
+  ],
+  [
+   "paper-prototyping",
+   "Paper changes fast between participants."
+  ],
+  [
+   "usability-report",
+   "Brief reports record each change."
+  ]
+ ],
+ "role-playing": [
+  [
+   "bodystorming",
+   "Both act out an experience."
+  ],
+  [
+   "experience-prototyping",
+   "Props make roles more convincing."
+  ],
+  [
+   "personas",
+   "Personas define each role."
+  ],
+  [
+   "storyboarding",
+   "A storyboard plans the scene to act out."
+  ]
+ ],
+ "scenario-description-swimlanes": [
+  [
+   "experience-diagramming",
+   "A map of one person's journey feeds the lanes."
+  ],
+  [
+   "storyboarding",
+   "Key steps become storyboard frames."
+  ],
+  [
+   "business-origami",
+   "Both show how actors exchange value."
+  ],
+  [
+   "task-analysis",
+   "Task steps fill each lane."
+  ]
+ ],
+ "stakeholder-walkthrough": [
+  [
+   "affinity-diagramming",
+   "Stakeholders cluster the findings together."
+  ],
+  [
+   "stakeholder-maps",
+   "The map says who to invite."
+  ],
+  [
+   "design-workshops",
+   "A workshop gives the walkthrough a format."
+  ],
+  [
+   "create-insight-statements",
+   "Shared themes become agreed insights."
+  ]
+ ],
+ "storyboarding": [
+  [
+   "personas",
+   "The persona is the story's lead."
+  ],
+  [
+   "experience-diagramming",
+   "Mapped moments become frames."
+  ],
+  [
+   "thumbnail-sketching",
+   "Quick sketches draft each panel."
+  ],
+  [
+   "scenario-description-swimlanes",
+   "Lanes show who acts in each scene."
+  ]
+ ],
+ "think-aloud-protocol": [
+  [
+   "usability-testing",
+   "Thinking aloud is built into most usability tests."
+  ],
+  [
+   "paper-prototyping",
+   "Early paper designs benefit from spoken reactions."
+  ],
+  [
+   "cognitive-walkthrough",
+   "Experts predict what users then say."
+  ],
+  [
+   "usability-report",
+   "Quotes support the findings in the report."
+  ]
+ ],
+ "usability-report": [
+  [
+   "usability-testing",
+   "The report records the test."
+  ],
+  [
+   "think-aloud-protocol",
+   "Quotes bring the findings to life."
+  ],
+  [
+   "heuristic-evaluation",
+   "Expert findings can sit beside test findings."
+  ],
+  [
+   "rapid-iterative-testing-evaluation",
+   "Short cycles produce short reports."
+  ]
+ ],
+ "usability-testing": [
+  [
+   "think-aloud-protocol",
+   "Spoken thoughts explain the errors."
+  ],
+  [
+   "usability-report",
+   "Findings are shared in a report."
+  ],
+  [
+   "paper-prototyping",
+   "Paper designs can be tested early."
+  ],
+  [
+   "heuristic-evaluation",
+   "An expert review clears obvious problems first."
+  ]
+ ],
+ "wizard-of-oz": [
+  [
+   "behavioral-prototype",
+   "Both fake a system to test behavior."
+  ],
+  [
+   "think-aloud-protocol",
+   "Participants explain what they expect the system to do."
+  ],
+  [
+   "usability-testing",
+   "The simulation is tested like a real product."
+  ],
+  [
+   "role-playing",
+   "The wizard plays the system's role."
+  ]
+ ]
+}

@@ -15,6 +15,7 @@ Live site: _add the GitHub Pages URL here once Pages is enabled_
 | `data.json` | The same content as a standalone file, for reuse or for a future dynamic version. |
 | `images/` | 59 method images plus the Double Diamond diagram. |
 | `overview_links.json` | Free online overview pages for the reference entries ("Where to learn more"). |
+| `pairs.json` | Methods that work well together ("Pairs well with"): two to four per method, each with a one-line reason. |
 | `templates.json` | Free templates, worksheets and canvases linked from method cards ("Templates and worksheets"). |
 | `build.py` | Regenerates `index.html` from `data.json`, `overview_links.json` and `templates.json`. |
 
@@ -65,6 +66,11 @@ a `reference`, and a `referenceUrl`.
 
 After editing `data.json`, run `python3 build.py` to regenerate `index.html`.
 
+Text fields use light markup: `**bold**` for key terms in `whatItIs`, `whenToUse` and `howToDoIt`, and
+`*italic*` for titles in `sources`, as APA 7 requires. Keep `sources` in alphabetical order.
+
+To change a method's pairings, edit its entry in `pairs.json` (ids must exist; no self-pairs).
+
 To add a template to a card, add an entry to `templates.json` under the method id (student or
 reference card). Each entry needs `title`, `publisher`, `url` (https), `format` (for example
 `PDF` or `Online whiteboard`) and `access` (what a person must do to get it, such as
@@ -92,7 +98,7 @@ from a named book), `editorNote`, and `library` (page references in the course b
 | Research | Discover | `#fdc907` |
 | Insights | Define | `#eb5b54` |
 | Ideation | Develop | `#83bc2c` |
-| Prototyping & Testing | Deliver | `#4a8ecb` |
+| Prototyping | Deliver | `#4a8ecb` |
 
 Core palette follows NC State brand guidance: Wolfpack Red `#CC0000`, black, and white,
 set in Roboto, Roboto Condensed, and Roboto Slab.
