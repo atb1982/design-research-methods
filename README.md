@@ -17,7 +17,10 @@ Live site: _add the GitHub Pages URL here once Pages is enabled_
 | `overview_links.json` | Free online overview pages for the reference entries ("Where to learn more"). |
 | `pairs.json` | Methods that work well together ("Pairs well with"): two to four per method, each with a one-line reason. |
 | `templates.json` | Free templates, worksheets and canvases linked from method cards ("Templates and worksheets"). |
-| `build.py` | Regenerates `index.html` from `data.json`, `overview_links.json` and `templates.json`. |
+| `families.json` | For every method: its evidence family (read, ask, watch, test, make, analyze) and the "can show" and "cannot show" lines. |
+| `templates_own.json` | The eight templates made for this site, the step each belongs to, and the method cards they attach to. |
+| `templates/` | The template files themselves (Word and Excel), downloaded from the cards and from the Before you collect page. |
+| `build.py` | Regenerates `index.html` from `data.json`, `overview_links.json`, `templates.json`, `templates_own.json`, `pairs.json` and `families.json`. |
 
 ## Publishing with GitHub Pages
 
@@ -60,6 +63,11 @@ Student-written cards use `"kind": "full"`:
   "image": "images/card-sorting.jpg"
 }
 ```
+
+Each card also has an `origin`: `student` (66 cards written by students), `draft` (18 cards drafted for the
+site so that the method has steps a student can follow; they carry a `draftNote` and show a "Draft entry"
+label until a student or faculty reviewer checks them), or `reference` (33 short entries).
+Drafted cards use `"kind": "full"` like student cards, with `"origin": "draft"`.
 
 Methods that no student has documented use `"kind": "brief"` with a short explanation,
 a `reference`, and a `referenceUrl`.
@@ -108,3 +116,26 @@ set in Roboto, Roboto Condensed, and Roboto Slab.
 Each card names the student who wrote it. Images were selected by students to illustrate
 their methods. The credit under every image names the student and the original source.
 Confirm licensing before reusing any image outside this site.
+
+## Planning pages
+
+Two pages sit beside the method cards and are reached by hash: `#plan` and `#before`.
+
+- **Plan your research** (`#plan`): a question guide that matches a question to an evidence family, a pair builder
+  that starts from the mode of the project (into, through, or for design), a pair checker, and a shortlist.
+  The shortlist is kept in the browser (`localStorage`, key `drm-shortlist-v1`) and is never sent anywhere.
+- **Before you collect** (`#before`): six things to settle before collecting data, with the templates that go with each.
+
+The evidence families (Read, Ask, Watch, Test, Make) and the idea of a checking sentence come from the DS 481
+capstone guide. Analyze is a sixth family added for methods that work on material already collected.
+
+## Our own templates
+
+`templates_own.json` lists each template file, its title, format, a short description, its step (Plan,
+Consent, Collect, Analyze) and the method ids whose cards should link to it. The build checks that every file
+exists and every id is real. Cards show these first, marked "Made for this site", ahead of the links to other
+publishers' templates in `templates.json`.
+
+The files are generated, not hand-edited: Word files with python-docx and Excel files with openpyxl, with formulas
+recalculated before they are saved. Replace a file in `templates/` and keep its name to update it. No license has
+been chosen for the templates yet. Choose one before inviting reuse.

@@ -13,6 +13,20 @@ for _k, _v in _tp.items():
     for _l in _v:
         assert _l['url'].startswith('https://') and _l['title'] and _l['publisher'] and _l['format'] and _l['access'], _l
     _ids[_k]['templates'] = _v
+import os
+_own = json.load(open('templates_own.json', encoding='utf-8'))
+for _t in _own:
+    assert os.path.isfile(_t['file']), _t['file']
+    assert _t['title'] and _t['format'] and _t['desc'] and _t['step'] in ('Plan','Consent','Collect','Analyze'), _t
+    for _k in _t['methods']:
+        assert _k in _ids, _k
+for _k in _ids:
+    _mine = [{'title': _t['title'], 'publisher': 'Design Research Methods', 'url': _t['file'], 'format': _t['format'],
+              'access': 'Free download, no sign-in.', 'own': True}
+             for _t in _own if _k in _t['methods']]
+    if _mine:
+        _ids[_k]['templates'] = _mine + _ids[_k].get('templates', [])
+_d['ownTemplates'] = [{k: _t[k] for k in ('file','title','format','kind','desc','step','methods')} for _t in _own]
 _pr = json.load(open('pairs.json', encoding='utf-8'))
 assert set(_pr) == set(_ids), set(_ids) ^ set(_pr)
 for _k, _v in _pr.items():
@@ -518,6 +532,27 @@ nav.top .plan{border-bottom-color:var(--red-lt);color:#fff}
 .psec h2{font-family:'Roboto Slab',Georgia,serif;font-size:clamp(22px,2.7vw,30px);font-weight:700;margin-bottom:12px;letter-spacing:-.2px}
 .psec p.sub{font-size:15.5px;line-height:1.72;color:var(--g700);max-width:72ch;margin-bottom:28px}
 .psec p.sub.s2{margin-bottom:18px}
+.btlist{list-style:none;margin:0 0 22px;padding:0;max-width:72ch}
+.btlist li{padding:11px 0 11px 18px;border-bottom:1px solid var(--g200);font-size:15px;line-height:1.65;color:var(--g800);position:relative}
+.btlist li:before{content:"";position:absolute;left:0;top:21px;width:7px;height:7px;background:var(--red)}
+.btlist li b{font-weight:700;color:var(--black)}
+.bttools{margin:6px 0 0;font-size:14px;line-height:1.6;color:var(--g700)}
+.bttools .lbl{font-weight:700;color:var(--black);margin-right:8px}
+.bttools a{display:inline-block;margin:0 14px 0 0;padding:5px 0;font-weight:500;color:var(--g800);text-decoration:underline;text-decoration-color:var(--g400);text-underline-offset:3px}
+.bttools a:hover{text-decoration-color:var(--red);color:var(--red-dk)}
+.btnext{margin-top:14px}
+.btnext button{font-size:14px;font-weight:700;color:var(--red-dk);border-bottom:2px solid var(--red);padding:6px 0}
+.btnext button:hover{color:var(--black)}
+table.bttab{border-collapse:collapse;width:100%;max-width:860px;margin:6px 0 20px;font-size:14.5px;line-height:1.55}
+table.bttab th{text-align:left;background:var(--black);color:#fff;font-weight:700;padding:9px 12px}
+table.bttab td{padding:10px 12px;border-bottom:1px solid var(--g200);vertical-align:top;color:var(--g800)}
+.btall{list-style:none;margin:0;padding:0;max-width:860px}
+.btall li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:14px 0;border-bottom:1px solid var(--g200)}
+.btall .tt a{font-size:16px;font-weight:700;color:var(--black);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:3px}
+.btall .tt a:hover{color:var(--red-dk)}
+.btall .tf{font-size:12.5px;color:var(--gtxt)}
+.btall .td{font-size:14.5px;line-height:1.6;color:var(--g700);max-width:68ch}
+.btnote{font-size:13.5px;line-height:1.6;color:var(--g700);max-width:72ch;margin-top:18px;padding:12px 14px;border-left:3px solid var(--red);background:var(--g50)}
 .ph3{font-family:'Roboto Slab',Georgia,serif;font-size:19px;font-weight:700;margin-bottom:8px}
 .ph3.gap{margin-top:52px;padding-top:36px;border-top:1px solid var(--g300)}
 .qopts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:6px}
@@ -546,6 +581,9 @@ nav.top .plan{border-bottom-color:var(--red-lt);color:#fff}
 .dhero .actions .sbtn:hover{background:rgba(0,0,0,.12)}
 .dhero .actions .sbtn.on{background:#1a1a1a;color:#fff}
 .herocta{margin:-14px 0 34px}
+.navbefore{white-space:nowrap}
+@media(max-width:1180px){.navbefore{display:none!important}}
+.herocta{display:flex;gap:10px;flex-wrap:wrap}
 .herobtn{font-size:14px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.6);border-radius:3px;padding:0 20px;min-height:44px}
 .herobtn:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 .mlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:start;padding:12px 0;border-bottom:1px solid var(--g100)}
@@ -641,7 +679,9 @@ nav.top .plan{border-bottom-color:var(--red-lt);color:#fff}
 @media print{
  header.site,.filters,.sbanner,.fnote,.fpanel,footer.site,.bc,.skip,.actions,.more,.seeall,#p-home,dialog.lb,.zoomhint,.cpy,.cpyall,.sbtn{display:none!important}
  #p-detail{display:block!important}
- #p-detail:not(.on),#p-plan:not(.on){display:none!important}
+ #p-detail:not(.on),#p-plan:not(.on),#p-before:not(.on){display:none!important}
+ #p-before.on{display:block!important}
+ #p-before .phero,#p-before .bttools,#p-before .btnext{display:none!important}
  #p-plan.on{display:block!important}
  #p-plan .phero,#p-plan #plan-q,#p-plan #plan-pair,#p-plan .sact{display:none!important}
  #p-plan .psec{padding:0;border:0}
@@ -708,31 +748,79 @@ function methodFromHash(){
   return BY[h] || null;
 }
 function clearHash(){ if (location.hash) history.pushState(null, '', location.pathname + location.search); }
-function planFromHash(){ return !methodFromHash() && location.hash.replace(/^#\/?/, '') === 'plan'; }
+function pageFromHash(){ return methodFromHash() ? '' : location.hash.replace(/^#\/?/, ''); }
+function planFromHash(){ return pageFromHash() === 'plan'; }
+function beforeFromHash(){ return pageFromHash() === 'before'; }
+function openBefore(){
+  if (!shownKey){ savedY = window.scrollY || 0; savedId = ''; }
+  if (beforeFromHash()) route({force:true}); else location.hash = 'before';
+}
 function openPlan(){
   if (!shownKey){ savedY = window.scrollY || 0; savedId = ''; }
   if (planFromHash()) route({force:true}); else location.hash = 'plan';
 }
+var BT_SECTIONS = {
+  'bt-plan': ['research-plan','planning-matrix'],
+  'bt-analysis': ['codebook'],
+  'bt-consent': ['consent-script'],
+  'bt-protocol': ['interview-guide','observation-notes','deviation-and-recruitment-log'],
+  'bt-numbers': ['deviation-and-recruitment-log','codebook'],
+  'bt-name': ['method-justification']
+};
+function btFile(t){ return t.file.replace(/^templates\//,'').replace(/\.[a-z]+$/,''); }
+var btDone = false;
+function renderBefore(){
+  if (btDone) return; btDone = true;
+  var T = APP.ownTemplates || [];
+  function dl(t){
+    var a = document.createElement('a'); a.href = t.file; a.setAttribute('download','');
+    a.appendChild(document.createTextNode(t.title));
+    a.appendChild(el('span','sr',' (downloads a ' + t.format.toLowerCase() + ')'));
+    return a;
+  }
+  Object.keys(BT_SECTIONS).forEach(function(sid){
+    var host = q(sid + '-tools'); if (!host) return;
+    host.appendChild(el('span','lbl','Templates:'));
+    BT_SECTIONS[sid].forEach(function(k){
+      T.forEach(function(t){ if (btFile(t) === k) host.appendChild(dl(t)); });
+    });
+  });
+  var ul = q('bt-all');
+  T.forEach(function(t){
+    var li = el('li'), tt = el('div','tt'); tt.appendChild(dl(t));
+    li.appendChild(tt);
+    li.appendChild(el('div','tf', t.format + '. Used at the ' + t.step.toLowerCase() + ' step.'));
+    li.appendChild(el('div','td', t.desc));
+    ul.appendChild(li);
+  });
+}
 function route(o){
   o = o || {};
-  var m = methodFromHash(), isPlan = planFromHash(), key = m ? m.id : (isPlan ? '~plan' : '');
+  var m = methodFromHash(), isPlan = planFromHash(), isBefore = beforeFromHash(),
+      key = m ? m.id : (isPlan ? '~plan' : (isBefore ? '~before' : ''));
   if (key === shownKey && !o.force) return;
   closeLightbox();
   var wasDetail = !!shownKey;
   shownKey = key;
   if (m){
     cur = m.phase; detail(m);
-    q('p-home').classList.remove('on'); q('p-plan').classList.remove('on'); q('p-detail').classList.add('on');
+    q('p-home').classList.remove('on'); q('p-plan').classList.remove('on'); q('p-before').classList.remove('on'); q('p-detail').classList.add('on');
     document.title = m.name + ' | ' + SITE_TITLE;
     jumpTo(0);
     q('d-title').focus({preventScroll:true});
   } else if (isPlan){
-    q('p-home').classList.remove('on'); q('p-detail').classList.remove('on'); q('p-plan').classList.add('on');
+    q('p-home').classList.remove('on'); q('p-detail').classList.remove('on'); q('p-before').classList.remove('on'); q('p-plan').classList.add('on');
     document.title = 'Plan your research | ' + SITE_TITLE;
     jumpTo(0);
     q('plan-title').focus({preventScroll:true});
+  } else if (isBefore){
+    q('p-home').classList.remove('on'); q('p-detail').classList.remove('on'); q('p-plan').classList.remove('on'); q('p-before').classList.add('on');
+    document.title = 'Before you collect | ' + SITE_TITLE;
+    renderBefore();
+    jumpTo(0);
+    q('before-title').focus({preventScroll:true});
   } else {
-    q('p-detail').classList.remove('on'); q('p-plan').classList.remove('on'); q('p-home').classList.add('on');
+    q('p-detail').classList.remove('on'); q('p-plan').classList.remove('on'); q('p-before').classList.remove('on'); q('p-home').classList.add('on');
     document.title = SITE_TITLE;
     if (o.top){ jumpTo(0); }
     else if (wasDetail){
@@ -1191,17 +1279,22 @@ function detail(m){
     var tw = el('div'), tu = el('ul','tplist');
     m.templates.forEach(function(o){
       var li = el('li'), a = document.createElement('a');
-      a.href = o.url; a.target = '_blank'; a.rel = 'noopener';
+      a.href = o.url;
+      if (o.own){ a.setAttribute('download',''); }
+      else { a.target = '_blank'; a.rel = 'noopener'; }
       a.appendChild(document.createTextNode(o.title));
-      a.appendChild(el('span','sr',' (opens in a new tab)'));
+      a.appendChild(el('span','sr', o.own ? ' (downloads a file)' : ' (opens in a new tab)'));
       li.appendChild(a);
-      li.appendChild(el('span','pub', o.publisher + '. ' + o.format + '.'));
+      li.appendChild(el('span','pub', o.own ? 'Made for this site. ' + o.format + '.' : o.publisher + '. ' + o.format + '.'));
       li.appendChild(el('span','acc', o.access));
       if (o.note) li.appendChild(el('span','on', o.note));
       tu.appendChild(li);
     });
     tw.appendChild(tu);
-    tw.appendChild(el('p','ovnote','Links go to other websites. Templates are made by their publishers and are not part of the course books. Links checked October 2026.'));
+    var anyOwn = m.templates.some(function(o){ return o.own; }), anyExt = m.templates.some(function(o){ return !o.own; });
+    tw.appendChild(el('p','ovnote',
+      (anyOwn ? 'Templates marked "Made for this site" are drafted here, are not course materials, and are not official forms. ' : '') +
+      (anyExt ? 'Other links go to other websites and are made by their publishers. Links checked October 2026.' : '')));
     section(main, 'Templates and worksheets', tw);
   }
 
@@ -1759,13 +1852,13 @@ def header(page='home'):
     back = "window.scrollTo(0,0)" if home_page else "home()"
     last = ('<button class="plain" onclick="go(\'sec-sources\')">Sources</button>'
             if home_page else '<button class="plain" onclick="home()">All methods</button>')
-    sid  = {'home':'search','detail':'search2','plan':'search3'}[page]
+    sid  = {'home':'search','detail':'search2','plan':'search3','before':'search4'}[page]
     handler = ('oninput="search(this.value)" onkeydown="if(event.key===\'Escape\')clearSearch()"'
                if home_page else
                'onkeydown="if(event.key===\'Enter\'&&this.value.trim()){home();document.getElementById(\'search\').value=this.value;search(this.value);}"')
     clr = ('<button class="clr" id="clr" onclick="clearSearch()" aria-label="Clear search">&#215;</button>'
            if home_page else '')
-    mid = {'home':'main-home','detail':'main-detail','plan':'main-plan'}[page]
+    mid = {'home':'main-home','detail':'main-detail','plan':'main-plan','before':'main-before'}[page]
     return f'''<a class="skip" href="#{mid}" onclick="return skipTo('{mid}')">Skip to main content</a>
 <header class="site">
 <div class="hbar"></div>
@@ -1787,6 +1880,7 @@ def header(page='home'):
   <button class="d" onclick="setPhase('ideation')">Ideation</button>
   <button class="p" onclick="setPhase('proto')">Prototyping</button>
   <button class="plan" onclick="openPlan()">Plan your research<span class="shortcount"></span></button>
+  <button class="plain navbefore" onclick="openBefore()">Before you collect</button>
   {last}
  </nav>
 </div>
@@ -1796,7 +1890,7 @@ FOOT = '''<footer class="site"><div class="in">
  <div class="brand"><div class="rule"></div>
   <div class="t">NC STATE UNIVERSITY<span>College of Design</span></div>
  </div>
- <div class="meta">Method cards written by Design Studies students at NC State's College of Design.<br>
+ <div class="meta">Most method cards were written by Design Studies students at NC State's College of Design. Drafted cards are marked.<br>
   Site created and maintained by Andr&eacute;s T&eacute;llez, Assistant Professor of Design Studies.<br>
   Published for students, faculty, and design practitioners.</div>
 </div></footer>'''
@@ -1835,7 +1929,7 @@ html = f'''<!DOCTYPE html>
  <p class="lede">A working reference of 117 methods used to plan research, make sense of what it
   finds, generate ideas, and test them. Most detailed cards were researched and written by
   students. Eighteen more were drafted for the site and are marked as drafts until they are reviewed.</p>
- <p class="herocta"><button class="herobtn" onclick="openPlan()">Plan your research</button></p>
+ <p class="herocta"><button class="herobtn" onclick="openPlan()">Plan your research</button> <button class="herobtn" onclick="openBefore()">Before you collect</button></p>
  <div class="chips">
   <button class="chip research" onclick="setPhase('research')">Research <span id="chipn-research"></span></button>
   <button class="chip insights" onclick="setPhase('insights')">Insights <span id="chipn-insights"></span></button>
@@ -2014,6 +2108,7 @@ html = f'''<!DOCTYPE html>
   <button onclick="go('plan-q')">Match your question</button>
   <button onclick="go('plan-pair')">Choose two methods</button>
   <button onclick="go('plan-short')">Your shortlist <span class="shortcount"></span></button>
+  <button onclick="openBefore()">Before you collect</button>
  </div>
 </div></section>
 
@@ -2043,6 +2138,121 @@ html = f'''<!DOCTYPE html>
  <h2>Your shortlist</h2>
  <p class="sub">Add methods from a card, from the lists above, or from a pair. Compare them side by side, then copy or print the list. The list stays on this device and is not sent anywhere.</p>
  <div id="short"></div>
+</div></section>
+</main>
+{FOOT}
+</div>
+
+<div id="p-before" class="page">
+{header('before')}
+<nav class="bc" aria-label="Breadcrumb"><div class="in">
+ <button onclick="home()">All methods</button><span class="sep" aria-hidden="true">/</span>
+ <span aria-current="page">Before you collect</span>
+</div></nav>
+<main id="main-before" tabindex="-1">
+<section class="phero"><div class="wrap">
+ <p class="kicker">Planning tools</p>
+ <h1 id="before-title" tabindex="-1">Before you collect</h1>
+ <p class="lede">Most of what goes wrong in a student research project is set before the first interview or observation. Settle these six things first, then collect. This page does not replace your instructor&rsquo;s guidance or your institution&rsquo;s research ethics review.</p>
+ <div class="pjump" role="navigation" aria-label="On this page">
+  <button onclick="go('bt-plan')">Plan</button>
+  <button onclick="go('bt-analysis')">Analysis</button>
+  <button onclick="go('bt-consent')">Consent</button>
+  <button onclick="go('bt-protocol')">Protocol</button>
+  <button onclick="go('bt-numbers')">Numbers</button>
+  <button onclick="go('bt-name')">Naming</button>
+  <button onclick="go('bt-templates')">All templates</button>
+ </div>
+</div></section>
+
+<section class="psec" id="bt-plan"><div class="wrap">
+ <h2>Write the plan first</h2>
+ <p class="sub">A plan written in advance lets you tell a reader what changed and why. A plan written afterward only describes what happened.</p>
+ <ul class="btlist">
+  <li><b>Question and mode.</b> One main question, three to five sub-questions, and the mode of your project: into, through, or for design.</li>
+  <li><b>Two methods from different families.</b> Each should cover what the other cannot show. Write the checking sentence: &ldquo;My second method checks my first because &hellip;&rdquo;</li>
+  <li><b>A target sample, as a number.</b> Write it before you recruit, and write what you will do if recruitment stalls. Reducing to a smaller sample and saying so is honest. Switching to a different population without saying so is not.</li>
+  <li><b>A timeline with room for delay.</b> Recruitment and scheduling almost always take longer than you expect.</li>
+ </ul>
+ <p class="bttools" id="bt-plan-tools"></p>
+ <p class="btnext"><button onclick="openPlan()">Open Plan your research</button></p>
+</div></section>
+
+<section class="psec alt" id="bt-analysis"><div class="wrap">
+ <h2>Decide how you will analyze, now</h2>
+ <p class="sub">Criteria written after you have seen the material tend to fit the material. Write them before.</p>
+ <ul class="btlist">
+  <li><b>A codebook before you code.</b> Each code has a name, a one-sentence definition, an example, and a note on what it excludes.</li>
+  <li><b>A second coder.</b> Ask someone to code about 20 percent of your material with your codebook. Record where you disagreed and how you settled it.</li>
+  <li><b>Scales defined in advance.</b> If you rate or score things, write what a 1 and a 5 mean before you look at the items.</li>
+  <li><b>An exclusion rule.</b> Decide what counts as off-topic or unusable before you see the material.</li>
+  <li><b>What would count against your claim.</b> Name the evidence that would weaken your argument, then look for it.</li>
+ </ul>
+ <p class="bttools" id="bt-analysis-tools"></p>
+</div></section>
+
+<section class="psec" id="bt-consent"><div class="wrap">
+ <h2>Settle consent before you contact anyone</h2>
+ <p class="sub">Consent is arranged in advance, and your paper should say what you did. Whether your project needs formal review is decided by your instructor or institution, and it is decided before you collect.</p>
+ <ul class="btlist">
+  <li><b>Tell people what they are joining.</b> Who you are, what the project is, what you will ask or do, how long it takes, and that taking part is voluntary and they may stop at any time.</li>
+  <li><b>Ask for recording separately.</b> Audio, video, and photos each need their own yes.</li>
+  <li><b>Promise only what you will do.</b> If you promise anonymity, no participant is named anywhere in your paper, including the appendix. If you promise to delete recordings, delete them.</li>
+  <li><b>Take extra care with some groups.</b> Minors, people recruited through health or support communities, and people affected by a recent crisis need added protection. If your question points there, talk to your instructor or your ethics office before you contact anyone.</li>
+  <li><b>Store data where only you can reach it,</b> and remove identifying details from transcripts.</li>
+ </ul>
+ <p class="bttools" id="bt-consent-tools"></p>
+</div></section>
+
+<section class="psec alt" id="bt-protocol"><div class="wrap">
+ <h2>Write the protocol, then keep the record</h2>
+ <p class="sub">A protocol is what you will do, written so that another person could do it. A record shows what you did.</p>
+ <ul class="btlist">
+  <li><b>Try your instrument once.</b> Run the interview guide, survey, or observation sheet with a classmate before you use it with participants.</li>
+  <li><b>Write a question that could surprise you.</b> Include one that could return an answer you do not want. Ask about a specific recent event instead of habits.</li>
+  <li><b>Sample different times.</b> When you observe, spread sessions across days and hours so one unusual hour does not stand for the whole.</li>
+  <li><b>Keep description and interpretation apart.</b> Write what happened in one column and what you think it means in another.</li>
+  <li><b>Log every change.</b> Record the date, what changed, and why. A study that changed is normal. A study whose changes are hidden looks unreliable.</li>
+ </ul>
+ <p class="bttools" id="bt-protocol-tools"></p>
+</div></section>
+
+<section class="psec" id="bt-numbers"><div class="wrap">
+ <h2>Report numbers honestly</h2>
+ <p class="sub">Small samples are fine for a first project. Presenting them as larger than they are is the problem.</p>
+ <ul class="btlist">
+  <li><b>Below about 20 responses,</b> report counts (&ldquo;7 of 12&rdquo;), not percentages.</li>
+  <li><b>Target and actual.</b> Report both, and the gap, in your methods section.</li>
+  <li><b>Who the sample can speak for.</b> A convenience sample describes the people you reached. Do not call it representative.</li>
+  <li><b>What a rating meant.</b> If you report scores, say what the scale meant and who defined it.</li>
+  <li><b>Agreement between coders.</b> Report the number of agreements (&ldquo;14 of 16 excerpts&rdquo;) and how you settled the rest.</li>
+ </ul>
+ <p class="bttools" id="bt-numbers-tools"></p>
+</div></section>
+
+<section class="psec alt" id="bt-name"><div class="wrap">
+ <h2>Name the method for what you actually did</h2>
+ <p class="sub">A method name is a claim about rigor, and a reader who knows the method will check it. If what you did does not meet the requirements, use the name that fits.</p>
+ <table class="bttab">
+  <thead><tr><th scope="col">If you wrote</th><th scope="col">And what you did was</th><th scope="col">Use instead</th></tr></thead>
+  <tbody>
+   <tr><td>Focus group</td><td>Participants commented on a shared board over several days, without meeting</td><td>Asynchronous expert review</td></tr>
+   <tr><td>Thematic analysis</td><td>You counted word frequencies or made a word cloud</td><td>Word frequency analysis</td></tr>
+   <tr><td>Systematic literature review</td><td>You gathered sources without stated inclusion criteria or a search protocol</td><td>Purposive or scoping literature review</td></tr>
+   <tr><td>A/B test</td><td>Each respondent saw both versions and picked one</td><td>Forced choice preference test</td></tr>
+   <tr><td>Heuristic evaluation</td><td>One person applied part of a heuristic set</td><td>Informal expert review</td></tr>
+   <tr><td>Case study</td><td>You interviewed people at one organization</td><td>Interview study</td></tr>
+  </tbody>
+ </table>
+ <p class="sub">To use the stronger name, meet its requirements. A systematic review needs stated inclusion criteria and a documented search. A heuristic evaluation needs several evaluators and a complete heuristic set. Thematic analysis needs a codebook and coded excerpts.</p>
+ <p class="bttools" id="bt-name-tools"></p>
+</div></section>
+
+<section class="psec" id="bt-templates"><div class="wrap">
+ <h2>All templates</h2>
+ <p class="sub">Each file is a starting point to fill in and adapt. The same files appear on the method cards where they apply.</p>
+ <ul class="btall" id="bt-all"></ul>
+ <p class="btnote">These templates were drafted for this site. They are not official forms and are not course materials. The consent script does not replace formal review, and your instructor or institution decides what your project needs.</p>
 </div></section>
 </main>
 {FOOT}
